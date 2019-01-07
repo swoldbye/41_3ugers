@@ -1,11 +1,11 @@
-package Entities;
+package Boundary;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 
 import java.awt.*;
 
-public class PlayerList {
-    private PlayerList()
+public class GUI_PlayerList {
+    private GUI_PlayerList()
     {
 
     }
