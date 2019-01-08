@@ -18,7 +18,7 @@ public class GUI_Monopoly {
         String[] playerNames = new String[numberOfPlayers];
         if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
             for (int i = 0; i < numberOfPlayers; i++) {
-                String name = gui.getUserString("Name of Player" + i + ": ");
+                String name = gui.getUserString("Name of Player " + (i+1) + ": ");
                 playerNames[i] = name;
             }
         }

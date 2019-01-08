@@ -14,7 +14,7 @@ public final class GUI_FieldFactory {
         GUI_Field[] fields = new GUI_Field[40];
         int i = 0;
         int var2 = i + 1;
-        //First color is fieldColor, Second color is fieldtext/name.
+        //First color is fieldColor, Second color is fieldtext/name..
 
 
         fields[i] = new GUI_Start("Start", "Modtag: M2$", "Modtag M2$\nNår du passerer", Color.RED, Color.BLACK);
