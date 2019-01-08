@@ -9,7 +9,7 @@ public final class GUI_FieldFactory {
 
     }
 
-    public static GUI_Field[] createFields() {
+    public static GUI_Field[] fieldInitializer() {
         // Now contains the relevant strings for fields
         GUI_Field[] fields = new GUI_Field[40];
         int i = 0;

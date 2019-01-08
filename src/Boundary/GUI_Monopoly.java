@@ -10,12 +10,25 @@ public class GUI_Monopoly {
         public static GUI_Field[] fields;
         public static GUI gui;
 
-        public void boardSetup() //forsøg på at bruge GUI. opsætning af bræt.
-        {
-            fields = GUI_FieldFactory.createFields();
+    public void boardSetup() {
+        gui = new GUI(GUI_FieldFactory.fieldInitializer(), Color.WHITE);
+    }
 
-            gui = new GUI(fields, Color.WHITE);
-            int numberOfPlayers = gui.getUserInteger("How many players are you? ");
+    public String[] playerNames() {
+        int numberOfPlayers = gui.getUserInteger("How many players are you? ");
+        String[] playerNames = new String[numberOfPlayers];
+        if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
+            for (int i = 0; i < numberOfPlayers; i++) {
+                String name = gui.getUserString("Name of Player" + i + ": ");
+                playerNames[i] = name;
+            }
+        }
+        return playerNames;
+    }
+
+}
+
+            /*int numberOfPlayers = gui.getUserInteger("How many players are you? ");
 
             if (numberOfPlayers >= 3 && numberOfPlayers<=6){
                 gui_Names = GUI_PlayerList.createPlayerList(numberOfPlayers);
@@ -33,10 +46,6 @@ public class GUI_Monopoly {
                 String restart = gui.getUserString("Please choose between 3 and 6 players...Restart by pressing OK");
                 boardSetup();
             }
-        }
+            **/
 
-        public void guiGameText(){
 
-            return;
-        }
-    }
