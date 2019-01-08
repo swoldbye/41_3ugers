@@ -1,10 +1,12 @@
 package Entities;
 
-public class Field_Abstract {
+public abstract class Field_Abstract {
 
+    //Attributes
     protected int fieldIndex;
     protected String fieldName;
 
+    //Abstract constructor
     public Field_Abstract(int fieldIndex, String fieldName) {
         this.fieldIndex = fieldIndex;
         this.fieldName = fieldName;
