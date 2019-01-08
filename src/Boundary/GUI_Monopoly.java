@@ -6,7 +6,7 @@ import gui_main.GUI;
 import java.awt.*;
 public class GUI_Monopoly {
 
-        public static GUI_Player[] playerList;
+        public static GUI_Player[] gui_Names;
         public static GUI_Field[] fields;
         public static GUI gui;
 
@@ -18,13 +18,13 @@ public class GUI_Monopoly {
             int numberOfPlayers = gui.getUserInteger("How many players are you? ");
 
             if (numberOfPlayers >= 3 && numberOfPlayers<=6){
-                playerList = GUI_PlayerList.createPlayerList(numberOfPlayers);
+                gui_Names = GUI_PlayerList.createPlayerList(numberOfPlayers);
                 for (int i = 1; i <= numberOfPlayers; i++) {
-                    gui.addPlayer(playerList[i - 1]);
+                    gui.addPlayer(gui_Names[i - 1]);
                     String name = gui.getUserString("Name of Player" + i + ": ");
-                    playerList[i - 1].setName(name);
-                    fields[0].setCar(playerList[i-1],true);
-                    playerList[i-1].setBalance(30000);
+                    gui_Names[i - 1].setName(name);
+                    fields[0].setCar(gui_Names[i-1],true);
+                    gui_Names[i-1].setBalance(30000);
                 }
 
                 return; // Returns back to Main, and starts the game
