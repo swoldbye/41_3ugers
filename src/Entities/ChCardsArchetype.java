@@ -10,6 +10,8 @@ public class ChCardsArchetype {
         this.cardName = cardName;
         this.cardEffect = cardEffect;
     }
+
+
 }
 
 

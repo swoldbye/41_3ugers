@@ -1,12 +1,20 @@
 package Entities;
 
+import java.util.ArrayList;
+
 public class PlayerList {
 
-    private int playerCount;
+    public PlayerList() {
+    }
 
-    public PlayerList(int playerCount) {
-        this.playerCount = playerCount;
+    public void playerListInitializer(String[] playerNames){
+        PlayerArchetype[] playersArr = new PlayerArchetype[playerNames.length];
+        for(int i = 0; i < playerNames.length; i++){
+            playersArr[i] = new PlayerArchetype(playerNames[i], 0, 30000);
+        }
     }
 
 
+
 }
+
