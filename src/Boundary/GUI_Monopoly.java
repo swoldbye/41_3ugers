@@ -18,7 +18,7 @@ public class GUI_Monopoly {
             int numberOfPlayers = gui.getUserInteger("How many players are you? ");
 
             if (numberOfPlayers >= 3 && numberOfPlayers<=6){
-                playerList = PlayerList.createPlayerList(numberOfPlayers);
+                playerList = GUI_PlayerList.createPlayerList(numberOfPlayers);
                 for (int i = 1; i <= numberOfPlayers; i++) {
                     gui.addPlayer(playerList[i - 1]);
                     String name = gui.getUserString("Name of Player" + i + ": ");
