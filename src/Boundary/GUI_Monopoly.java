@@ -1,4 +1,5 @@
 package Boundary;
+import Entities.PlayerArchetype;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -25,7 +26,11 @@ public class GUI_Monopoly {
     }
 
 
-    public
+    public void InitializePlayersGUI(PlayerArchetype[] players){
+        for(int i=0; i < players.length; i++){
+            GUI_Player player;
+        }
+    }
 }
 
             /*int numberOfPlayers = gui.getUserInteger("How many players are you? ");
@@ -46,5 +51,5 @@ public class GUI_Monopoly {
                 String restart = gui.getUserString("Please choose between 3 and 6 players...Restart by pressing OK");
                 boardSetup();
             }
-
+            */
 

@@ -5,10 +5,7 @@ import gui_fields.GUI_Player;
 import java.awt.*;
 
 public class GUI_PlayerList {
-    private GUI_PlayerList()
-    {
-
-    }
+    private GUI_PlayerList(){}
 
     public static GUI_Player[] createPlayerList(int amountPlayers)
     {
