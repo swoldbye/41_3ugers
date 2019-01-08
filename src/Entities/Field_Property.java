@@ -7,7 +7,7 @@ public class Field_Property extends Field_Abstract{
     protected int rent;
 
     //Constructor
-    public Field_Property(int fieldIndex, String fieldName, int price, int rent, int house, int hotel) {
+    public Field_Property(int fieldIndex, String fieldName, int price, int rent) {
         super(fieldIndex, fieldName);
         this.price = price;
         this.rent = rent;
