@@ -1,4 +1,5 @@
 package Boundary;
+import Entities.PlayerArchetype;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -6,9 +7,7 @@ import gui_main.GUI;
 import java.awt.*;
 public class GUI_Monopoly {
 
-        public static GUI_Player[] gui_Names;
-        public static GUI_Field[] fields;
-        public static GUI gui;
+    public static GUI gui;
 
     public void boardSetup() {
         gui = new GUI(GUI_FieldFactory.fieldInitializer(), Color.WHITE);
@@ -26,18 +25,24 @@ public class GUI_Monopoly {
         return playerNames;
     }
 
+
+    public void InitializePlayersGUI(PlayerArchetype[] players){
+        for(int i=0; i < players.length; i++){
+            GUI_Player player;
+        }
+    }
 }
 
             /*int numberOfPlayers = gui.getUserInteger("How many players are you? ");
 
             if (numberOfPlayers >= 3 && numberOfPlayers<=6){
-                gui_Names = GUI_PlayerList.createPlayerList(numberOfPlayers);
+                playerList = GUI_PlayerList.createPlayerList(numberOfPlayers);
                 for (int i = 1; i <= numberOfPlayers; i++) {
-                    gui.addPlayer(gui_Names[i - 1]);
+                    gui.addPlayer(playerList[i - 1]);
                     String name = gui.getUserString("Name of Player" + i + ": ");
-                    gui_Names[i - 1].setName(name);
-                    fields[0].setCar(gui_Names[i-1],true);
-                    gui_Names[i-1].setBalance(30000);
+                    playerList[i - 1].setName(name);
+                    fields[0].setCar(playerList[i-1],true);
+                    playerList[i-1].setBalance(30000);
                 }
 
                 return; // Returns back to Main, and starts the game
@@ -46,6 +51,5 @@ public class GUI_Monopoly {
                 String restart = gui.getUserString("Please choose between 3 and 6 players...Restart by pressing OK");
                 boardSetup();
             }
-            **/
-
+            */
 
