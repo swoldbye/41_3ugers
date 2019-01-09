@@ -1,6 +1,7 @@
 package Controllers;
 
 import Entities.PlayerArchetype;
+import Entities.Dice;
 import Entities.PlayerList;
 import Boundary.GUI_Monopoly;
 import gui_main.GUI;
@@ -21,6 +22,7 @@ public class GameTurn{
             // For loop that runs a standard turn for each player.
 
             GUI_Monopoly.rollButton((i+1));
+            Dice.roll();
         }
         return;
     }

@@ -12,7 +12,6 @@ public class GUI_Monopoly {
     GUI_PlayerList GUI_PlayerList = new GUI_PlayerList();
     public static GUI_Field[] fields;
     public static String[] playerNames;
-
     public static GUI gui;
 
     public void boardSetup() {
@@ -31,6 +30,7 @@ public class GUI_Monopoly {
         }
         return playerNames;
     }
+
 
 
     public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){

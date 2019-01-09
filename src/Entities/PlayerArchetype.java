@@ -7,11 +7,21 @@ public class PlayerArchetype {
     private String name;
     private int balance;
     private int position;
+    private String icon;
 
-    public PlayerArchetype(String name, int position, int balance){
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public PlayerArchetype(String name, int position, int balance, String icon){
         this.name = name;
         this.position = position;
         this.balance = balance;
+        this.icon = icon;
     }
 
     //Getter & Setter methods
