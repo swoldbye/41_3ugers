@@ -1,7 +1,11 @@
 package Controllers;
 
 import Boundary.GUI_Monopoly;
+import Entities.PlayerArchetype;
 import Entities.PlayerList;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class C_Initializer {
 
@@ -12,11 +16,12 @@ public class C_Initializer {
         guiBoard.boardSetup();
         int playerAmount = guiBoard.playerAmount();
         String[] playerNames = guiBoard.playerNames(playerAmount);
-        playerList.playerListInitializer(playerNames, playerAmount);
-        guiBoard.InitializePlayersGUI(playerList.getPlayerArr());
+        ArrayList<PlayerArchetype> c_playerArr = playerList.playerListInitializer(playerNames, playerAmount);
+        guiBoard.InitializePlayersGUI(c_playerArr);
+
 
         GameTurn startGame = new GameTurn();
-        startGame.checkTurn();
+        startGame.checkTurn(c_playerArr);
     }
 
 }

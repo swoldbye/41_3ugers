@@ -16,15 +16,15 @@ public class GameTurn{
 
 
     // This controller checks if the game is still eligible to play
-    public void checkTurn(){
-       while (PlayerList.playerArr.size()>=2){
+    public void checkTurn(ArrayList<PlayerArchetype> playerArr){
+       while (playerArr.size()>=2){
            // Start turn for every player sequentially
-           playerTurn();
+           playerTurn(playerArr);
        }
        instance.winMessage(); // Is displayed when there is only 1 player left (the winner :D)
     }
 
-    public void playerTurn(){
+    public void playerTurn(ArrayList<PlayerArchetype> playerArr){
         int [] PositionArray = new int [PlayerList.playerArr.size()];
 
         for (int i=0;i<PlayerList.playerArr.size();i++){
@@ -33,9 +33,20 @@ public class GameTurn{
             int roll1=Dice.roll();
             int roll2=Dice.roll();
             instance.dieSetter(roll1,roll2,i); // Displays the dice rolls in the gui
-            PositionArray[i]+=(roll1+roll2);
+            if(((playerArr.get(i).getPosition())+roll1+roll2)>=40){
+                playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
+            }
+            int oldPosition = playerArr.get(i).getPosition();
+            playerArr.get(i).setPosition(((playerArr.get(i).getPosition())+roll1+roll2)%40);
 
-           // switch PositionArray
+            instance.movePlayer(i,oldPosition,playerArr.get(i).getPosition());
+
+
+
+            //if(fieldType[PositionArray[i]=="Ownable"){
+                // do something
+            //}
+
             // 1) Lands on ownable
             //    -> Pay rent or Buy or don't buy ownable
             // 2) Lands on chance card

@@ -13,7 +13,7 @@ public class PlayerList {
     //    PlayerList.playerArr = playerArr;
     //}
 
-    public static void playerListInitializer(String[] playerNames, int amountOfPlayers){
+    public ArrayList<PlayerArchetype> playerListInitializer(String[] playerNames, int amountOfPlayers){
 
         PlayerArchetype[] reservedPlayerList = new PlayerArchetype[6];
         int j = 0;
@@ -41,12 +41,7 @@ public class PlayerList {
         for(int i = 0; i < amountOfPlayers; i++) {
             playerArr.add(reservedPlayerList[i]);
         }
-
-
-    }
-
-    public ArrayList<PlayerArchetype> getPlayerArr() {
-        return playerArr;
+    return playerArr;
     }
 }
 

@@ -6,7 +6,6 @@ import java.awt.*;
 
 public class GUI_PlayerList {
     GUI_PlayerList(){}
-
     public static GUI_Player[] createPlayerList(int amountPlayers)
     {
         GUI_Player[] playerList = new GUI_Player[6];
