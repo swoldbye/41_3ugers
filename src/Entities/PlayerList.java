@@ -38,7 +38,7 @@ public class PlayerList {
         reservedPlayerList[var2++] = gui_Player6;
 
 
-        for(int i = 0; i < playerNames.length; i++) {
+        for(int i = 0; i < amountOfPlayers; i++) {
             playerArr.add(reservedPlayerList[i]);
         }
 
