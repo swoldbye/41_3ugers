@@ -42,4 +42,9 @@ public class GUI_Monopoly {
         fields[0].setCar(GUIPlayerList[i],true);
         }
     }
+
+    public static void rollButton(int playerID){
+        String rollButton = gui.getUserButtonPressed("It is player " + (playerID)+"'s turn","Roll");
+        return;
+    }
 }
