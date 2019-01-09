@@ -33,8 +33,9 @@ public class GameTurn{
             int roll1=Dice.roll();
             int roll2=Dice.roll();
             instance.dieSetter(roll1,roll2,i); // Displays the dice rolls in the gui
-
             PositionArray[i]+=(roll1+roll2);
+
+           // switch PositionArray
             // 1) Lands on ownable
             //    -> Pay rent or Buy or don't buy ownable
             // 2) Lands on chance card
