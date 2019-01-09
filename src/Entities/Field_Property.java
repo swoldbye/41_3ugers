@@ -9,27 +9,24 @@ public class Field_Property extends Field_Ownable {
     private int hotels;
 
     //Constructor
-    public Field_Property(int fieldIndex, String fieldName, int price, int rent, int housePrice, int hotelPrice, int houses, int hotels) {
-        super(fieldIndex, fieldName, price, rent);
+
+
+    public Field_Property(int fieldIndex, String fieldName, int price, int rent, int group, int housePrice, int hotelPrice, int houses, int hotels) {
+        super(fieldIndex, fieldName, price, rent, group);
         this.housePrice = housePrice;
         this.hotelPrice = hotelPrice;
         this.houses = houses;
         this.hotels = hotels;
     }
 
-
     //Getter & Setter methods
-    public int getHousePrice() {
-        return housePrice;
-    }
+    public int getHousePrice() { return housePrice; }
 
     public void setHousePrice(int housePrice) {
         this.housePrice = housePrice;
     }
 
-    public int getHotelPrice() {
-        return hotelPrice;
-    }
+    public int getHotelPrice() { return hotelPrice; }
 
     public void setHotelPrice(int hotelPrice) {
         this.hotelPrice = hotelPrice;
@@ -50,4 +47,6 @@ public class Field_Property extends Field_Ownable {
     public void setHotels(int hotel) {
         this.hotels = hotel;
     }
+
+
 }
