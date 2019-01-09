@@ -14,7 +14,6 @@ public class C_Initializer {
         playerList.playerListInitializer(playerNames);
         guiBoard.InitializePlayersGUI(playerList.getPlayerArr());
 
-        // Starts game
         GameTurn startGame = new GameTurn();
         startGame.checkTurn();
     }
