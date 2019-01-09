@@ -44,6 +44,12 @@ public class GUI_Monopoly {
 
     public void rollButton(int playerID){
         String rollButton = gui.getUserButtonPressed("It is player " + (playerID+1)+"'s turn","Roll");
+
+        return;
+    }
+    public void dieSetter(int roll1, int roll2,int playerID){
+        gui.setDice(roll1,roll2);
+        gui.showMessage("Player "+(playerID+1)+" Rolled: "+roll1+" and "+roll2);
         return;
     }
 }
