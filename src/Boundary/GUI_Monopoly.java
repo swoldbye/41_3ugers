@@ -31,7 +31,6 @@ public class GUI_Monopoly {
         return playerNames;
     }
 
-
     public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){
         GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
 
@@ -44,7 +43,6 @@ public class GUI_Monopoly {
 
     public void rollButton(int playerID){
         String rollButton = gui.getUserButtonPressed("It is player " + (playerID+1)+"'s turn","Roll");
-
         return;
     }
     public void dieSetter(int roll1, int roll2,int playerID){
@@ -52,4 +50,9 @@ public class GUI_Monopoly {
         gui.showMessage("Player "+(playerID+1)+" Rolled: "+roll1+" and "+roll2);
         return;
     }
+
+    public void winMessage(){
+        gui.showMessage("Congratulations! You have won the game");
+    }
+
 }
