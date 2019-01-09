@@ -6,7 +6,7 @@ public class Field_Ownable extends Field_Abstract{
     protected int price;
     protected int rent;
     protected int group; // 1=blue, 2=docks, 3=green, 4=orange, 5=gray etc...
-    protected String ownership; //
+    protected String ownership;
 
     //Constructor
     public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, String ownership) {
