@@ -32,11 +32,7 @@ public class Field_Ownable extends Field_Abstract{
         this.rent = rent;
     }
 
-    public int getGroup() {
-        return group;
-    }
+    public int getGroup() { return group; }
 
-    public void setGroup(int group) {
-        this.group = group;
-    }
+    public void setGroup(int group) { this.group = group; }
 }
