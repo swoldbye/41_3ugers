@@ -5,7 +5,7 @@ import gui_fields.GUI_Player;
 import java.awt.*;
 
 public class GUI_PlayerList {
-    private GUI_PlayerList(){}
+    GUI_PlayerList(){}
 
     public static GUI_Player[] createPlayerList(int amountPlayers)
     {
@@ -52,9 +52,9 @@ public class GUI_PlayerList {
 
 
 
-//    public Player[] createPlayerList() //createPlayerList method, basically get method.
-//    {
-//        return thePlayers;
-//    }
-
+/*    public Player[] createPlayerList() //createPlayerList method, basically get method.
+    {
+        return thePlayers;
+    }
+*/
 }

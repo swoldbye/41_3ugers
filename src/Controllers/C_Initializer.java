@@ -12,6 +12,7 @@ public class C_Initializer {
         guiBoard.boardSetup();
         String[] playerNames = guiBoard.playerNames();
         playerList.playerListInitializer(playerNames);
+        guiBoard.InitializePlayersGUI(playerList.getPlayerArr());
     }
 
 }
