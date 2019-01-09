@@ -55,7 +55,7 @@ public final class GUI_FieldFactory {
         fields[var2++] = new GUI_Street("Scandlines 3", "4000", "Scandlines færge", "Leje: 500 for 1, 1000 for 2", new Color(255,105,180), Color.BLACK);
         fields[var2++] = new GUI_Chance("?", "Chance", "Prøv lykken!", new Color(240,230,140), Color.BLACK);
         fields[var2++] = new GUI_Street("Frederiksberggade", "Pris: 7000", "", "Leje: 700", new Color(186,85,211), Color.BLACK);
-        fields[var2++] = new GUI_Tax("Ekstraordinær statsskat", "Betal 2000", "", new Color(255,255,255), Color.BLACK);
+        fields[var2++] = new GUI_Tax("Ekstraordinær statsskat", "Betal 2000", "Betal 2000kr i skat", new Color(255,255,255), Color.BLACK);
         fields[var2++] = new GUI_Street("Rådhuspladsen", "Pris: 8000", "", "Leje: 1000", new Color(186,85,211), Color.BLACK);
         return fields;
     }

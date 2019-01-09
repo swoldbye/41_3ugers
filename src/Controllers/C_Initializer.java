@@ -13,6 +13,10 @@ public class C_Initializer {
         String[] playerNames = guiBoard.playerNames();
         playerList.playerListInitializer(playerNames);
         guiBoard.InitializePlayersGUI(playerList.getPlayerArr());
+
+        // Starts game
+        GameTurn startGame = new GameTurn();
+        startGame.checkTurn();
     }
 
 }
