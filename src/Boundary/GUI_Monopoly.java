@@ -5,6 +5,8 @@ import gui_fields.GUI_Player;
 import gui_main.GUI;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 public class GUI_Monopoly {
 
     GUI_PlayerList GUI_PlayerList = new GUI_PlayerList();
@@ -30,9 +32,9 @@ public class GUI_Monopoly {
     }
 
 
-    public void InitializePlayersGUI(PlayerArchetype[] players){
-        GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.length);
-        for(int i=0; i < players.length; i++){
+    public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){
+        GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
+        for(int i=0; i < players.size(); i++){
         gui.addPlayer(GUIPlayerList[i]);
         fields[0].setCar(GUIPlayerList[i-1],true);
         }
