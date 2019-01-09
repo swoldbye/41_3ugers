@@ -10,8 +10,9 @@ public class C_Initializer {
         PlayerList playerList = new PlayerList();
 
         guiBoard.boardSetup();
-        String[] playerNames = guiBoard.playerNames();
-        playerList.playerListInitializer(playerNames);
+        int playerAmount = guiBoard.playerAmount();
+        String[] playerNames = guiBoard.playerNames(playerAmount);
+        playerList.playerListInitializer(playerNames, playerAmount);
         guiBoard.InitializePlayersGUI(playerList.getPlayerArr());
 
         GameTurn startGame = new GameTurn();

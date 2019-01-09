@@ -19,17 +19,29 @@ public class GUI_Monopoly {
         gui = new GUI(fields, Color.WHITE);
     }
 
-    public String[] playerNames() {
-        int numberOfPlayers = gui.getUserInteger("How many players are you? ");
-        playerNames = new String[numberOfPlayers];
-        if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
-            for (int i = 0; i < numberOfPlayers; i++) {
-                String name = gui.getUserString("Name of Player " + (i+1) + ": ");
-                playerNames[i] = name;
+    public int playerAmount() {
+        int numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
+
+        for (int i = 0; i < 1; i = 0) {
+            if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
+                i = 1;
+                return numberOfPlayers;
+            } else {
+                numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
             }
         }
+        return numberOfPlayers;
+    }
+
+    public String[] playerNames(int amountOfPlayers) {
+        playerNames = new String[6];
+        for (int i = 0; i < amountOfPlayers; i++) {
+            String name = gui.getUserString("Name of Player " + (i+1) + ": ");
+            playerNames[i] = name;
+            }
         return playerNames;
     }
+
 
     public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){
         GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
