@@ -22,3 +22,6 @@ public class PlayerList {
     }
 }
 
+// felter [-1,-2,-1,-1,-1] eksempel på at et felt ikke har en ejer
+
+// felter [0,-2,2,3,0]

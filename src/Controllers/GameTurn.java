@@ -28,9 +28,11 @@ public class GameTurn{
             // For loop that runs a standard turn for each player.
             instance.rollButton(i);
 
-            Dice.roll();
-          //  PlayerList.playerArr[i].position += Dice.roll();
+            int roll1=Dice.roll();
+            int roll2=Dice.roll();
 
+            instance.dieSetter(roll1,roll2,i);
+          //  PlayerList.playerArr[i].position += Dice.roll();
         }
         return;
     }
