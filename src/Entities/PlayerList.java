@@ -6,6 +6,7 @@ public class PlayerList {
     public static ArrayList<PlayerArchetype> playerArr = new ArrayList<PlayerArchetype>();
 
     public PlayerList() {
+
     }
 
     public static void playerListInitializer(String[] playerNames){
