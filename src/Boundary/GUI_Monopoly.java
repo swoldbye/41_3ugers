@@ -34,6 +34,8 @@ public class GUI_Monopoly {
 
     public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){
         GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
+
+
         for(int i=0; i < players.size(); i++){
         gui.addPlayer(GUIPlayerList[i]);
         fields[0].setCar(GUIPlayerList[i],true);

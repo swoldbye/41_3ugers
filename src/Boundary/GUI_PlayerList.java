@@ -15,7 +15,7 @@ public class GUI_PlayerList {
 
 
         GUI_Car car1 = new GUI_Car(Color.RED, Color.RED, GUI_Car.Type.UFO, GUI_Car.Pattern.HORIZONTAL_GRADIANT);
-        GUI_Player gui_Player1 = new GUI_Player("Player 1: ", 30000, car1);
+        GUI_Player gui_Player1 = new GUI_Player("Player 1: " , 30000, car1);
         playerList[j] = gui_Player1;
 
         GUI_Car car2 = new GUI_Car(Color.BLUE, Color.BLUE, GUI_Car.Type.RACECAR, GUI_Car.Pattern.HORIZONTAL_GRADIANT);
