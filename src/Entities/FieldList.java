@@ -33,7 +33,7 @@ public class FieldList { //Information Expert Class
         fields[var2++] = new Field_Chance(18,"Chance");
         fields[var2++] = new Field_Property(19,"Hellerupvej", 3600,300,6,"",2000,3000,0,0);
         fields[var2++] = new Field_Property(20,"Strandvejen",4000,350,6,"",2000,3000,0,0);
-        fields[var2++] = new Field_Empty(21,"Parkering",);
+        fields[var2++] = new Field_Empty(21,"Parkering");
         fields[var2++] = new Field_Property(22,"Trianglen", 4400, 350, 7, "", 2000,3000,0,0);
         fields[var2++] = new Field_Chance(23, "Chance");
         fields[var2++] = new Field_Property(24,"Østerbrogade",4400, 350, 7, "", 2000,3000,0,0);
@@ -45,16 +45,15 @@ public class FieldList { //Information Expert Class
         fields[var2++] = new Field_Property(30,"Østergade",5600,500,8, "",2000,3000,0,0);
         fields[var2++] = new Field_Jail(31,"Gå i fængsel");
         fields[var2++] = new Field_Property(32,"Amagertorv",6000,550,9,"",3000, 4000,0,0);
-        fields[var2++] = new Field_Property(33,"Vimmelskaftet",6000,500,9,"",3000, 4000,0,0);)
+        fields[var2++] = new Field_Property(33,"Vimmelskaftet",6000,500,9,"",3000, 4000,0,0);
         fields[var2++] = new Field_Chance(34,"Chance");
-        fields[var2++] = new Field_Property(35,"Nygade", 6400,600,9,"",3000, 4000,0,0);)
+        fields[var2++] = new Field_Property(35,"Nygade", 6400,600,9,"",3000, 4000,0,0);
         fields[var2++] = new Field_Shipping(36,"Båd 4",4000,500,9, "");
-        fields[var2++] = new Field_Chance(37,"");
-        fields[var2++] = new Field_Property(38,"Frederiksberggade",7000,700, 10, "",3000, 4000,0,0);)
+        fields[var2++] = new Field_Chance(37,"Chance");
+        fields[var2++] = new Field_Property(38,"Frederiksberggade",7000,700, 10, "",3000, 4000,0,0);
         fields[var2++] = new Field_Tax(39,"Skat 2", 2000);
-        fields[var2++] = new Field_Property(40, "Rådhuspladsen", 8000, 1000, 10, "",3000, 4000,0,0);)
+        fields[var2++] = new Field_Property(40, "Rådhuspladsen", 8000, 1000, 10, "",3000, 4000,0,0);
         return fields;
     }
 
-//
 }
