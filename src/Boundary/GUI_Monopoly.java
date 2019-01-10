@@ -68,10 +68,9 @@ public class GUI_Monopoly{
         gui.showMessage("Congratulations! You have won the game");
     }
 
-    public void movePlayer(int playerID, int oldPosition,int newPosition){
-        fields[newPosition].setCar(GUIPlayerList[playerID],true);
+    public void movePlayer(GUI_Player[] GUI_PlayerList, int playerID, int oldPosition,int newPosition){
+        fields[newPosition].setCar(GUI_PlayerList[playerID],true);
         fields[oldPosition].removeAllCars();
 
-        return;
     }
 }

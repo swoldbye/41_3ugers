@@ -1,13 +1,14 @@
 package Boundary;
+import Entities.PlayerArchetype;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GUI_PlayerList {
     GUI_PlayerList(){}
-    public static GUI_Player[] createPlayerList(int amountPlayers)
-    {
+    public static GUI_Player[] createPlayerList(int amountPlayers){
         GUI_Player[] playerList = new GUI_Player[6];
         int j = 0;
         int var2 = j + 1;

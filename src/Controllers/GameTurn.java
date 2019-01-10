@@ -12,20 +12,21 @@ import java.util.ArrayList;
 
 
 public class GameTurn{
-    GUI_Monopoly instance = new GUI_Monopoly();
-
+GUI_Monopoly instance = new GUI_Monopoly();
 
     // This controller checks if the game is still eligible to play
-    public void checkTurn(ArrayList<PlayerArchetype> playerArr,){
-       while (playerArr.size()>=2){
+    public boolean checkTurn(ArrayList<PlayerArchetype> playerArr){
+       if(playerArr.size()>=2){
            // Start turn for every player sequentially
-           playerTurn(playerArr, GUIPlayerArr);
+           return false;
        }
-       instance.winMessage(); // Is displayed when there is only 1 player left (the winner :D)
+       else{
+           return true;
+       }
     }
 
-    public void playerTurn(ArrayList<PlayerArchetype> playerArr){
-        for (int i=0;i<PlayerList.playerArr.size();i++){
+    public int[] playerTurn(ArrayList<PlayerArchetype> playerArr, int i){
+        int[] playerPos = new int[2];
             // For loop that runs a standard turn for each player.
             instance.rollButton(i); // Prompts the user to roll
             int roll1=Dice.roll();
@@ -35,11 +36,10 @@ public class GameTurn{
                 playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
             }
 
-            int oldPosition = playerArr.get(i).getPosition();
+            playerPos[0] = playerArr.get(i).getPosition();
             playerArr.get(i).setPosition(((playerArr.get(i).getPosition())+roll1+roll2)%40);
-            int newPosition = playerArr.get(i).getPosition();
+            playerPos[1] = playerArr.get(i).getPosition();
 
-            instance.movePlayer(i,oldPosition,newPosition);
 
 
 
@@ -57,7 +57,8 @@ public class GameTurn{
             //    -> Goes to prison
 
           //  PlayerList.playerArr[i].position += Dice.roll();
-        }
-        return;
+
+        return playerPos;
+
     }
 }

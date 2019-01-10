@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class C_Initializer {
 
-    public void initialize(){
+    public void initialize() {
         GUI_Monopoly guiBoard = new GUI_Monopoly();
         PlayerList playerList = new PlayerList();
         //playerList Singleton = c_playerArr
@@ -21,17 +21,27 @@ public class C_Initializer {
         String[] playerNames = guiBoard.playerNames(playerAmount);
 
         ArrayList<PlayerArchetype> c_playerArr = playerList.playerListInitializer(playerNames, playerAmount);
-        GUI_Player[] c_GUIPlayerArr =guiBoard.InitializePlayersGUI(c_playerArr);
+        GUI_Player[] c_GUIPlayerArr = guiBoard.InitializePlayersGUI(c_playerArr);
 
-        ----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
         // Main Controller From here:
 
-        GameTurn startGame = new GameTurn();
+        GameTurn gameTurn = new GameTurn();
+        int[] playerPositions = new int[2];
 
-        startGame.checkTurn(c_playerArr);
-        int[] playerPositions = startGame.;
+        for (int i = 0; i < c_playerArr.size(); i++) {
+            if (gameTurn.checkTurn(c_playerArr) == true) {
+                guiBoard.winMessage();
+            }
+            else {
+                playerPositions = gameTurn.playerTurn(c_playerArr, i);
+                guiBoard.movePlayer(c_GUIPlayerArr,i, playerPositions[0], playerPositions[1]);
+                if(i == c_playerArr.size()){i=0;}
 
-
+            }
+        }
     }
 
 }
+
