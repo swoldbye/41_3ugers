@@ -1,14 +1,17 @@
 package Boundary;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
+import jdk.nashorn.internal.objects.Global;
 
 import java.awt.*;
 
 public class GUI_PlayerList {
     GUI_PlayerList(){}
-    public static GUI_Player[] createPlayerList(int amountPlayers)
+    public GUI_Player[] GUI_playerCarIndex;
+    public GUI_Player[] createPlayerList(int amountPlayers)
     {
         GUI_Player[] playerList = new GUI_Player[6];
+        GUI_Player[] GUI_playerCarIndex = new GUI_Player[amountPlayers];
         int j = 0;
         int var2 = j + 1;
 
@@ -38,12 +41,9 @@ public class GUI_PlayerList {
         playerList[var2++] = gui_Player6;
 
 
-        GUI_Player[] GUI_playerCarIndex = new GUI_Player[amountPlayers];
-
         for(int i = 0; i < GUI_playerCarIndex.length; ++i) {
             GUI_playerCarIndex[i] = playerList[i];
         }
-
         return GUI_playerCarIndex;
     }
 }

@@ -7,12 +7,13 @@ import gui_main.GUI;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GUI_Monopoly{
-    GUI_PlayerList GUI_PlayerList = new GUI_PlayerList();
+public class GUI_Monopoly extends GUI_PlayerList{
+    GUI_PlayerList gui_PlayerList = new GUI_PlayerList();
     public static GUI_Field[] fields;
     public static String[] playerNames;
     public static GUI gui;
     public GUI_Player[] GUIPlayerList;
+    public static int numberOfPlayers;
 
     public  void boardSetup() {
         fields = GUI_FieldFactory.fieldInitializer();
@@ -20,7 +21,7 @@ public class GUI_Monopoly{
     }
 
     public int playerAmount() {
-        int numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
+        numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
 
         for (int i = 0; i < 1; i = 0) {
             if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
@@ -43,11 +44,10 @@ public class GUI_Monopoly{
     }
 
     public GUI_Player[] InitializePlayersGUI(ArrayList<PlayerArchetype> players){
-        GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
-
+        GUI_Player[] GUIPlayerList = gui_PlayerList.createPlayerList(players.size());
+        gui_PlayerList.createPlayerList(numberOfPlayers);
 
         for(int i=0; i < players.size(); i++){
-        gui.addPlayer(GUIPlayerList[i]);
         fields[0].setCar(GUIPlayerList[i],true);
         }
         return GUIPlayerList;
@@ -68,10 +68,9 @@ public class GUI_Monopoly{
         gui.showMessage("Congratulations! You have won the game");
     }
 
-    public void movePlayer(int playerID, int oldPosition,int newPosition){
+    public void movePlayer(int playerID, int oldPosition,int newPosition, GUI_Player[] GUIPlayerList){
         fields[newPosition].setCar(GUIPlayerList[playerID],true);
         fields[oldPosition].removeAllCars();
-
         return;
     }
 }
