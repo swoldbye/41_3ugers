@@ -1,5 +1,6 @@
 package Controllers;
 
+import Boundary.GUI_PlayerList;
 import Entities.Dice;
 import Entities.PlayerArchetype;
 import Entities.PlayerList;
@@ -11,22 +12,19 @@ import java.util.ArrayList;
 
 
 public class GameTurn{
-    public static GUI gui;
     GUI_Monopoly instance = new GUI_Monopoly();
 
 
     // This controller checks if the game is still eligible to play
-    public void checkTurn(ArrayList<PlayerArchetype> playerArr){
+    public void checkTurn(ArrayList<PlayerArchetype> playerArr,){
        while (playerArr.size()>=2){
            // Start turn for every player sequentially
-           playerTurn(playerArr);
+           playerTurn(playerArr, GUIPlayerArr);
        }
        instance.winMessage(); // Is displayed when there is only 1 player left (the winner :D)
     }
 
     public void playerTurn(ArrayList<PlayerArchetype> playerArr){
-        int [] PositionArray = new int [PlayerList.playerArr.size()];
-
         for (int i=0;i<PlayerList.playerArr.size();i++){
             // For loop that runs a standard turn for each player.
             instance.rollButton(i); // Prompts the user to roll
@@ -36,10 +34,12 @@ public class GameTurn{
             if(((playerArr.get(i).getPosition())+roll1+roll2)>=40){
                 playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
             }
+
             int oldPosition = playerArr.get(i).getPosition();
             playerArr.get(i).setPosition(((playerArr.get(i).getPosition())+roll1+roll2)%40);
+            int newPosition = playerArr.get(i).getPosition();
 
-            instance.movePlayer(i,oldPosition,playerArr.get(i).getPosition());
+            instance.movePlayer(i,oldPosition,newPosition);
 
 
 

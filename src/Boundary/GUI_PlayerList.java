@@ -37,23 +37,13 @@ public class GUI_PlayerList {
         GUI_Player gui_Player6 = new GUI_Player("Player 6: ",30000, car6);
         playerList[var2++] = gui_Player6;
 
-        GUI_Player[] playerList2 = new GUI_Player[amountPlayers];
 
-        for(int i = 0; i < playerList2.length; ++i) {
-            playerList2[i] = playerList[i];
+        GUI_Player[] GUI_playerCarIndex = new GUI_Player[amountPlayers];
+
+        for(int i = 0; i < GUI_playerCarIndex.length; ++i) {
+            GUI_playerCarIndex[i] = playerList[i];
         }
 
-        return playerList2;
+        return GUI_playerCarIndex;
     }
-
-
-
-
-
-
-/*    public Player[] createPlayerList() //createPlayerList method, basically get method.
-    {
-        return thePlayers;
-    }
-*/
 }

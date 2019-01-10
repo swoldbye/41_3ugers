@@ -8,11 +8,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GUI_Monopoly{
-
     GUI_PlayerList GUI_PlayerList = new GUI_PlayerList();
     public static GUI_Field[] fields;
     public static String[] playerNames;
     public static GUI gui;
+    public GUI_Player[] GUIPlayerList;
 
     public  void boardSetup() {
         fields = GUI_FieldFactory.fieldInitializer();
@@ -42,7 +42,7 @@ public class GUI_Monopoly{
         return playerNames;
     }
 
-    public void InitializePlayersGUI(ArrayList<PlayerArchetype> players){
+    public GUI_Player[] InitializePlayersGUI(ArrayList<PlayerArchetype> players){
         GUI_Player[] GUIPlayerList = GUI_PlayerList.createPlayerList(players.size());
 
 
@@ -50,6 +50,7 @@ public class GUI_Monopoly{
         gui.addPlayer(GUIPlayerList[i]);
         fields[0].setCar(GUIPlayerList[i],true);
         }
+        return GUIPlayerList;
     }
 
     public void rollButton(int playerID){
@@ -68,8 +69,9 @@ public class GUI_Monopoly{
     }
 
     public void movePlayer(int playerID, int oldPosition,int newPosition){
-
-        //fields[newPosition].setCar();
+        fields[newPosition].setCar(GUIPlayerList[playerID],true);
         fields[oldPosition].removeAllCars();
+
+        return;
     }
 }
