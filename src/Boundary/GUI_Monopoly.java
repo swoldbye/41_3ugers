@@ -12,7 +12,6 @@ public class GUI_Monopoly extends GUI_PlayerList{
     public static GUI_Field[] fields;
     public static String[] playerNames;
     public static GUI gui;
-    public GUI_Player[] GUIPlayerList;
     public static int numberOfPlayers;
 
     public  void boardSetup() {

@@ -31,6 +31,7 @@ public class GameTurn{
             instance.dieSetter(roll1,roll2,i); // Displays the dice rolls in the gui
             if(((playerArr.get(i).getPosition())+roll1+roll2)>=40){
                 playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
+                System.out.println(playerArr.get(i).getBalance());
             }
 
             int oldPosition = playerArr.get(i).getPosition();
