@@ -15,6 +15,7 @@ public class C_Initializer {
     public void initialize(){
         GUI_Monopoly guiBoard = new GUI_Monopoly();
         PlayerList playerList = new PlayerList();
+        FieldList fieldListCreator = new FieldList();
         //playerList Singleton = c_playerArr
         //GUI_PlayerList Singleton = c_GUIPlayerArr
 
@@ -26,10 +27,11 @@ public class C_Initializer {
         // #3 Inserts these players into the GUI
         GUI_Player[] c_GUIPlayerArr = guiBoard.InitializePlayersGUI(c_playerArr);
 
+
         // Handing over responsibility to the GameTurn controller. The game has begun :D
         GameTurn startGame = new GameTurn();
         // Note that the checkTurn method accepts the following parameters
-        startGame.checkTurn(c_playerArr, c_GUIPlayerArr,guiBoard);
+        startGame.checkRound(c_playerArr, c_GUIPlayerArr,guiBoard);
     }
 
 }

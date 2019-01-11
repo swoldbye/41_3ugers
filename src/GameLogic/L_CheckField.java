@@ -20,6 +20,7 @@ public class L_CheckField {
     }
 
     public void checkPosition(ArrayList<PlayerArchetype> playerArr, int i){
-
+        // Check what field the player lands on
+        //
     }
 }

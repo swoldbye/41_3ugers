@@ -17,7 +17,7 @@ public class GameTurn{
     L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
 
     // This method checks if the game is still eligible to play. You need to be at least 2 players
-    public void checkTurn(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance){
+    public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance){
        while (playerArr.size()>=2){
            // Calls the playerTurn method
            playerTurn(playerArr, gui_playerList, guiInstance);
