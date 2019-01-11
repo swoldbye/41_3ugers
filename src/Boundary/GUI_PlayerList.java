@@ -1,9 +1,11 @@
 package Boundary;
+import Entities.PlayerArchetype;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 import jdk.nashorn.internal.objects.Global;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GUI_PlayerList {
     GUI_PlayerList(){}
@@ -41,9 +43,13 @@ public class GUI_PlayerList {
         playerList[var2++] = gui_Player6;
 
 
-        for(int i = 0; i < GUI_playerCarIndex.length; ++i) {
+
+        for(int i = 0; i < GUI_playerCarIndex.length; i++){
             GUI_playerCarIndex[i] = playerList[i];
+            // GUI_playerCarIndex[i].setName(playerArchetypeList.get(i).getName());
+            // Setter is defective.
         }
+
         return GUI_playerCarIndex;
     }
 }

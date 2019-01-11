@@ -4,24 +4,19 @@ import java.util.ArrayList;
 
 public class PlayerArchetype {
 
+    //Attributes
     private String name;
     private int balance;
     private int position;
-    private String icon;
+    private int jailStatus;
 
-    public String getIcon() {
-        return icon;
-    }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public PlayerArchetype(String name, int position, int balance, String icon){
+    //Constructor
+    public PlayerArchetype(String name, int balance, int position, int jailStatus) {
         this.name = name;
-        this.position = position;
         this.balance = balance;
-        this.icon = icon;
+        this.position = position;
+        this.jailStatus = jailStatus;
     }
 
     //Getter & Setter methods
@@ -48,4 +43,8 @@ public class PlayerArchetype {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    public int getJailStatus() { return jailStatus; }
+
+    public void setJailStatus(int jailStatus) { this.jailStatus = jailStatus; }
 }
