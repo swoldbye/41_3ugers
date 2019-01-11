@@ -41,7 +41,7 @@ public class GameTurn{
             guiInstance.movePlayer(i,oldPosition,newPosition, gui_playerList);
 
         }
-        return;
+
     }
 }
 
