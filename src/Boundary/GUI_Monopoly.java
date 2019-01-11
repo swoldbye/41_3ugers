@@ -7,7 +7,7 @@ import gui_main.GUI;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GUI_Monopoly extends GUI_PlayerList{
+public class GUI_Monopoly{
     GUI_PlayerList gui_PlayerList = new GUI_PlayerList();
     public static GUI_Field[] fields;
     public static String[] playerNames;
@@ -21,7 +21,6 @@ public class GUI_Monopoly extends GUI_PlayerList{
 
     public int playerAmount() {
         numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
-
         for (int i = 0; i < 1; i = 0) {
             if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
                 i = 1;
@@ -47,7 +46,8 @@ public class GUI_Monopoly extends GUI_PlayerList{
         gui_PlayerList.createPlayerList(numberOfPlayers);
 
         for(int i=0; i < players.size(); i++){
-        fields[0].setCar(GUIPlayerList[i],true);
+            gui.addPlayer(GUIPlayerList[i]);
+            fields[0].setCar(GUIPlayerList[i],true);
         }
         return GUIPlayerList;
     }
@@ -70,6 +70,13 @@ public class GUI_Monopoly extends GUI_PlayerList{
     public void movePlayer(int playerID, int oldPosition,int newPosition, GUI_Player[] GUIPlayerList){
         fields[newPosition].setCar(GUIPlayerList[playerID],true);
         fields[oldPosition].removeAllCars();
+
+
         return;
+    }
+
+    public String GUI_buyProperty (){
+        String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","End turn");
+        return answer;
     }
 }
