@@ -52,21 +52,21 @@ public class L_CheckField {
     public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         GUI_Monopoly message = new GUI_Monopoly();
         int currentBalance = playerArr.get(i).getBalance();
-        if(fieldArr[actualPosition].getOwnership()<0){
+        if(fieldArr[actualPosition].getOwnership()==-1){
             int price = fieldArr[actualPosition].getPrice();
-            String answer = message.GUI_buyProperty(i,price,gui_playerList);
+            String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
             if(answer.equals("Yes")){
                 // player pays for property
                 playerArr.get(i).setBalance(currentBalance-price);
                 // ownership is set in fieldlist
-                fieldArr[i].setOwnership(i);
+                fieldArr[actualPosition].setOwnership(i);
             }
         }
         else{
             // find rent
-            int rent = fieldArr[i].getRent();
+            int rent = fieldArr[actualPosition].getRent();
             // find owner
-            int owner = fieldArr[i].getOwnership();
+            int owner = fieldArr[actualPosition].getOwnership();
             // display pay rent button in gui
             message.GUI_payRent(owner,rent);
             // player pays rent

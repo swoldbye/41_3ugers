@@ -79,16 +79,17 @@ public class GUI_Monopoly{
     }
 
     // Button that adds the choice to buy a property
-    public String GUI_buyProperty (int playerID, int price, GUI_Player[] gui_playerList){
+    public String GUI_buyProperty (int actualPosition, int playerID, int price, GUI_Player[] gui_playerList){
         String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","No");
         if(answer.equals("Yes")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
+            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" is owned by: Player "+playerID);
         }
         return answer;
     }
     public String GUI_payRent(int owner,int rent){
-        String rentMessage = gui.getUserSelection("This field is owned by "+owner+". Pay "+rent,"Pay rent");
+        String rentMessage = gui.getUserSelection("This field is owned by "+owner+". Pay "+rent,"Pay "+rent+" to "+owner);
     return rentMessage;
     }
 }
