@@ -6,13 +6,14 @@ import Entities.PlayerArchetype;
 import Entities.PlayerList;
 import gui_fields.GUI_Player;
 import Entities.FieldList;
-
+import GameLogic.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class C_Initializer {
 
     public void initialize(){
+        FieldList fieldCreator = new FieldList();
         GUI_Monopoly guiBoard = new GUI_Monopoly();
         PlayerList playerList = new PlayerList();
         //playerList Singleton = c_playerArr
@@ -26,10 +27,11 @@ public class C_Initializer {
         // #3 Inserts these players into the GUI
         GUI_Player[] c_GUIPlayerArr = guiBoard.InitializePlayersGUI(c_playerArr);
 
+        Field_Abstract[] fieldArr = fieldCreator.createFieldList();
         // Handing over responsibility to the GameTurn controller. The game has begun :D
         GameTurn startGame = new GameTurn();
         // Note that the checkTurn method accepts the following parameters
-        startGame.checkTurn(c_playerArr, c_GUIPlayerArr,guiBoard);
+        startGame.checkRound(c_playerArr, c_GUIPlayerArr,guiBoard,fieldArr);
     }
 
 }

@@ -29,4 +29,12 @@ public abstract class Field_Abstract {
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
     }
+
+    public String getOwnership() { return getOwnership();}
+
+    public void setOwnership(String ownership) { }
+
+    public int getPrice() {
+        return getPrice();
+    }
 }
