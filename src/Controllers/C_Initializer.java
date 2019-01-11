@@ -1,20 +1,23 @@
 package Controllers;
 
 import Boundary.GUI_Monopoly;
+import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
 import Entities.PlayerList;
 import gui_fields.GUI_Player;
+import Entities.FieldList;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class C_Initializer {
-    // Initializing the boundary and entity classes
-    GUI_Monopoly guiBoard = new GUI_Monopoly();
-    PlayerList playerList = new PlayerList();
 
     public void initialize(){
-        // #1 Setting up the GUI board, number of players is returned
+        GUI_Monopoly guiBoard = new GUI_Monopoly();
+        PlayerList playerList = new PlayerList();
+        //playerList Singleton = c_playerArr
+        //GUI_PlayerList Singleton = c_GUIPlayerArr
+
         guiBoard.boardSetup();
         int playerAmount = guiBoard.playerAmount();
         // #2 Creating list of Players
