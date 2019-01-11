@@ -68,7 +68,7 @@ public class L_CheckField {
             // find owner
             int owner = fieldArr[actualPosition].getOwnership();
             // display pay rent button in gui
-            message.GUI_payRent(owner,rent);
+            message.GUI_payRent(owner,rent,gui_playerList,i);
             // player pays rent
             playerArr.get(i).setBalance(currentBalance-rent);
             int ownerBalance = playerArr.get(owner).getBalance();

@@ -84,12 +84,19 @@ public class GUI_Monopoly{
         if(answer.equals("Yes")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
-            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" is owned by: Player "+playerID);
+            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" is owned by: Player "+(playerID+1));
         }
         return answer;
     }
-    public String GUI_payRent(int owner,int rent){
-        String rentMessage = gui.getUserSelection("This field is owned by "+owner+". Pay "+rent,"Pay "+rent+" to "+owner);
+    public String GUI_payRent(int owner,int rent,GUI_Player[] gui_playerList,int playerID){
+        String rentMessage = gui.getUserSelection("This field is owned by "+(owner+1)+". Pay "+rent,"Pay "+rent+" to "+(owner+1));
+        // Now the balance of the player and owner of a given field will be updated in the gui.
+        int playerBalance = gui_playerList[playerID].getBalance();
+        int ownerBalance = gui_playerList[owner].getBalance();
+
+        gui_playerList[playerID].setBalance(playerBalance-rent);
+        gui_playerList[owner].setBalance(ownerBalance+rent);
+
     return rentMessage;
     }
 }
