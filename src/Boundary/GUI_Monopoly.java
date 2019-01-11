@@ -1,4 +1,5 @@
 package Boundary;
+import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -78,8 +79,16 @@ public class GUI_Monopoly{
     }
 
     // Button that adds the choice to buy a property
-    public String GUI_buyProperty (){
-        String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","End turn");
+    public String GUI_buyProperty (int playerID, int price, GUI_Player[] gui_playerList){
+        String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","No");
+        if(answer.equals("Yes")){
+            int currentBalance = gui_playerList[playerID].getBalance();
+            gui_playerList[playerID].setBalance(currentBalance-price);
+        }
         return answer;
+    }
+    public String GUI_payRent(){
+        String rent = gui.getUserSelection("This field is owned. Pay rent","Pay rent");
+    return rent;
     }
 }

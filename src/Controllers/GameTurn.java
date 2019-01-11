@@ -1,7 +1,9 @@
 package Controllers;
 
 import Boundary.GUI_Monopoly;
+import Boundary.GUI_PlayerList;
 import Entities.Dice;
+import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
 import Entities.PlayerList;
 import gui_fields.GUI_Player;
@@ -17,16 +19,16 @@ public class GameTurn{
     L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
 
     // This method checks if the game is still eligible to play. You need to be at least 2 players
-    public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance){
+    public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr){
        while (playerArr.size()>=2){
            // Calls the playerTurn method
-           playerTurn(playerArr, gui_playerList, guiInstance);
+           playerTurn(playerArr, gui_playerList, guiInstance,fieldArr);
        }
        // The while loop ends when there is only 1 player left, the winner. Then we prompt the winMessage
         guiInstance.winMessage(); // Is displayed when there is only 1 player left (the winner :D)
     }
     // This method plays the turn for each player.
-    public void playerTurn(ArrayList<PlayerArchetype> playerArr,GUI_Player[] gui_playerList,GUI_Monopoly guiInstance){
+    public void playerTurn(ArrayList<PlayerArchetype> playerArr,GUI_Player[] gui_playerList,GUI_Monopoly guiInstance,Field_Abstract[] fieldArr){
         // For loop that runs a standard turn for each player.
         for (int i=0;i<PlayerList.playerArr.size();i++) {
             // Check the current position of the player before he rolls the dice
@@ -47,7 +49,7 @@ public class GameTurn{
             Logic_checkfield.checkStart(playerArr,oldPosition,i,roll1,roll2);
             int actualPosition = Logic_checkfield.setNewPosition(playerArr,oldPosition,i,roll1,roll2);
             guiInstance.movePlayer(i,oldPosition,actualPosition, gui_playerList); // Moves the player in gui
-            Logic_checkfield.checkPosition(playerArr,i);
+            Logic_checkfield.checkPosition(playerArr,i,actualPosition,fieldArr, gui_playerList);
 
         }
     }

@@ -1,5 +1,10 @@
 package GameLogic;
+import Boundary.GUI_Monopoly;
+import Boundary.GUI_PlayerList;
+import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
+import gui_fields.GUI_Player;
+
 import java.util.ArrayList;
 
 public class L_CheckField {
@@ -18,9 +23,52 @@ public class L_CheckField {
         int newPosition = playerArr.get(i).getPosition();
         return newPosition;
     }
+    // Check what field the player lands on and branches out
+    public void checkPosition(ArrayList<PlayerArchetype> playerArr, int i, int actualPosition, Field_Abstract[] fieldArr, GUI_Player[] gui_playerList){
+        L_ChanceCard Logic_chancecard = new L_ChanceCard();
+        int playerBalance = playerArr.get(i).getBalance();
+        switch (actualPosition){
+            case 2: case 7: case 17: case 22: case 33: case 36:
+                // If player lands on chance card
+                Logic_chancecard.chanceCardDeck(actualPosition,playerBalance);
+                break;
+            case 4: case 38:
+                // If player lands on tax field
+                break;
+            case 10: case 20:
+                // Player lands on prison/parking
+                landsOnEmpty(playerArr,i,actualPosition);
+                break;
+            case 30:
+                // Player lands on go to prison
+                break;
+                // Player lands on ownable field.
+            default:landsOnOwnable(playerArr,i,actualPosition,fieldArr,gui_playerList);
+        }
+        // Second case : if the player lands on an empty ownable field
 
-    public void checkPosition(ArrayList<PlayerArchetype> playerArr, int i){
-        // Check what field the player lands on
-        //
+    }
+
+    public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
+        GUI_Monopoly message = new GUI_Monopoly();
+
+        if(fieldArr[actualPosition].getOwnership()==""){
+            int price = fieldArr[actualPosition].getPrice();
+            String answer = message.GUI_buyProperty(i,price,gui_playerList);
+            if(answer.equals("Yes")){
+                int currentBalance = playerArr.get(i).getBalance();
+                playerArr.get(i).setBalance(currentBalance-price);
+            }
+        }
+        else{
+            message.GUI_payRent();
+        }
+
+    }
+    public void landsOnFerry(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
+
+    }
+    public void landsOnEmpty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
+
     }
 }
