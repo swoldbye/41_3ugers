@@ -27,6 +27,9 @@ public class GameTurn{
             int oldPosition = playerArr.get(i).getPosition();
             // 1) Check if the person is in jail.
             //    TODO : Call jail method
+            // if(true)
+            //
+
 
             // 2) If the player owns all properties within one group, ask if he wants to buy houses
             //   TODO : Create buy house/hotel gamelogic
