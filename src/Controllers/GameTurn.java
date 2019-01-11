@@ -47,6 +47,9 @@ public class GameTurn{
             playerArr.get(i).setPosition(((playerArr.get(i).getPosition())+roll1+roll2)%40);
             int newPosition = playerArr.get(i).getPosition();
             guiInstance.movePlayer(i,oldPosition,newPosition, gui_playerList); // Moves the player in gui
+
+            // 6) Check field method call goes here
+
         }
     }
 }
