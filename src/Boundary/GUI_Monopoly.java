@@ -66,12 +66,10 @@ public class GUI_Monopoly{
     public void winMessage(){
         gui.showMessage("Congratulations! You have won the game");
     }
-
+    // movePlayer simply moves the player to its new position in the gui. The entity position is updated in GameTurn
     public void movePlayer(int playerID, int oldPosition,int newPosition, GUI_Player[] GUIPlayerList){
         fields[newPosition].setCar(GUIPlayerList[playerID],true);
         fields[oldPosition].removeAllCars();
-
-
         return;
     }
 
