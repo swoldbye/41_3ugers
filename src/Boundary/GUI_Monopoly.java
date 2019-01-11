@@ -14,11 +14,13 @@ public class GUI_Monopoly{
     public static GUI gui;
     public static int numberOfPlayers;
 
+    // This method initializes the gui fields
     public  void boardSetup() {
         fields = GUI_FieldFactory.fieldInitializer();
         gui = new GUI(fields, Color.WHITE);
     }
 
+    // This method creates n amount of players, depending on user input in the gui
     public int playerAmount() {
         numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
         for (int i = 0; i < 1; i = 0) {
@@ -57,11 +59,13 @@ public class GUI_Monopoly{
         return;
     }
 
+    // This method sets the die in the gui depending on what the player rolls
     public void dieSetter(int roll1, int roll2,int playerID){
         gui.setDice(roll1,roll2);
         gui.showMessage("Player "+(playerID+1)+" Rolled: "+roll1+" and "+roll2);
         return;
     }
+
 
     public void winMessage(){
         gui.showMessage("Congratulations! You have won the game");
@@ -70,11 +74,10 @@ public class GUI_Monopoly{
     public void movePlayer(int playerID, int oldPosition, int newPosition, GUI_Player[] GUIPlayerList){
         fields[oldPosition].setCar(GUIPlayerList[playerID],false);
         fields[newPosition].setCar(GUIPlayerList[playerID],true);
-
-
         return;
     }
 
+    // Button that adds the choice to buy a property
     public String GUI_buyProperty (){
         String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","End turn");
         return answer;
