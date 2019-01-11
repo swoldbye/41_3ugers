@@ -19,30 +19,32 @@ public class PlayerList {
         int j = 0;
         int var2 = j + 1;
 
-        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 0, 30000, "car1");
+        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 0, 30000, 0);
         reservedPlayerList[j] = gui_Player1;
 
-        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 0, 30000, "car2");
+        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 0, 30000, 0);
         reservedPlayerList[var2++] = gui_Player2;
 
-        PlayerArchetype gui_Player3 = new PlayerArchetype(playerNames[2], 0, 30000, "car3");
+        PlayerArchetype gui_Player3 = new PlayerArchetype(playerNames[2], 0, 30000, 0);
         reservedPlayerList[var2++] = gui_Player3;
 
-        PlayerArchetype gui_Player4 = new PlayerArchetype(playerNames[3], 0, 30000, "car4");
+        PlayerArchetype gui_Player4 = new PlayerArchetype(playerNames[3], 0, 30000, 0);
         reservedPlayerList[var2++] = gui_Player4;
 
-        PlayerArchetype gui_Player5 = new PlayerArchetype(playerNames[4], 0, 30000, "car5");
+        PlayerArchetype gui_Player5 = new PlayerArchetype(playerNames[4], 0, 30000, 0);
         reservedPlayerList[var2++] = gui_Player5;
 
-        PlayerArchetype gui_Player6 = new PlayerArchetype(playerNames[5], 0, 30000, "car6");
+        PlayerArchetype gui_Player6 = new PlayerArchetype(playerNames[5], 0, 30000, 0);
         reservedPlayerList[var2++] = gui_Player6;
 
 
         for(int i = 0; i < amountOfPlayers; i++) {
             playerArr.add(reservedPlayerList[i]);
         }
+
     return playerArr;
     }
+
 }
 
 // felter [-1,-2,-1,-1,-1] eksempel på at et felt ikke har en ejer
