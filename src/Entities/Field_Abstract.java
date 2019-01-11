@@ -30,11 +30,13 @@ public abstract class Field_Abstract {
         this.fieldName = fieldName;
     }
 
-    public String getOwnership() { return getOwnership();}
+    public int getOwnership() { return getOwnership();}
 
-    public void setOwnership(String ownership) { }
+    public void setOwnership(int ownership) { }
 
     public int getPrice() {
         return getPrice();
     }
+
+    public int getRent(){return getRent();}
 }

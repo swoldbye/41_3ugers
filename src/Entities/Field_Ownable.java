@@ -6,10 +6,10 @@ public class Field_Ownable extends Field_Abstract{
     protected int price;
     protected int rent;
     protected int group; // 1=blue, 2=docks, 3=green, 4=orange, 5=gray etc...
-    protected String ownership;
+    protected int ownership;
 
     //Constructor
-    public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, String ownership) {
+    public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, int ownership) {
         super(fieldIndex, fieldName);
         this.price = price;
         this.rent = rent;
@@ -38,7 +38,7 @@ public class Field_Ownable extends Field_Abstract{
 
     public void setGroup(int group) { this.group = group; }
 
-    public String getOwnership() { return ownership; }
+    public int getOwnership() { return ownership; }
 
-    public void setOwnership(String ownership) { this.ownership = ownership; }
+    public void setOwnership(int ownership) { this.ownership = ownership; }
 }

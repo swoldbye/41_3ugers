@@ -87,8 +87,8 @@ public class GUI_Monopoly{
         }
         return answer;
     }
-    public String GUI_payRent(){
-        String rent = gui.getUserSelection("This field is owned. Pay rent","Pay rent");
-    return rent;
+    public String GUI_payRent(int owner,int rent){
+        String rentMessage = gui.getUserSelection("This field is owned by "+owner+". Pay "+rent,"Pay rent");
+    return rentMessage;
     }
 }
