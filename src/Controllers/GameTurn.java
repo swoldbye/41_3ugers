@@ -5,11 +5,17 @@ import Entities.Dice;
 import Entities.PlayerArchetype;
 import Entities.PlayerList;
 import gui_fields.GUI_Player;
+import GameLogic.*;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 
-
 public class GameTurn{
+    L_ChanceCard Logic_chancecard = new L_ChanceCard();
+    L_CheckField Logic_checkfield = new L_CheckField();
+    L_Jail Logic_jail = new L_Jail();
+    L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
+
     // This method checks if the game is still eligible to play. You need to be at least 2 players
     public void checkTurn(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance){
        while (playerArr.size()>=2){
@@ -26,10 +32,10 @@ public class GameTurn{
             // Check the current position of the player before he rolls the dice
             int oldPosition = playerArr.get(i).getPosition();
             // 1) Check if the person is in jail.
-            //    TODO : Call jail method
+            Logic_jail.checkJail(playerArr);
 
             // 2) If the player owns all properties within one group, ask if he wants to buy houses
-            //   TODO : Create buy house/hotel gamelogic
+            Logic_propertymanagement.ownsGroup(playerArr);
 
             // 3) The player rolls the dice
             guiInstance.rollButton(i); // Prompts the user to roll
@@ -38,17 +44,10 @@ public class GameTurn{
             guiInstance.dieSetter(roll1,roll2,i); // Sets the die on of the rolls in the gui
 
             // 4) Checks if the player crosses the start
-            //  TODO : check pass start method (below if-statement)
-            if(((playerArr.get(i).getPosition())+roll1+roll2)>=40){
-                playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
-                System.out.println(playerArr.get(i).getBalance());
-            }
-            // 5) Gets and sets the new position of the player
-            playerArr.get(i).setPosition(((playerArr.get(i).getPosition())+roll1+roll2)%40);
-            int newPosition = playerArr.get(i).getPosition();
-            guiInstance.movePlayer(i,oldPosition,newPosition, gui_playerList); // Moves the player in gui
-
-            // 6) Check field method call goes here
+            Logic_checkfield.checkStart(playerArr,oldPosition,i,roll1,roll2);
+            int actualPosition = Logic_checkfield.setNewPosition(playerArr,oldPosition,i,roll1,roll2);
+            guiInstance.movePlayer(i,oldPosition,actualPosition, gui_playerList); // Moves the player in gui
+            Logic_checkfield.checkPosition(playerArr,i);
 
         }
     }
