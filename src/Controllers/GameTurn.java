@@ -46,7 +46,7 @@ public class GameTurn{
             guiInstance.dieSetter(roll1,roll2,i); // Sets the die on of the rolls in the gui
 
             // 4) Checks if the player crosses the start
-            Logic_checkfield.checkStart(playerArr,oldPosition,i,roll1,roll2);
+            Logic_checkfield.checkStart(playerArr,oldPosition,i,roll1,roll2,gui_playerList);
             int actualPosition = Logic_checkfield.setNewPosition(playerArr,oldPosition,i,roll1,roll2);
             guiInstance.movePlayer(i,oldPosition,actualPosition, gui_playerList); // Moves the player in gui
             Logic_checkfield.checkPosition(playerArr,i,actualPosition,fieldArr, gui_playerList);

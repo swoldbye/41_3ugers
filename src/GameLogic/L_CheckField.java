@@ -8,11 +8,13 @@ import gui_fields.GUI_Player;
 import java.util.ArrayList;
 
 public class L_CheckField {
+    GUI_Monopoly message = new GUI_Monopoly();
     // First checks if user crosses start
-    public void checkStart(ArrayList<PlayerArchetype> playerArr, int oldPosition,int i, int roll1, int roll2){
-        boolean b = false;
+    public void checkStart(ArrayList<PlayerArchetype> playerArr, int oldPosition,int i, int roll1, int roll2,GUI_Player[] gui_playerList){
         if((oldPosition+roll1+roll2)>=40){
             playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
+            int balance = playerArr.get(i).getBalance();
+            message.passStart(i,balance,gui_playerList);
         }
         return;
     }
@@ -50,7 +52,6 @@ public class L_CheckField {
     }
 
     public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
-        GUI_Monopoly message = new GUI_Monopoly();
         int currentBalance = playerArr.get(i).getBalance();
         if(fieldArr[actualPosition].getOwnership()==-1){
             int price = fieldArr[actualPosition].getPrice();
@@ -65,7 +66,7 @@ public class L_CheckField {
         else{
             // find rent
             int rent = fieldArr[actualPosition].getRent();
-            // find owner
+            // find owner with getOwnership
             int owner = fieldArr[actualPosition].getOwnership();
             // display pay rent button in gui
             message.GUI_payRent(owner,rent,gui_playerList,i);
