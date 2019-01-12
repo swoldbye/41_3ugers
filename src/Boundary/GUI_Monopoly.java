@@ -67,7 +67,6 @@ public class GUI_Monopoly{
         return;
     }
 
-
     public void winMessage(){
         gui.showMessage("Congratulations! You have won the game");
     }
@@ -78,17 +77,33 @@ public class GUI_Monopoly{
         return;
     }
 
+    public void passStart(int playerID,int newBalance, GUI_Player[] gui_playerList){
+        gui_playerList[playerID].setBalance(newBalance);
+        gui.showMessage("Player "+(playerID+1)+" has passed start and collects 4000kr");
+
+    }
+
     // Button that adds the choice to buy a property
-    public String GUI_buyProperty (int playerID, int price, GUI_Player[] gui_playerList){
+    public String GUI_buyProperty (int actualPosition, int playerID, int price, GUI_Player[] gui_playerList){
         String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","No");
         if(answer.equals("Yes")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
+            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" is owned by: Player "+(playerID+1));
         }
         return answer;
     }
-    public String GUI_payRent(){
-        String rent = gui.getUserSelection("This field is owned. Pay rent","Pay rent");
-    return rent;
+
+    // The balance of the player and owner of a given field will be updated in the gui in this method
+    public String GUI_payRent(int owner,int rent,GUI_Player[] gui_playerList,int playerID){
+        String rentMessage = gui.getUserSelection("This field is owned by Player "+(owner+1)+". Pay "+rent,"Pay "+rent);
+        // Defining the balance of the player and owner
+        int playerBalance = gui_playerList[playerID].getBalance();
+        int ownerBalance = gui_playerList[owner].getBalance();
+        // Setting their new respective balances after paying and receiving rent.
+        gui_playerList[playerID].setBalance(playerBalance-rent);
+        gui_playerList[owner].setBalance(ownerBalance+rent);
+
+    return rentMessage;
     }
 }
