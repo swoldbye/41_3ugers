@@ -9,7 +9,7 @@ public class Field_Property extends Field_Ownable {
     private int hotels;
 
     //Constructor
-    public Field_Property(int fieldIndex, String fieldName, int price, int rent, int group, String ownership, int housePrice, int hotelPrice, int houses, int hotels) {
+    public Field_Property(int fieldIndex, String fieldName, int price, int rent, int group, int ownership, int housePrice, int hotelPrice, int houses, int hotels) {
         super(fieldIndex, fieldName, price, rent, group, ownership);
         this.housePrice = housePrice;
         this.hotelPrice = hotelPrice;

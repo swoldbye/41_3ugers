@@ -10,16 +10,18 @@ public class PlayerArchetype {
     private int position;
     private boolean jailed;
     private int jailCounter;
-
+    private int jailCard;
 
     //Constructor
-    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter) {
+    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard) {
         this.name = name;
         this.balance = balance;
         this.position = position;
         this.jailed = jailed;
         this.jailCounter = jailCounter;
+        this.jailCard = jailCard;
     }
+
 
     //Getter & Setter methods
     public String getName() {
@@ -53,4 +55,13 @@ public class PlayerArchetype {
     public int getJailCounter() { return jailCounter; }
 
     public void setJailCounter(int jailCounter) { this.jailCounter = jailCounter; }
+
+    public int getJailCard() {
+        return jailCard;
+    }
+
+    public void setJailCard(int jailCard) {
+        this.jailCard = jailCard;
+    }
 }
+

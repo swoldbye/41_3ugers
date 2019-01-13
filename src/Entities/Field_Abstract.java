@@ -29,4 +29,15 @@ public abstract class Field_Abstract {
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
     }
+
+    public int getOwnership() { return getOwnership();} // OBS !!!! Hvis der er 6 spillere sker der en stackoverflow error når den første spiller krydser start
+                                                        // Fejlen referer tilbage til denne get metode???
+
+    public void setOwnership(int ownership) { }
+
+    public int getPrice() {
+        return getPrice();
+    }
+
+    public int getRent(){return getRent();}
 }
