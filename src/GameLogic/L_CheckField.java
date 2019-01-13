@@ -30,12 +30,16 @@ public class L_CheckField {
         L_ChanceCard Logic_chancecard = new L_ChanceCard();
         int playerBalance = playerArr.get(i).getBalance();
         switch (actualPosition){
+            case 0:
+                // Lands on start
+                break;
             case 2: case 7: case 17: case 22: case 33: case 36:
                 // If player lands on chance card
                 Logic_chancecard.chanceCardDeck(actualPosition,playerBalance);
                 break;
             case 4: case 38:
                 // If player lands on tax field
+                landsOnTax(playerArr,playerBalance,i,actualPosition,fieldArr,gui_playerList);
                 break;
             case 10: case 20:
                 // Player lands on prison/parking
@@ -61,6 +65,7 @@ public class L_CheckField {
                 playerArr.get(i).setBalance(currentBalance-price);
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
+                System.out.println("Player "+(i+1)+"'s balance is now: "+playerArr.get(i).getBalance());
             }
         }
         else{
@@ -77,6 +82,19 @@ public class L_CheckField {
             playerArr.get(owner).setBalance(ownerBalance+rent);
         }
 
+    }
+    public void landsOnTax(ArrayList<PlayerArchetype> playerArr,int playerBalance, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
+        // If player lands on tax field 1 or 2, reduce balance by either 4000 or 8000.
+        if(actualPosition==4){
+            int tax = 4000;
+            playerArr.get(i).setBalance(playerBalance-tax);
+            message.GUI_payTax(playerBalance,i,tax,gui_playerList);
+        }
+        else if(playerArr.get(i).getPosition()==38){
+            int tax = 2000;
+            playerArr.get(i).setBalance(playerBalance-tax);
+            message.GUI_payTax(playerBalance,i,tax,gui_playerList);
+        }
     }
     public void landsOnFerry(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
 
