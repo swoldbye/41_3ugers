@@ -13,10 +13,6 @@ public class ChCardsList {
         ChCardsArchetype[] cards = new ChCardsArchetype[40];
         int i = 0;
 
-
-
-
-
         cards[i] = new ChCardsArchetype("Chance", "De har vundet i klasse lotteriet. Modtag kr. 500", 1, 500);
         cards[i++] = new ChCardsArchetype("Chance", "Deres præmieobligation er udtrukket. de modtager kr. 1000 af banken.", 1, 1000);
         cards[i++] = new ChCardsArchetype("Chance", "De havde en række med elleve rigtige i tipning. Modtag kr. 1000.", 1, 1000);
