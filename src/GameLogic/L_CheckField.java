@@ -47,6 +47,9 @@ public class L_CheckField {
                 break;
             case 30:
                 // Player lands on go to prison
+                playerArr.get(i).setPosition(10);
+                message.goToJail(i,gui_playerList);
+                playerArr.get(i).setJailed(true);
                 break;
                 // Player lands on ownable field.
             default:landsOnOwnable(playerArr,i,actualPosition,fieldArr,gui_playerList);

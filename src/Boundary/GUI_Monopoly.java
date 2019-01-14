@@ -111,4 +111,9 @@ public class GUI_Monopoly{
         gui_playerList[playerID].setBalance(balance-tax);
         return taxMessage;
     }
+    public void goToJail(int playerID,GUI_Player[] gui_playerList){
+        gui.showMessage("You went to jail.");
+        fields[30].setCar(gui_playerList[playerID],false);
+        fields[10].setCar(gui_playerList[playerID],true);
+    }
 }
