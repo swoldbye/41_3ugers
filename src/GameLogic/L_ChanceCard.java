@@ -17,10 +17,17 @@ public class L_ChanceCard {
     }
 
     public int ch_Move(int cardamount, int playerstartposition) {
-        int newbalance = playerstartposition;
-        newbalance += cardamount;
-        return newbalance;
+        int newPosition = playerstartposition;
+        newPosition += cardamount;
+        return newPosition;
 
+
+    }
+
+    public int ch_MoveSpecific(int cardamount, int playerstartposition){
+        int newPosition = playerstartposition;
+        newPosition = cardamount;
+        return newPosition;
 
     }
 }
