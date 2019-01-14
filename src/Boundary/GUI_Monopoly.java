@@ -8,6 +8,8 @@ import gui_main.GUI;
 import java.awt.*;
 import java.util.ArrayList;
 
+import java.applet.*;
+import java.net.*;
 public class GUI_Monopoly{
     GUI_PlayerList gui_PlayerList = new GUI_PlayerList();
     public static GUI_Field[] fields;
@@ -80,7 +82,12 @@ public class GUI_Monopoly{
     public void passStart(int playerID,int newBalance, GUI_Player[] gui_playerList){
         gui_playerList[playerID].setBalance(newBalance);
         gui.showMessage("Player "+(playerID+1)+" has passed start and collects 4000kr");
-
+        try {
+            AudioClip clip = Applet.newAudioClip(new URL("file:C:/Users/markm/Desktop/Workspace/41_3ugers/src/sounds/loanSound.wav"));
+            clip.play();
+        }catch (MalformedURLException murle){
+            System.out.println(murle);
+        }
     }
 
     // Button that adds the choice to buy a property
