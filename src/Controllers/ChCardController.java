@@ -48,6 +48,15 @@ public class ChCardController {
 
             gui.movePlayer(i, playerPosition, newPosition , gui_playerList);
         }
+
+        if (cardEffect==5){
+            newPosition = logicCard.ch_MoveShip(playerPosition);
+            if(playerPosition == 36){
+                newBalance += 4000;
+                gui.passStart(i,newBalance,gui_playerList);
+            }
+            gui.movePlayer(i, playerPosition, newPosition , gui_playerList);
+        }
         playerArr.get(i).setBalance(newBalance);
         playerArr.get(i).setPosition(newPosition);
 
