@@ -3,12 +3,12 @@ import Entities.ChCardsArchetype;
 import gui_fields.GUI_Chance;
 
 
-public final class ChCardsList {
-    ChCardsList() {
+public class ChCardsList {
+    public ChCardsList() {
     }
 
 
-    public static ChCardsArchetype[] fieldInitializer() {
+    public static ChCardsArchetype[] createChCardList() {
         // Now contains the relevant strings for fields
         ChCardsArchetype[] cards = new ChCardsArchetype[40];
         int i = 0;

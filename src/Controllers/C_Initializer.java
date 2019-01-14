@@ -1,11 +1,8 @@
 package Controllers;
 
 import Boundary.GUI_Monopoly;
-import Entities.Field_Abstract;
-import Entities.PlayerArchetype;
-import Entities.PlayerList;
+import Entities.*;
 import gui_fields.GUI_Player;
-import Entities.FieldList;
 import GameLogic.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ public class C_Initializer {
         FieldList fieldCreator = new FieldList();
         GUI_Monopoly guiBoard = new GUI_Monopoly();
         PlayerList playerList = new PlayerList();
+        ChCardsList deck = new ChCardsList();
         //playerList Singleton = c_playerArr
         //GUI_PlayerList Singleton = c_GUIPlayerArr
 
@@ -27,7 +25,12 @@ public class C_Initializer {
         // #3 Inserts these players into the GUI
         GUI_Player[] c_GUIPlayerArr = guiBoard.InitializePlayersGUI(c_playerArr);
 
+        //Fieldlist array creation
         Field_Abstract[] fieldArr = fieldCreator.createFieldList();
+
+        //cardList array creation
+        ChCardsArchetype[] cardList = deck.createChCardList();
+
         // Handing over responsibility to the GameTurn controller. The game has begun :D
         GameTurn startGame = new GameTurn();
         // Note that the checkTurn method accepts the following parameters
