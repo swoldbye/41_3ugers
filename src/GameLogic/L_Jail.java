@@ -1,6 +1,7 @@
 package GameLogic;
 
 import Boundary.GUI_Monopoly;
+import Entities.Dice;
 import Entities.PlayerArchetype;
 import gui_main.GUI;
 
@@ -12,10 +13,10 @@ public class L_Jail {
         betal 1000
         vent 3 ture
     */
-    public void inJail(int playerId, ArrayList<PlayerArchetype> playerArr, GUI gui) {
+    public void inJail(int playerId, ArrayList<PlayerArchetype> playerArr, GUI gui, GUI_Monopoly guiInstance) {
         if (playerArr.get(playerId).getJailCounter() < 3) {
             if (playerArr.get(playerId).getBalance() >= 1000) {
-                String answer = gui.getUserSelection("Vil du betale 1000kr. for at komme ud?", "Nej", "Ja", "Brug kort");
+                String answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
                 if (answer.equals("Ja")) {
                     int previousBalance = playerArr.get(playerId).getBalance();
                     playerArr.get(playerId).setBalance(previousBalance - 1000);
@@ -26,14 +27,27 @@ public class L_Jail {
                     playerArr.get(playerId).setJailCard(previousGetOutOfJail - 1);
                     playerArr.get(playerId).setJailed(false);
                     playerArr.get(playerId).setJailCounter(0);
-                } else{
-                    
-                    //du skal rulle igen
-                    //hvis du ruller 2 ens så ud af fængsel
-                    //hvis ikke så JailCounter++
+                }
+            }
+            else{
+                guiInstance.rollButton(playerId); // Prompts the user to roll
+                int roll1= Dice.roll();
+                int roll2=Dice.roll();
+                guiInstance.dieSetter(roll1,roll2,playerId); // Sets the die (based on what you roll) in the gui
+                if(roll1 == roll2){
+                    playerArr.get(playerId).setJailed(false);
+                }
+                else{
+                    playerArr.get(playerId).setJailCounter(playerArr.get(playerId).getJailCounter() + 1);
                 }
             }
         }
+        else{
+         playerArr.get(playerId).setJailed(false);
+         playerArr.get(playerId).setJailCounter(0);
+        }
     }
 }
+
+
 

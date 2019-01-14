@@ -43,7 +43,7 @@ public class GameTurn{
             guiInstance.rollButton(i); // Prompts the user to roll
             int roll1=Dice.roll();
             int roll2=Dice.roll();
-            guiInstance.dieSetter(roll1,roll2,i); // Sets the die on of the rolls in the gui
+            guiInstance.dieSetter(roll1,roll2,i); // Sets the die (based on what you roll) in the gui
 
             // 4) Checks if the player crosses the start
             Logic_checkfield.checkStart(playerArr,oldPosition,i,roll1,roll2,gui_playerList);
