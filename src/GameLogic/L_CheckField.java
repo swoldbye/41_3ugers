@@ -78,6 +78,7 @@ public class L_CheckField {
             }
         }
         else{
+
             // find rent
             int rent = fieldArr[actualPosition].getRent();
             // find owner with getOwnership

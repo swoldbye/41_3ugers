@@ -42,6 +42,11 @@ public class L_Jail {
                     playerArr.get(playerId).setJailCounter(playerArr.get(playerId).getJailCounter() + 1);
                 }
             }
+        else{
+            playerArr.get(playerId).setJailed(false);
+            playerArr.get(playerId).setJailCounter(0);
+        }
+
         }
     }
 }

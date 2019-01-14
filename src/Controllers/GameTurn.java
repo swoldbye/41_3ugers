@@ -40,8 +40,6 @@ public class GameTurn {
 
                 // Check the current position of the player before he rolls the dice
                 int oldPosition = playerArr.get(i).getPosition();
-                // 1) Check if the person is in jail.
-                //  Logic_jail.checkJail(playerArr);
 
                 // 2) If the player owns all properties within one group, ask if he wants to buy houses
                 Logic_propertymanagement.ownsGroup(playerArr);

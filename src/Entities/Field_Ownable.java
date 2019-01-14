@@ -1,12 +1,14 @@
 package Entities;
 
-public class Field_Ownable extends Field_Abstract{
+public class
+Field_Ownable extends Field_Abstract{
 
     //Attributes
     protected int price;
     protected int rent;
     protected int group; // 1=blue, 2=docks, 3=green, 4=orange, 5=gray etc...
     protected int ownership;
+
 
     //Constructor
     public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, int ownership) {
@@ -26,9 +28,7 @@ public class Field_Ownable extends Field_Abstract{
         this.price = price;
     }
 
-    public int getRent() {
-        return rent;
-    }
+    public int getRent() { return rent; }
 
     public void setRent(int rent) {
         this.rent = rent;
