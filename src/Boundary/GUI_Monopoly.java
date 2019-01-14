@@ -116,8 +116,23 @@ public class GUI_Monopoly{
         fields[30].setCar(gui_playerList[playerID],false);
         fields[10].setCar(gui_playerList[playerID],true);
     }
-    public String jailMessage(int playerID){
-        String answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
+    public String jailMessage(int playerID, int playerStatus){
+        String answer = null;
+        switch(playerStatus){
+            case 1:
+                answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
+                break;
+            case 2:
+                answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja");
+                break;
+            case 3:
+                answer = gui.getUserSelection("Du kan bruge dit kort for at komme ud af fængsel.", "Nej",  "Brug kort");
+                break;
+            case 4:
+                gui.showMessage("You can't pay your way out of this one.");
+                answer = "Nej";
+                break;
+        }
         return answer;
     }
 }
