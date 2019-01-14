@@ -18,7 +18,6 @@ public class GameTurn{
     L_CheckField Logic_checkfield = new L_CheckField();
     L_Jail Logic_jail = new L_Jail();
     L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
-    public static GUI gui;
 
     // This method checks if the game is still eligible to play. You need to be at least 2 players
     public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr){
@@ -35,7 +34,7 @@ public class GameTurn{
         for (int i=0;i<PlayerList.playerArr.size();i++) {
             // If the player is in jail.
             if(playerArr.get(i).isJailed()==true){
-                Logic_jail.inJail(i, playerArr,gui,guiInstance);
+                Logic_jail.inJail(i, playerArr,guiInstance);
             }
 
 
