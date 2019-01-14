@@ -116,4 +116,8 @@ public class GUI_Monopoly{
         fields[30].setCar(gui_playerList[playerID],false);
         fields[10].setCar(gui_playerList[playerID],true);
     }
+    public String jailMessage(int playerID){
+        String answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
+        return answer;
+    }
 }

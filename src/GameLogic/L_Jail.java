@@ -13,10 +13,10 @@ public class L_Jail {
         betal 1000
         vent 3 ture
     */
-    public void inJail(int playerId, ArrayList<PlayerArchetype> playerArr, GUI gui, GUI_Monopoly guiInstance) {
+    public void inJail(int playerId, ArrayList<PlayerArchetype> playerArr, GUI_Monopoly guiInstance) {
         if (playerArr.get(playerId).getJailCounter() < 3) {
             if (playerArr.get(playerId).getBalance() >= 1000) {
-                String answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
+                String answer = guiInstance.jailMessage(playerId);
                 if (answer.equals("Ja")) {
                     int previousBalance = playerArr.get(playerId).getBalance();
                     playerArr.get(playerId).setBalance(previousBalance - 1000);
