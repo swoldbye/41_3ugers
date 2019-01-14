@@ -117,6 +117,7 @@ public class GUI_Monopoly{
         String taxMessage = gui.getUserSelection("Player "+(playerID+1)+" landed on a tax field","Pay "+tax);
         gui_playerList[playerID].setBalance(balance-tax);
         return taxMessage;
+
     }
     public void goToJail(int playerID,GUI_Player[] gui_playerList){
         gui.showMessage("You went to jail.");
@@ -141,5 +142,13 @@ public class GUI_Monopoly{
                 break;
         }
         return answer;
+
+    }
+
+    public void payOrReceive(int balance,int playerID, int cardAmount,GUI_Player[] gui_playerList){
+        gui_playerList[playerID].setBalance(balance+cardAmount);
+    }
+    public void chMessage(String message){
+        gui.showMessage(message);
     }
 }

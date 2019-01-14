@@ -31,10 +31,10 @@ public class ChCardsList {
         cards[i++] = new ChCardsArchetype("Chance", "Kommunen har eftergivet et kvartals skat. Hæv i banken kr. 3000", 1, 3000);
         cards[i++] = new ChCardsArchetype("Chance", "Modtag udbytte af Deres aktier - kr. 1000", 1, 1000);
         cards[i++] = new ChCardsArchetype("Chance", "De har fået en parkeringsbøde. betal kr. 200 i bøde", 1, -200);
-        cards[i++] = new ChCardsArchetype("Chance", "Betal kr. 3000 for reparation af Deres vogn.", 1, 3000);
-        cards[i++] = new ChCardsArchetype("Chance", "De har været en tur i udlandet og haft for mange cigaretter med hjem. Betal told kr. 200", 1, 200);
-        cards[i++] = new ChCardsArchetype("Chance", "De har modtaget Deres tandlægeregning. Betal kr. 2000", 1, 2000);
-        cards[i++] = new ChCardsArchetype("Chance", "De har kørt frem for \"Fuldt stop\". Betal kr. 1000 i bøde", 1, 1000);
+        cards[i++] = new ChCardsArchetype("Chance", "Betal kr. 3000 for reparation af Deres vogn.", 1, -3000);
+        cards[i++] = new ChCardsArchetype("Chance", "De har været en tur i udlandet og haft for mange cigaretter med hjem. Betal told kr. 200", 1, -200);
+        cards[i++] = new ChCardsArchetype("Chance", "De har modtaget Deres tandlægeregning. Betal kr. 2000", 1, -2000);
+        cards[i++] = new ChCardsArchetype("Chance", "De har kørt frem for \"Fuldt stop\". Betal kr. 1000 i bøde", 1, -1000);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter tilbage.", 2, -3);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter frem.", 2, 3);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter tilbage", 2, -3);

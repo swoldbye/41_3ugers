@@ -1,6 +1,7 @@
 package GameLogic;
 import Boundary.GUI_Monopoly;
 import Boundary.GUI_PlayerList;
+import Controllers.ChCardController;
 import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
 import gui_fields.GUI_Player;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 
 public class L_CheckField {
     GUI_Monopoly message = new GUI_Monopoly();
+    ChCardController chController = new ChCardController();
     // First checks if user crosses start
     public void checkStart(ArrayList<PlayerArchetype> playerArr, int oldPosition,int i, int roll1, int roll2,GUI_Player[] gui_playerList){
         if((oldPosition+roll1+roll2)>=40){
@@ -35,11 +37,15 @@ public class L_CheckField {
                 break;
             case 2: case 7: case 17: case 22: case 33: case 36:
                 // If player lands on chance card
-                Logic_chancecard.chanceCardDeck(actualPosition,playerBalance);
+                chController.cardController(actualPosition , playerBalance, message , playerArr , i , gui_playerList);
+                if (actualPosition != playerArr.get(i).getPosition()) {
+                    checkPosition(playerArr, i, playerArr.get(i).getPosition(), fieldArr, gui_playerList);
+                }
                 break;
             case 4: case 38:
                 // If player lands on tax field
                 landsOnTax(playerArr,playerBalance,i,actualPosition,fieldArr,gui_playerList);
+
                 break;
             case 10: case 20:
                 // Player lands on prison/parking
