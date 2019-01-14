@@ -106,4 +106,9 @@ public class GUI_Monopoly{
 
     return rentMessage;
     }
+    public String GUI_payTax(int balance,int playerID, int tax,GUI_Player[] gui_playerList){
+        String taxMessage = gui.getUserSelection("Player "+(playerID+1)+" landed on a tax field","Pay "+tax);
+        gui_playerList[playerID].setBalance(balance-tax);
+        return taxMessage;
+    }
 }
