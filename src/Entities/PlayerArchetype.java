@@ -11,15 +11,17 @@ public class PlayerArchetype {
     private boolean jailed;
     private int jailCounter;
     private int jailCard;
+    private boolean bankrupt;
 
     //Constructor
-    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard) {
+    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt) {
         this.name = name;
         this.balance = balance;
         this.position = position;
         this.jailed = jailed;
         this.jailCounter = jailCounter;
         this.jailCard = jailCard;
+        this.bankrupt = bankrupt;
     }
 
 
@@ -63,5 +65,9 @@ public class PlayerArchetype {
     public void setJailCard(int jailCard) {
         this.jailCard = jailCard;
     }
+
+    public boolean isBankrupt() {return bankrupt;}
+
+    public void setBankrupt(boolean bankrupt) {this.bankrupt = bankrupt;}
 }
 
