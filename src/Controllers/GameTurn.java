@@ -18,10 +18,11 @@ public class GameTurn {
     L_CheckField Logic_checkfield = new L_CheckField();
     L_Jail Logic_jail = new L_Jail();
     L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
-
+    private int bankruptedPlayers = 0;
     // This method checks if the game is still eligible to play. You need to be at least 2 players
     public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr) {
-        while (playerArr.size() >= 2) {
+
+        while ( bankruptedPlayers<playerArr.size()-1) {
             // Calls the playerTurn method
             playerTurn(playerArr, gui_playerList, guiInstance, fieldArr);
         }
@@ -34,7 +35,7 @@ public class GameTurn {
         // For loop that runs a standard turn for each player.
         for (int i = 0; i < PlayerList.playerArr.size(); i++) {
             // If the player is in jail.
-            while (playerArr.get(i).isBankrupt()==false) {
+            if (playerArr.get(i).isBankrupt()==false) {
                 Logic_jail.inJail(i, playerArr, guiInstance);
 
 
@@ -58,6 +59,7 @@ public class GameTurn {
                 if (playerArr.get(i).getBalance() < 0){
 
                     playerArr.get(i).setBankrupt(true);
+                    bankruptedPlayers++;
                     guiInstance.bankruptmessage(i);
                     for (int lol=0; lol<= fieldArr.length; lol++ ) {
                         if (fieldArr[lol].getOwnership()==i){
