@@ -41,7 +41,6 @@ public class PlayerList {
         for(int i = 0; i < amountOfPlayers; i++) {
             playerArr.add(reservedPlayerList[i]);
         }
-
     return playerArr;
     }
 

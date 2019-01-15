@@ -9,10 +9,14 @@ import gui_fields.GUI_Player;
 import java.util.ArrayList;
 
 public class L_CheckField {
+    public static int roll;
+    public static int playerBalance;
+    public static int ownerBalance;
     GUI_Monopoly message = new GUI_Monopoly();
     ChCardController chController = new ChCardController();
     // First checks if user crosses start
     public void checkStart(ArrayList<PlayerArchetype> playerArr, int oldPosition,int i, int roll1, int roll2,GUI_Player[] gui_playerList){
+        roll=roll1+roll2;
         if((oldPosition+roll1+roll2)>=40){
             playerArr.get(i).setBalance(playerArr.get(i).getBalance()+4000);
             int balance = playerArr.get(i).getBalance();
@@ -30,7 +34,7 @@ public class L_CheckField {
     // Check what field the player lands on and branches out
     public void checkPosition(ArrayList<PlayerArchetype> playerArr, int i, int actualPosition, Field_Abstract[] fieldArr, GUI_Player[] gui_playerList){
         L_ChanceCard Logic_chancecard = new L_ChanceCard();
-        int playerBalance = playerArr.get(i).getBalance();
+        playerBalance = playerArr.get(i).getBalance();
         switch (actualPosition){
             case 0:
                 // Lands on start
@@ -57,15 +61,19 @@ public class L_CheckField {
                 message.goToJail(i,gui_playerList);
                 playerArr.get(i).setJailed(true);
                 break;
+            case 5: case 15: case 25: case 35:
+                landsOnShipping(playerArr,i,actualPosition,fieldArr,gui_playerList);
+                break;
+            case 12: case 28:
+                landsOnSoda(playerArr,i,actualPosition,fieldArr,gui_playerList);
                 // Player lands on ownable field.
             default:landsOnOwnable(playerArr,i,actualPosition,fieldArr,gui_playerList);
         }
         // Second case : if the player lands on an empty ownable field
-
     }
-
     public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         int currentBalance = playerArr.get(i).getBalance();
+        // If player lands on a property that nobody owns
         if(fieldArr[actualPosition].getOwnership()==-1){
             int price = fieldArr[actualPosition].getPrice();
             String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
@@ -77,6 +85,7 @@ public class L_CheckField {
                 System.out.println("Player "+(i+1)+"'s balance is now: "+playerArr.get(i).getBalance());
             }
         }
+        // Else, pay rent to whomever owns the property
         else{
 
             // find rent
@@ -106,7 +115,19 @@ public class L_CheckField {
             message.GUI_payTax(playerBalance,i,tax,gui_playerList);
         }
     }
-    public void landsOnFerry(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
+    public void landsOnShipping(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
+        // Set Shipping ownable logic
+       // Rent : 500, 1000, 2000, 4000
+
+    }
+    public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
+        int sodaRent = roll*100;
+        ownerBalance = playerArr.get(fieldArr[actualPosition].getOwnership()).getBalance();
+        int owner = fieldArr[actualPosition].getOwnership();
+        playerArr.get(i).setBalance(playerBalance-sodaRent);
+        playerArr.get(owner).setBalance(ownerBalance+sodaRent);
+        // display pay rent button in gui
+        message.GUI_payRent(owner,sodaRent,gui_playerList,i);
 
     }
     public void landsOnEmpty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){

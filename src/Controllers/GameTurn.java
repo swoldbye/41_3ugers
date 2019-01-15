@@ -42,7 +42,7 @@ public class GameTurn {
                 int oldPosition = playerArr.get(i).getPosition();
 
                 // 2) If the player owns all properties within one group, ask if he wants to buy houses
-                Logic_propertymanagement.ownsGroup(playerArr);
+                Logic_propertymanagement.ownsGroup(playerArr,fieldArr);
 
                 // 3) The player rolls the dice
                 guiInstance.rollButton(i); // Prompts the user to roll
