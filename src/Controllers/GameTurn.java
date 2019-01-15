@@ -34,29 +34,29 @@ public class GameTurn {
         // For loop that runs a standard turn for each player.
         for (int i = 0; i < PlayerList.playerArr.size(); i++) {
             // If the player is in jail.
-            if (playerArr.get(i).isJailed() == true) {
-                Logic_jail.inJail(i, playerArr, guiInstance);
-            } else {
 
-                // Check the current position of the player before he rolls the dice
-                int oldPosition = playerArr.get(i).getPosition();
+            Logic_jail.inJail(i, playerArr, guiInstance);
 
-                // 2) If the player owns all properties within one group, ask if he wants to buy houses
-                Logic_propertymanagement.ownsGroup(playerArr);
 
-                // 3) The player rolls the dice
-                guiInstance.rollButton(i); // Prompts the user to roll
-                int roll1 = Dice.roll();
-                int roll2 = Dice.roll();
-                guiInstance.dieSetter(roll1, roll2, i); // Sets the die (based on what you roll) in the gui
+            // Check the current position of the player before he rolls the dice
+            int oldPosition = playerArr.get(i).getPosition();
 
-                // 4) Checks if the player crosses the start
-                Logic_checkfield.checkStart(playerArr, oldPosition, i, roll1, roll2, gui_playerList);
-                int actualPosition = Logic_checkfield.setNewPosition(playerArr, oldPosition, i, roll1, roll2);
-                guiInstance.movePlayer(i, oldPosition, actualPosition, gui_playerList); // Moves the player in gui
-                Logic_checkfield.checkPosition(playerArr, i, actualPosition, fieldArr, gui_playerList);
+            // 2) If the player owns all properties within one group, ask if he wants to buy houses
+            Logic_propertymanagement.ownsGroup(i,fieldArr);
+
+            // 3) The player rolls the dice
+            guiInstance.rollButton(i); // Prompts the user to roll
+            int roll1 = Dice.roll();
+            int roll2 = Dice.roll();
+            guiInstance.dieSetter(roll1, roll2, i); // Sets the die (based on what you roll) in the gui
+
+            // 4) Checks if the player crosses the start
+            Logic_checkfield.checkStart(playerArr, oldPosition, i, roll1, roll2, gui_playerList);
+            int actualPosition = Logic_checkfield.setNewPosition(playerArr, oldPosition, i, roll1, roll2);
+            guiInstance.movePlayer(i, oldPosition, actualPosition, gui_playerList); // Moves the player in gui
+            Logic_checkfield.checkPosition(playerArr, i, actualPosition, fieldArr, gui_playerList);
 
             }
         }
     }
-}
+
