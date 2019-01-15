@@ -67,6 +67,7 @@ public class L_CheckField {
             case 12: case 28:
                 landsOnSoda(playerArr,i,actualPosition,fieldArr,gui_playerList);
                 // Player lands on ownable field.
+                break;
             default:landsOnOwnable(playerArr,i,actualPosition,fieldArr,gui_playerList);
         }
         // Second case : if the player lands on an empty ownable field
@@ -122,13 +123,25 @@ public class L_CheckField {
     }
     public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         int sodaRent = roll*100;
-        ownerBalance = playerArr.get(fieldArr[actualPosition].getOwnership()).getBalance();
-        int owner = fieldArr[actualPosition].getOwnership();
-        playerArr.get(i).setBalance(playerBalance-sodaRent);
-        playerArr.get(owner).setBalance(ownerBalance+sodaRent);
-        // display pay rent button in gui
-        message.GUI_payRent(owner,sodaRent,gui_playerList,i);
+        int price = fieldArr[actualPosition].getPrice();
 
+        if(fieldArr[actualPosition].getOwnership()==-1){
+            String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
+            if (answer == "Yes") {
+                // player pays for property
+                playerArr.get(i).setBalance(playerBalance-price);
+                // ownership is set in fieldlist
+                fieldArr[actualPosition].setOwnership(i);
+            }
+        }
+        else {
+            ownerBalance = playerArr.get(fieldArr[actualPosition].getOwnership()).getBalance();
+            int owner = fieldArr[actualPosition].getOwnership();
+            playerArr.get(i).setBalance(playerBalance - sodaRent);
+            playerArr.get(owner).setBalance(ownerBalance + sodaRent);
+            // display pay rent button in gui
+            message.GUI_payRent(owner, sodaRent, gui_playerList, i);
+        }
     }
     public void landsOnEmpty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
 
