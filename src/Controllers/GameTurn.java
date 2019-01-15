@@ -17,7 +17,7 @@ public class GameTurn {
     L_ChanceCard Logic_chancecard = new L_ChanceCard();
     L_CheckField Logic_checkfield = new L_CheckField();
     L_Jail Logic_jail = new L_Jail();
-    L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
+    //L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
     private int bankruptedPlayers = 0;
     // This method checks if the game is still eligible to play. You need to be at least 2 players
     public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr) {
@@ -43,7 +43,7 @@ public class GameTurn {
                 int oldPosition = playerArr.get(i).getPosition();
 
                 // 2) If the player owns all properties within one group, ask if he wants to buy houses
-                Logic_propertymanagement.ownsGroup(i, fieldArr);
+                //Logic_propertymanagement.ownsGroup(i, fieldArr);
 
                 // 3) The player rolls the dice
                 guiInstance.rollButton(i); // Prompts the user to roll
@@ -61,7 +61,7 @@ public class GameTurn {
                     playerArr.get(i).setBankrupt(true);
                     bankruptedPlayers++;
                     guiInstance.bankruptmessage(i);
-                    for (int lol=0; lol<= fieldArr.length; lol++ ) {
+                    for (int lol=0; lol< fieldArr.length; lol++ ) {
                         if (fieldArr[lol].getOwnership()==i){
                             fieldArr[lol].setOwnership(-1);
                         }

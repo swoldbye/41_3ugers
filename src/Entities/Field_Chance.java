@@ -10,5 +10,6 @@ public class Field_Chance extends Field_Abstract {
 
 
 
+    public int getOwnership() { return -1; }
 
 }

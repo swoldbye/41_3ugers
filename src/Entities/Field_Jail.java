@@ -8,5 +8,7 @@ public class Field_Jail extends Field_Abstract {
         super(fieldIndex, fieldName);
     }
 
+    public int getOwnership() { return -1; }
+
 
 }

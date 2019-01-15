@@ -152,5 +152,5 @@ public class GUI_Monopoly{
         gui.showMessage(message);
     }
 
-    public  void bankruptmessage (int playerid) {gui.showMessage("Player "+playerid+" er gået fallit. Alle player "+playerid+" grunde er givet til banken og kan nu købes");}
+    public  void bankruptmessage (int playerid) {gui.showMessage("Player "+(playerid+1)+" er gået fallit. Alle player "+(playerid+1)+" grunde er givet til banken og kan nu købes");}
 }
