@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class L_PropertyManagement {
 
-    public void ownsGroup(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr) {
+    public void ownsGroup(PlayerArchetype[] playerArr, int playerId, Field_Abstract[] properties){
 
 
+        }
     }
 }

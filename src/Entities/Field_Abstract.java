@@ -42,9 +42,4 @@ public abstract class Field_Abstract {
 
     public int getRent(){return getRent();}
 
-    public void setRent(int rent){}
-
-
-
-
 }

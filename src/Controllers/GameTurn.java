@@ -34,15 +34,15 @@ public class GameTurn {
         // For loop that runs a standard turn for each player.
         for (int i = 0; i < PlayerList.playerArr.size(); i++) {
             // If the player is in jail.
-            if (playerArr.get(i).isJailed() == true) {
+            while (playerArr.get(i).isBankrupt()==false) {
                 Logic_jail.inJail(i, playerArr, guiInstance);
-            } else {
+
 
                 // Check the current position of the player before he rolls the dice
                 int oldPosition = playerArr.get(i).getPosition();
 
                 // 2) If the player owns all properties within one group, ask if he wants to buy houses
-                Logic_propertymanagement.ownsGroup(playerArr,fieldArr);
+                Logic_propertymanagement.ownsGroup(i, fieldArr);
 
                 // 3) The player rolls the dice
                 guiInstance.rollButton(i); // Prompts the user to roll
@@ -55,8 +55,19 @@ public class GameTurn {
                 int actualPosition = Logic_checkfield.setNewPosition(playerArr, oldPosition, i, roll1, roll2);
                 guiInstance.movePlayer(i, oldPosition, actualPosition, gui_playerList); // Moves the player in gui
                 Logic_checkfield.checkPosition(playerArr, i, actualPosition, fieldArr, gui_playerList);
+                if (playerArr.get(i).getBalance() < 0){
 
+                    playerArr.get(i).setBankrupt(true);
+                    guiInstance.bankruptmessage(i);
+                    for (int lol=0; lol<= fieldArr.length; lol++ ) {
+                        if (fieldArr[lol].getOwnership()==i){
+                            fieldArr[lol].setOwnership(-1);
+                        }
+                    }
+
+                }
+            }
             }
         }
     }
-}
+
