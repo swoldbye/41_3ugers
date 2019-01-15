@@ -48,6 +48,12 @@ public class ChCardController {
 
             gui.movePlayer(i, playerPosition, newPosition , gui_playerList);
         }
+        if (cardEffect==4){
+
+
+
+
+        }
 
         if (cardEffect==5){
             newPosition = logicCard.ch_MoveShip(playerPosition);
@@ -57,6 +63,11 @@ public class ChCardController {
             }
             gui.movePlayer(i, playerPosition, newPosition , gui_playerList);
         }
+
+        if (cardEffect==6){
+            playerArr.get(i).setJailCard(playerArr.get(i).getJailCard()+1);
+        }
+
         playerArr.get(i).setBalance(newBalance);
         playerArr.get(i).setPosition(newPosition);
 
