@@ -12,9 +12,10 @@ public class PlayerArchetype {
     private int jailCounter;
     private int jailCard;
     private boolean bankrupt;
+    private int[] ownGroup;
 
     //Constructor
-    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt) {
+    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] ownGroup) {
         this.name = name;
         this.balance = balance;
         this.position = position;
@@ -22,6 +23,7 @@ public class PlayerArchetype {
         this.jailCounter = jailCounter;
         this.jailCard = jailCard;
         this.bankrupt = bankrupt;
+        this.ownGroup = ownGroup;
     }
 
 
@@ -69,5 +71,13 @@ public class PlayerArchetype {
     public boolean isBankrupt() {return bankrupt;}
 
     public void setBankrupt(boolean bankrupt) {this.bankrupt = bankrupt;}
+
+    public int[] getOwnGroup() {
+        return ownGroup;
+    }
+
+    public void setOwnGroup(int[] ownGroup) {
+        this.ownGroup = ownGroup;
+    }
 }
 
