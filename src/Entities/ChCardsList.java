@@ -10,10 +10,10 @@ public class ChCardsList {
 
     public static ChCardsArchetype[] createChCardList() {
         // Now contains the relevant strings for fields
-        ChCardsArchetype[] cards = new ChCardsArchetype[40];
+        ChCardsArchetype[] cards = new ChCardsArchetype[41];
         int i = 0;
 
-        cards[i] = new ChCardsArchetype("Chance", "De har vundet i klasse lotteriet. Modtag kr. 500", 1, 500);
+        cards[i++] = new ChCardsArchetype("Chance", "De har vundet i klasse lotteriet. Modtag kr. 500", 1, 500);
         cards[i++] = new ChCardsArchetype("Chance", "Deres præmieobligation er udtrukket. de modtager kr. 1000 af banken.", 1, 1000);
         cards[i++] = new ChCardsArchetype("Chance", "De havde en række med elleve rigtige i tipning. Modtag kr. 1000.", 1, 1000);
         cards[i++] = new ChCardsArchetype("Chance", "Deres præmieobligation er udtrukket. De modtager kr. 1000 af banken.", 1, 1000);
@@ -53,7 +53,7 @@ public class ChCardsList {
         cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han eller er berettiget til. hvis selsakabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han eller er berettiget til. hvis selsakabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
         cards[i++] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
-        cards[i++] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
+        cards[i] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
 
         return cards;
     }}
