@@ -8,15 +8,18 @@ Field_Ownable extends Field_Abstract{
     protected int rent;
     protected int group; // 1=blue, 2=docks, 3=green, 4=orange, 5=gray etc...
     protected int ownership;
+    protected int groupsize;
 
 
     //Constructor
-    public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, int ownership) {
+    public Field_Ownable(int fieldIndex, String fieldName, int price, int rent, int group, int ownership, int groupsize) {
         super(fieldIndex, fieldName);
         this.price = price;
         this.rent = rent;
         this.group = group;
         this.ownership = ownership;
+        this.groupsize = groupsize;
+
     }
 
     //Getter & Setter methods
@@ -41,4 +44,12 @@ Field_Ownable extends Field_Abstract{
     public int getOwnership() { return ownership; }
 
     public void setOwnership(int ownership) { this.ownership = ownership; }
+
+    public int getGroupsize() {
+        return groupsize;
+    }
+
+    public void setGroupsize(int groupsize) {
+        this.groupsize = groupsize;
+    }
 }
