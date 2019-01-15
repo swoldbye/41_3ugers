@@ -151,4 +151,6 @@ public class GUI_Monopoly{
     public void chMessage(String message){
         gui.showMessage(message);
     }
+
+    public  void bankruptmessage (int playerid) {gui.showMessage("Player "+playerid+" er gået fallit. Alle player "+playerid+" grunde er givet til banken og kan nu købes");}
 }
