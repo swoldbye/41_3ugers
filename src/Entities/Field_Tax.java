@@ -11,5 +11,5 @@ public class Field_Tax extends Field_Abstract {
         this.tax = tax;
     }
 
-
+    public int getOwnership() { return -1; }
 }

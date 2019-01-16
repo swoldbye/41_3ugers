@@ -15,7 +15,7 @@ public class PlayerArchetype {
     private int[] ownGroup;
 
     //Constructor
-    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] ownGroup) {
+    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt) {
         this.name = name;
         this.balance = balance;
         this.position = position;
