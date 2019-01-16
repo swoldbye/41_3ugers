@@ -94,7 +94,7 @@ public class L_CheckField {
             int rent = fieldArr[actualPosition].getRent();
             int owner = fieldArr[actualPosition].getOwnership();
 
-            if(playerArr.get(i).getOwnGroup()[actualPosition] == fieldArr[actualPosition].getGroup()){
+            if(playerArr.get(i).getOwnGroup()[fieldArr[actualPosition].getGroup()] == fieldArr[actualPosition].getGroupSize()){
                 rent = rent * 2;
             }
             // find owner with getOwnership

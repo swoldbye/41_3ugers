@@ -8,8 +8,8 @@ public class Field_Chance extends Field_Abstract {
         super(fieldIndex, fieldName);
     }
 
-
-
-    public int getOwnership() { return -1; }
+    public int getGroup() {
+        return -1;
+    }
 
 }

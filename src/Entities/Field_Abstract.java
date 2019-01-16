@@ -44,5 +44,7 @@ public abstract class Field_Abstract {
 
     public abstract int getGroup();
 
+    public int getGroupSize(){return getGroupSize();}
+
 
 }

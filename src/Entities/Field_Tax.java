@@ -12,4 +12,9 @@ public class Field_Tax extends Field_Abstract {
     }
 
     public int getOwnership() { return -1; }
+
+    public int getGroup() {
+        return -1;
+    }
+
 }
