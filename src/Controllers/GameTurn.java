@@ -2,7 +2,10 @@ package Controllers;
 
 import Boundary.GUI_Monopoly;
 import Boundary.GUI_PlayerList;
-import Entities.*;
+import Entities.Dice;
+import Entities.Field_Abstract;
+import Entities.PlayerArchetype;
+import Entities.PlayerList;
 import gui_fields.GUI_Player;
 import GameLogic.*;
 import gui_main.GUI;
@@ -16,11 +19,10 @@ public class GameTurn {
     L_Jail Logic_jail = new L_Jail();
     //L_PropertyManagement Logic_propertymanagement = new L_PropertyManagement();
     private int bankruptedPlayers = 0;
-
     // This method checks if the game is still eligible to play. You need to be at least 2 players
     public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr) {
 
-        while (bankruptedPlayers < playerArr.size() - 1) {
+        while ( bankruptedPlayers<playerArr.size()-1) {
             // Calls the playerTurn method
             playerTurn(playerArr, gui_playerList, guiInstance, fieldArr);
         }
@@ -55,18 +57,19 @@ public class GameTurn {
                     Logic_checkfield.checkPosition(playerArr, i, actualPosition, fieldArr, gui_playerList);
                     if (playerArr.get(i).getBalance() < 0) {
 
-                        playerArr.get(i).setBankrupt(true);
-                        bankruptedPlayers++;
-                        guiInstance.bankruptmessage(i);
-                        for (int j = 0; j < fieldArr.length; j++) {
-                            if (fieldArr[j].getOwnership() == j) {
-                                fieldArr[j].setOwnership(-1);
-                            }
+                    playerArr.get(i).setBankrupt(true);
+                    bankruptedPlayers++;
+                    guiInstance.bankruptmessage(i);
+                    for (int lol=0; lol< fieldArr.length; lol++ ) {
+                        if (fieldArr[lol].getOwnership()==i){
+                            fieldArr[lol].setOwnership(-1);
+                            guiInstance.bankruptFieldOwnerShip(lol);
                         }
-
                     }
+
                 }
+            }
             }
         }
     }
-}
+

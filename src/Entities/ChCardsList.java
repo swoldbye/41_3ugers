@@ -46,12 +46,9 @@ public class ChCardsList {
         cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til Grønningen. Hvis De passere \"START\", indkassér da kr. 4000", 3, 24);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til \" START\".", 3, 0);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til \" START\".", 3, 0);
-        cards[i++] = new ChCardsArchetype("Chance", "De har lagt penge ud til et sammenskudsgilde. Mærkeværdigvis betaler alle straks. Modtag fra hver medspiller kr. 500.", 4, 500);
-        cards[i++] = new ChCardsArchetype("Chance", "De skal holde familiefest og får et tilskud fra hver medsipller på 500kr.", 4, 500);
-        cards[i++] = new ChCardsArchetype("Chance", "Det er Deres fødselsdag. Modtag af hver medspiller kr. 200.", 4, 200);
         cards[i++] = new ChCardsArchetype("Chance", "Tag med den nærmeste færge. Flyt brikken frem, og hvis De passere \"Start\", indkasser da kr. 4000.", 5, 0);
-        cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han eller er berettiget til. hvis selsakabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
-        cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han eller er berettiget til. hvis selsakabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
+        cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren lejen. hvis selskabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
+        cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren lejen. hvis selskabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
         cards[i++] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
         cards[i] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
 

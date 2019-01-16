@@ -37,10 +37,10 @@ public class L_ChanceCard {
             newPosition = 5;
         }
         if (newPosition == 7) {
-            newPosition = 17;
+            newPosition = 15;
         }
-        if (newPosition == 19 || newPosition == 24) {
-            newPosition = 26;
+        if (newPosition == 17 || newPosition == 22) {
+            newPosition = 25;
         }
         if (newPosition == 33) {
             newPosition = 35;
