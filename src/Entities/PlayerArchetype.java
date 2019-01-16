@@ -12,7 +12,7 @@ public class PlayerArchetype {
     private int jailCounter;
     private int jailCard;
     private boolean bankrupt;
-    private int[] ownGroup = new int[10];
+    private int[] ownGroup;
 
     //Constructor
     public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] ownGroup) {
@@ -78,6 +78,9 @@ public class PlayerArchetype {
 
     public void setOwnGroup(int[] ownGroup) {
         this.ownGroup = ownGroup;
+    }
+    public void incrementOwnGroup(int groupNumber){
+        ownGroup[groupNumber]++;
     }
 }
 

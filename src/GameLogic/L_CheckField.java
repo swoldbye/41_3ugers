@@ -81,6 +81,7 @@ public class L_CheckField {
             if(answer.equals("Yes")){
                 // player pays for property
                 playerArr.get(i).setBalance(currentBalance-price);
+                playerArr.get(i).incrementOwnGroup(fieldArr[actualPosition].getGroup());
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
                 System.out.println("Player "+(i+1)+"'s balance is now: "+playerArr.get(i).getBalance());
@@ -91,8 +92,12 @@ public class L_CheckField {
 
             // find rent
             int rent = fieldArr[actualPosition].getRent();
-            // find owner with getOwnership
             int owner = fieldArr[actualPosition].getOwnership();
+
+            if(playerArr.get(i).getOwnGroup()[actualPosition] == fieldArr[actualPosition].getGroup()){
+                rent = rent * 2;
+            }
+            // find owner with getOwnership
             // display pay rent button in gui
             message.GUI_payRent(owner,rent,gui_playerList,i);
             // player pays rent

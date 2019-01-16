@@ -42,4 +42,7 @@ public abstract class Field_Abstract {
 
     public int getRent(){return getRent();}
 
+    public abstract int getGroup();
+
+
 }
