@@ -22,7 +22,7 @@ public class PlayerList {
         PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 30000, 0, false,0, 0, false);
         reservedPlayerList[j] = gui_Player1;
 
-        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], -30000, 0, false,0, 0, false);
+        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 30000, 0, false,0, 0, false);
         reservedPlayerList[var2++] = gui_Player2;
 
         PlayerArchetype gui_Player3 = new PlayerArchetype(playerNames[2], 30000, 0, false,0, 0 ,false);

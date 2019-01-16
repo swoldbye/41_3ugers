@@ -64,6 +64,7 @@ public class GameTurn {
                     for (int lol=0; lol< fieldArr.length; lol++ ) {
                         if (fieldArr[lol].getOwnership()==i){
                             fieldArr[lol].setOwnership(-1);
+                            guiInstance.bankruptFieldOwnerShip(lol);
                         }
                     }
 
