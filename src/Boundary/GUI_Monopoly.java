@@ -1,6 +1,7 @@
 package Boundary;
 import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
+import Entities.PlayerList;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -152,12 +153,52 @@ public class GUI_Monopoly{
         gui.showMessage(message);
     }
 
-    public  void bankruptmessage (int playerid) {
+    public void bankruptmessage (int playerid) {
         gui.showMessage("Player "+(playerid+1)+" er gået fallit. Alle player "+(playerid+1)+" grunde er givet til banken og kan nu købes");
     }
     public void bankruptFieldOwnerShip(int bankruptOwnedProperties){
         // This method defaults the ownership string in the field descriptions.
         fields[bankruptOwnedProperties].setDescription(" ");
-
     }
+
+    public boolean buildBooleanMessage(){
+        boolean build = false;
+        String answer = gui.getUserSelection("Do you want to build house or hotel?","Yes", "No");
+        if(answer.equals("Yes")){
+            build = true;
+        } return build;
+    }
+    public int buildMessage(){
+        int group = 0;
+        String answer = gui.getUserSelection("Which group do you want to build on?", "Blue", "Orange", "Green", "Grey", "Red", "White", "Yellow", "Purple");
+        if(answer.equals("Blue")){
+            group = 0;
+        }else if(answer.equals("Orange")){
+            group = 2;
+        }else if(answer.equals("Green")){
+            group = 3;
+        }else if(answer.equals("Grey")){
+            group =5;
+        }else if(answer.equals("Red")){
+            group =6;
+        }else if(answer.equals("White")){
+            group =7;
+        }else if(answer.equals("Yellow")){
+            group =8;
+        }else if(answer.equals("Purple")){
+            group =9;
+        }return group;
+    }
+
+    public void chooseField(int group, int groupsize, Field_Abstract[] fieldArr) {
+        switch(groupsize){
+            case 3:
+                String answer = gui.getUserSelection("Which field do you want to build on?",fieldArr[]);
+                break;
+            case 2:
+                String answer  = gui.getUserSelection("Which field do you want to buiold on?", fieldArr[i])
+        }
+    }
+
+
 }

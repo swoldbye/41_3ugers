@@ -12,11 +12,13 @@ public class PlayerArchetype {
     private int jailCounter;
     private int jailCard;
     private boolean bankrupt;
-    private int[] ownGroup;
+    private int[] groupOwnedAmount;
+    private int[] groupsOwned;
 
     //Constructor
 
-    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] ownGroup) {
+
+    public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] groupOwnedAmount, int[] groupsOwned) {
         this.name = name;
         this.balance = balance;
         this.position = position;
@@ -24,11 +26,9 @@ public class PlayerArchetype {
         this.jailCounter = jailCounter;
         this.jailCard = jailCard;
         this.bankrupt = bankrupt;
-        this.ownGroup = ownGroup;
+        this.groupOwnedAmount = groupOwnedAmount;
+        this.groupsOwned = groupsOwned;
     }
-
-
-
 
     //Getter & Setter methods
     public String getName() {
@@ -75,15 +75,23 @@ public class PlayerArchetype {
 
     public void setBankrupt(boolean bankrupt) {this.bankrupt = bankrupt;}
 
-    public int[] getOwnGroup() {
-        return ownGroup;
+    public int[] getGroupOwnedAmount() {
+        return groupOwnedAmount;
     }
 
-    public void setOwnGroup(int[] ownGroup) {
-        this.ownGroup = ownGroup;
+    public void setGroupOwnedAmount(int[] groupOwnedAmount) {
+        this.groupOwnedAmount = groupOwnedAmount;
     }
     public void incrementOwnGroup(int groupNumber){
-        ownGroup[groupNumber]++;
+        groupOwnedAmount[groupNumber]++;
+    }
+
+    public int[] getGroupsOwned() {
+        return groupsOwned;
+    }
+
+    public void setGroupsOwned(int[] groupsOwned) {
+        this.groupsOwned = groupsOwned;
     }
 }
 

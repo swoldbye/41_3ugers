@@ -46,5 +46,7 @@ public abstract class Field_Abstract {
 
     public int getGroupSize(){return getGroupSize();}
 
+    public abstract int getHotels();
 
+    public abstract int getHouses();
 }
