@@ -18,7 +18,8 @@ public class L_PropertyManagement {
         return ownsGroup;
     }
 
-    public int wantToBuy(ArrayList<PlayerArchetype> playerArr,boolean ownsGroup, GUI_Monopoly guiMonopoly, int playerID){
+    public int wantToBuy(ArrayList<PlayerArchetype> playerArr,boolean ownsGroup, GUI_Monopoly guiMonopoly, int playerID, int[][] groupIndexes, Field_Abstract[] fieldArr){
+        int buildField = -1;
         boolean buy = false;
         int group = -1;
 
@@ -26,23 +27,24 @@ public class L_PropertyManagement {
         if(ownsGroup == true){
             buy = guiMonopoly.buildBooleanMessage();
         }
-        if(buy = true){
+        if(buy == true){
             group = guiMonopoly.buildMessage();
             if(playerArr.get(playerID).getGroupsOwned()[group] == 1){
-                guiMonopoly.chooseField;
+                buildField = guiMonopoly.chooseField(group, fieldArr, groupIndexes);
             }
-        } return group;
+        } return buildField;
     }
 
 
-    public void buildHouse
+    public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount){
+        //set the new amount of houses.
+        fieldArr[buildField].setHouses(fieldArr[buildField].getHouses() + amount);
+        //changes the players balance based on the house price and the amount of houses bought.
+        playerArr.get(playerID).setBalance(playerArr.get(playerID).getBalance() - fieldArr[buildField].getHousePrice() * amount);
+
+        //gui method to change what happens on the gui. Then done.
+
+    }
 }
 
 
-/*
-1. check if the player has all fields in a group __
-2. check if the player wants to build __
-3. check what field the player wants to build on
-4. check what type of building the player wants to build
-5. check how many of them the player wants to build
- */

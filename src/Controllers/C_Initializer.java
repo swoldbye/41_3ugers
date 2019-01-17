@@ -27,6 +27,7 @@ public class C_Initializer {
 
         //Fieldlist array creation
         Field_Abstract[] fieldArr = fieldCreator.createFieldList();
+        int[][] groupIndexes = fieldCreator.createGroupIndexes();
 
         //cardList array creation
         ChCardsArchetype[] cardList = deck.createChCardList();
@@ -34,7 +35,7 @@ public class C_Initializer {
         // Handing over responsibility to the GameTurn controller. The game has begun :D
         GameTurn startGame = new GameTurn();
         // Note that the checkTurn method accepts the following parameters
-        startGame.checkRound(c_playerArr, c_GUIPlayerArr,guiBoard,fieldArr);
+        startGame.checkRound(c_playerArr, c_GUIPlayerArr,guiBoard,fieldArr, groupIndexes);
     }
 
 }

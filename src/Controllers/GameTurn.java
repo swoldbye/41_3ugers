@@ -21,18 +21,18 @@ public class GameTurn {
     private int bankruptedPlayers = 0;
 
     // This method checks if the game is still eligible to play. You need to be at least 2 players
-    public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr) {
+    public void checkRound(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr, int[][] groupIndexes) {
 
         while (bankruptedPlayers < playerArr.size() - 1) {
             // Calls the playerTurn method
-            playerTurn(playerArr, gui_playerList, guiInstance, fieldArr);
+            playerTurn(playerArr, gui_playerList, guiInstance, fieldArr, groupIndexes);
         }
         // The while loop ends when there is only 1 player left, the winner. Then we prompt the winMessage
         guiInstance.winMessage(); // Is displayed when there is only 1 player left (the winner :D)
     }
 
     // This method plays the turn for each player.
-    public void playerTurn(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr) {
+    public void playerTurn(ArrayList<PlayerArchetype> playerArr, GUI_Player[] gui_playerList, GUI_Monopoly guiInstance, Field_Abstract[] fieldArr, int[][] groupIndexes) {
         // For loop that runs a standard turn for each player.
         for (int i = 0; i < PlayerList.playerArr.size(); i++) {
             // If the player is in jail.
@@ -44,7 +44,7 @@ public class GameTurn {
 
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
-                    Logic_propertymanagement.wantToBuy(ownsGroup, guiInstance);
+                    Logic_propertymanagement.wantToBuy(ownsGroup, guiInstance, groupIndexes);
 
 
                     // 3) The player rolls the dice
