@@ -160,4 +160,5 @@ public class GUI_Monopoly{
         fields[bankruptOwnedProperties].setDescription(" ");
 
     }
+
 }
