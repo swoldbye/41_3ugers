@@ -1,7 +1,10 @@
 package GameLogic;
 import Boundary.GUI_Monopoly;
+import Boundary.GUI_PlayerList;
 import Entities.Field_Abstract;
 import Entities.PlayerArchetype;
+import gui_fields.GUI_Player;
+
 import java.util.ArrayList;
 
 public class L_PropertyManagement {
@@ -30,25 +33,27 @@ public class L_PropertyManagement {
         boolean buy = false;
         int group = -1;
 
-        buy = guiMonopoly.buildBooleanMessage();
+        buy = guiMonopoly.buildBooleanMessage(playerID);
         if(buy == true){
             group = guiMonopoly.buildMessage();
-            if(playerArr.get(playerID).getGroupsOwned()[group] == 1){
+            if(group == -1){
+                buildField = -1;
+            }
+            else if(playerArr.get(playerID).getGroupsOwned()[group] == 1){
                 buildField = guiMonopoly.chooseField(group, fieldArr, groupIndexes);
             }
         } return buildField;
     }
 
-    public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount, GUI_Monopoly guiMonopoly){
-        //set the new amount of houses.
-        fieldArr[buildField].setHouses(fieldArr[buildField].getHouses() + amount);
-        //changes the players balance based on the house price and the amount of houses bought.
-        playerArr.get(playerID).setBalance(playerArr.get(playerID).getBalance() - fieldArr[buildField].getHousePrice() * amount);
-
+    public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount, GUI_Monopoly guiMonopoly, GUI_Player[] guiPlayerList){
         //gui method to change what happens on the gui. Then done.
-        guiMonopoly.housePlacement(amount, buildField);
-        //method in "land on ownable" to incorperate the price of houses/hotel into the rent
-
+        boolean bought = guiMonopoly.housePlacement(playerID, amount, fieldArr[buildField].getHouses(), buildField, guiPlayerList, fieldArr);
+        if(bought == true){
+            //set the new amount of houses.
+            fieldArr[buildField].setHouses(fieldArr[buildField].getHouses() + amount);
+            //changes the players balance based on the house price and the amount of houses bought.
+            playerArr.get(playerID).setBalance(playerArr.get(playerID).getBalance() - fieldArr[buildField].getHousePrice() * amount);
+        }
     }
 }
 

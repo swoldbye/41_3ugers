@@ -38,25 +38,25 @@ public class FieldList { //Information Expert Class
 
         //First color is fieldColor, Second color is fieldtext/name..
         fields[i] = new Field_Empty(1, "Start");
-        fields[var2++] = new Field_Property(2,"Rødovrevej", 1200, 50,0,-1,2,2000,0,0, 0);
+        fields[var2++] = new Field_Property(2,"Rødovrevej", 1200, 50,0,-1,2,1000,0,0, 0);
         fields[var2++] = new Field_Chance(3, "Chance");
-        fields[var2++] = new Field_Property(4,"Hvidovrevej", 1200, 50,0,-1,2,2000,0,0, 0);
+        fields[var2++] = new Field_Property(4,"Hvidovrevej", 1200, 50,0,-1,2,1000,0,0, 0);
         fields[var2++] = new Field_Tax(5,"Skat 1",4000);
         fields[var2++] = new Field_Shipping(6,"Båd 1",4000,500,1, -1, 4);
-        fields[var2++] = new Field_Property(7,"Roskildevej", 2000,150,2,-1, 3,2000,0,0, 0);
+        fields[var2++] = new Field_Property(7,"Roskildevej", 2000,150,2,-1, 3,1000,0,0, 0);
         fields[var2++] = new Field_Chance(8, "Chance");
-        fields[var2++] = new Field_Property(9,"Valby Langade", 2000,100,2,-1, 3,2000,0,0, 0);
-        fields[var2++] = new Field_Property(10,"Allégade",2400,150,2,-1,3,2000,0,0, 0);
+        fields[var2++] = new Field_Property(9,"Valby Langade", 2000,100,2,-1, 3,1000,0,0, 0);
+        fields[var2++] = new Field_Property(10,"Allégade",2400,150,2,-1,3,1000,0,0, 0);
         fields[var2++] = new Field_Jail(11, "På besøg");
         fields[var2++] = new Field_Property(12,"Frederikberg allé",2800, 200, 3,-1, 3,2000,0,0, 0);
         fields[var2++] = new Field_Soda(13,"Tuborg Squash", 3000,100, 4, -1, 2);
         fields[var2++] = new Field_Property(14,"Bülowsvej", 2800, 200, 3,-1,3,2000,0,0, 0);
         fields[var2++] = new Field_Property(15, "Gl. Kongevej", 3200,250, 3,-1,3,2000,0,0, 0);
         fields[var2++] = new Field_Shipping(16, "Båd 2", 4000, 500, 1, -1, 4);
-        fields[var2++] = new Field_Property(17,"Bernstorffsvej",3600,300, 5,-1,3, 3000,0,0, 0);
+        fields[var2++] = new Field_Property(17,"Bernstorffsvej",3600,300, 5,-1,3, 2000,0,0, 0);
         fields[var2++] = new Field_Chance(18,"Chance");
-        fields[var2++] = new Field_Property(19,"Hellerupvej", 3600,300,5,-1,3,3000,0,0, 0);
-        fields[var2++] = new Field_Property(20,"Strandvejen",4000,350,5,-1,3,3000,0,0, 0);
+        fields[var2++] = new Field_Property(19,"Hellerupvej", 3600,300,5,-1,3,2000,0,0, 0);
+        fields[var2++] = new Field_Property(20,"Strandvejen",4000,350,5,-1,3,2000,0,0, 0);
         fields[var2++] = new Field_Empty(21,"Parkering");
         fields[var2++] = new Field_Property(22,"Trianglen", 4400, 350, 6, -1, 3,3000,0,0, 0);
         fields[var2++] = new Field_Chance(23, "Chance");

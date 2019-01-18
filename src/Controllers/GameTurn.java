@@ -44,12 +44,15 @@ public class GameTurn {
                     Logic_propertymanagement.ownsGroupIncrement(playerArr, fieldArr, i);
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
 
+
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
                     if (ownsGroup == true) {
                         int buildField = Logic_propertymanagement.wantToBuy(playerArr, guiInstance, i, groupIndexes, fieldArr);
                         if(buildField > 0){
                             int houseAmount = guiInstance.houseAmount(fieldArr, buildField, playerArr, i);
-                            Logic_propertymanagement.buildHouse(buildField, fieldArr, playerArr, i, houseAmount, guiInstance);
+                            if(houseAmount > 0) {
+                                Logic_propertymanagement.buildHouse(buildField, fieldArr, playerArr, i, houseAmount, guiInstance, gui_playerList);
+                            }
                         }
                     }
 

@@ -162,9 +162,9 @@ public class GUI_Monopoly{
         fields[bankruptOwnedProperties].setDescription(" ");
     }
 
-    public boolean buildBooleanMessage(){
+    public boolean buildBooleanMessage(int playerID){
         boolean build = false;
-        String answer = gui.getUserSelection("Do you want to build house or hotel?","Yes", "No");
+        String answer = gui.getUserSelection("It is Player "+(playerID+1)+"'s turn. Do you want to build?","Yes", "No");
         if(answer.equals("Yes")){
             build = true;
         } return build;
@@ -173,7 +173,7 @@ public class GUI_Monopoly{
 
     public int buildMessage(){
         int group = 0;
-        String answer = gui.getUserSelection("Which group do you want to build on?", "Blue", "Orange", "Green", "Grey", "Red", "White", "Yellow", "Purple");
+        String answer = gui.getUserSelection("Which group do you want to build on?", "Blue", "Orange", "Green", "Grey", "Red", "White", "Yellow", "Purple", "Cancel");
         if(answer.equals("Blue")){
             group = 0;
         }else if(answer.equals("Orange")){
@@ -188,8 +188,10 @@ public class GUI_Monopoly{
             group =7;
         }else if(answer.equals("Yellow")){
             group =8;
-        }else if(answer.equals("Purple")){
-            group =9;
+        }else if(answer.equals("Purple")) {
+            group = 9;
+        }else if(answer.equals("Cancel")){
+            group = -1;
         }return group;
     }
 
@@ -202,23 +204,27 @@ public class GUI_Monopoly{
                 int index0 = groupIndexes[group][0];
                 int index1 = groupIndexes[group][1];
                 int index2 = groupIndexes[group][2];
-                answer = gui.getUserSelection("Which field do you want to build on?", fieldArr[index0].getFieldName(), fieldArr[index1].getFieldName(), fieldArr[index2].getFieldName());
+                answer = gui.getUserSelection("Which field do you want to build on?", fieldArr[index0].getFieldName(), fieldArr[index1].getFieldName(), fieldArr[index2].getFieldName(), "Cancel");
                 if (answer.equals(fieldArr[index0].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][0];
                 } else if (answer.equals(fieldArr[index1].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][1];
                 } else if (answer.equals(fieldArr[index2].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][2];
+                }else if (answer.equals("Cancel")){
+                    finalFieldIndex = -1;
                 }
                 break;
             case 2:
                 int index3 = groupIndexes[group][0];
                 int index4 = groupIndexes[group][1];
-                answer = gui.getUserSelection("Which field do you want to buiold on?", fieldArr[index3].getFieldName(), fieldArr[index4].getFieldName());
+                answer = gui.getUserSelection("Which field do you want to buiold on?", fieldArr[index3].getFieldName(), fieldArr[index4].getFieldName(), "Cancel");
                 if (answer.equals(fieldArr[index3].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][0];
                 } else if (answer.equals(fieldArr[index4].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][1];
+                }else if (answer.equals("Cancel")){
+                    finalFieldIndex = -1;
                 }
                 break;
         }
@@ -235,65 +241,64 @@ public class GUI_Monopoly{
         switch (fieldArr[index].getHouses()){
             case 0:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "4 Houses", "Hotel");
+                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "4 Houses", "Hotel", "Cancel");
                     if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("3 Houses")){value = 3;}
-                    else if (answer.equals("4 Houses")){value = 4;} else if(answer.equals("Hotel")){value = 5;}
+                    else if (answer.equals("4 Houses")){value = 4;} else if(answer.equals("Hotel")){value = 5;} else if(answer.equals("Cancel")){value = -1;}
 
-                    cost = value * fieldArr[index].getHousePrice();
                     if(playerArr.get(playerID).getBalance() < cost){
                         gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        i++;
                     }
                     else{
+                        cost = value * fieldArr[index].getHousePrice();
                         i++;
-                        gui.showMessage("Transaction Complete.");
                     }
                 }
                 break;
 
             case 1:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "Hotel");
+                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "Hotel", "Cancel");
                     if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("3 Houses")){value = 3;}
-                    else if(answer.equals("Hotel")){value = 4;}
+                    else if(answer.equals("Hotel")){value = 4;} else if(answer.equals("Cancel")){value = -1;}
 
-                    cost = value * fieldArr[index].getHousePrice();
                     if(playerArr.get(playerID).getBalance() < cost){
                         gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
                     }
                     else{
+                        cost = value * fieldArr[index].getHousePrice();
                         i++;
-                        gui.showMessage("Transaction Complete.");
                     }
                 }
                 break;
             case 2:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "Hotel");
+                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "Hotel", "Cancel");
                     if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("Hotel")){value = 3;}
+                    else if(answer.equals("Cancel")){value = -1;}
 
-                    cost = value * fieldArr[index].getHousePrice();
                     if(playerArr.get(playerID).getBalance() < cost){
                         gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
                     }
                     else{
+                        cost = value * fieldArr[index].getHousePrice();
                         i++;
-                        gui.showMessage("Transaction Complete.");
+
                     }
                 }
                 break;
 
             case 3:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "Hotel");
-                    if(answer.equals("1 House")){value = 1;} else if(answer.equals("Hotel")){value = 2;}
+                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "Hotel", "Cancel");
+                    if(answer.equals("1 House")){value = 1;} else if(answer.equals("Hotel")){value = 2;}else if(answer.equals("Cancel")){value = -1;}
 
-                    cost = value * fieldArr[index].getHousePrice();
                     if(playerArr.get(playerID).getBalance() < cost){
                         gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
                     }
                     else{
+                        cost = value * fieldArr[index].getHousePrice();
                         i++;
-                        gui.showMessage("Transaction Complete.");
                     }
                 }
                 break;
@@ -301,15 +306,14 @@ public class GUI_Monopoly{
             case 4:
                 while(i == 0){
                     answer = gui.getUserSelection("Would you like to build a hotel?", "Yes", "Cancel");
-                    if(answer.equals("Yes")){value = 1;} else if(answer.equals("Cancel")){value = 0;}
+                    if(answer.equals("Yes")){value = 1;} else if(answer.equals("Cancel")){value = 0;}else if(answer.equals("Cancel")){value = -1;}
 
-                    cost = value * fieldArr[index].getHousePrice();
                     if(playerArr.get(playerID).getBalance() < cost){
                         gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
                     }
                     else{
+                        cost = value * fieldArr[index].getHousePrice();
                         i++;
-                        gui.showMessage("Transaction Complete.");
                     }
                 }
                 break;
@@ -321,14 +325,23 @@ public class GUI_Monopoly{
     }
 
 
-    public void housePlacement(int houseAmount, int fieldIndex){
-        if(houseAmount == 5) {
-            if (fields[fieldIndex] instanceof GUI_Street) {
-                ((GUI_Street) fields[fieldIndex]).setHotel(true);
+    public boolean housePlacement(int playerID,int houseIncrement ,int houseAmount, int fieldIndex,GUI_Player[] guiPlayerList, Field_Abstract[] fieldArr) {
+        boolean bought = false;
+        int cost = houseIncrement * fieldArr[fieldIndex].getHousePrice();
+        String answer = gui.getUserSelection("This transaction will cost you: " + cost + ". Do you want to proceed?", "Yes", "No");
+
+        if (answer.equals("Yes")) {
+            guiPlayerList[playerID].setBalance(guiPlayerList[playerID].getBalance() - cost);
+            if (houseAmount == 5) {
+                if (fields[fieldIndex] instanceof GUI_Street) {
+                    ((GUI_Street) fields[fieldIndex]).setHotel(true);
+                }
+            } else if (fields[fieldIndex] instanceof GUI_Street) {
+                ((GUI_Street) fields[fieldIndex]).setHouses(houseAmount);
             }
-        }
-        else if(fields[fieldIndex] instanceof GUI_Street){
-            ((GUI_Street)fields[fieldIndex]).setHouses(houseAmount);
-        }
+            bought = true;
+        }else{
+            gui.showMessage("Transaction Cancelled.");
+        }return bought;
     }
 }
