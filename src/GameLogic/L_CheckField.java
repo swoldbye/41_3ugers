@@ -3,6 +3,7 @@ import Boundary.GUI_Monopoly;
 import Boundary.GUI_PlayerList;
 import Controllers.ChCardController;
 import Entities.Field_Abstract;
+import Entities.Field_Ownable;
 import Entities.PlayerArchetype;
 import gui_fields.GUI_Player;
 
@@ -72,41 +73,43 @@ public class L_CheckField {
         }
         // Second case : if the player lands on an empty ownable field
     }
-    public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
+    public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList) {
         int currentBalance = playerArr.get(i).getBalance();
         // If player lands on a property that nobody owns
-        if(fieldArr[actualPosition].getOwnership()==-1){
+        if (fieldArr[actualPosition].getOwnership() == -1) {
             int price = fieldArr[actualPosition].getPrice();
-            String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
-            if(answer.equals("Yes")){
+            String answer = message.GUI_buyProperty(actualPosition, i, price, gui_playerList);
+            if (answer.equals("Yes")) {
                 // player pays for property
-                playerArr.get(i).setBalance(currentBalance-price);
+                playerArr.get(i).setBalance(currentBalance - price);
                 playerArr.get(i).incrementOwnGroup(fieldArr[actualPosition].getGroup());
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
-                System.out.println("Player "+(i+1)+"'s balance is now: "+playerArr.get(i).getBalance());
+                System.out.println("Player " + (i + 1) + "'s balance is now: " + playerArr.get(i).getBalance());
             }
         }
         // Else, pay rent to whomever owns the property
-        else{
+        else {
 
             // find rent
             int rent = fieldArr[actualPosition].getRent();
             int owner = fieldArr[actualPosition].getOwnership();
 
-            if(playerArr.get(i).getOwnGroup()[fieldArr[actualPosition].getGroup()] == fieldArr[actualPosition].getGroupSize()){
-                rent = rent * 2;
+            if (fieldArr[actualPosition] instanceof Field_Ownable) {
+                if (playerArr.get(i).getGroupsOwned()[fieldArr[actualPosition].getGroup()] == 1) {
+                    rent = rent * 2;
+                }
+                // find owner with getOwnership
+                // display pay rent button in gui
+                message.GUI_payRent(owner, rent, gui_playerList, i);
+                // player pays rent
+                playerArr.get(i).setBalance(currentBalance - rent);
+                int ownerBalance = playerArr.get(owner).getBalance();
+                // pay owner
+                playerArr.get(owner).setBalance(ownerBalance + rent);
             }
-            // find owner with getOwnership
-            // display pay rent button in gui
-            message.GUI_payRent(owner,rent,gui_playerList,i);
-            // player pays rent
-            playerArr.get(i).setBalance(currentBalance-rent);
-            int ownerBalance = playerArr.get(owner).getBalance();
-            // pay owner
-            playerArr.get(owner).setBalance(ownerBalance+rent);
-        }
 
+        }
     }
     public void landsOnTax(ArrayList<PlayerArchetype> playerArr,int playerBalance, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         // If player lands on tax field 1 or 2, reduce balance by either 4000 or 8000.

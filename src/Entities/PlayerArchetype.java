@@ -93,5 +93,7 @@ public class PlayerArchetype {
     public void setGroupsOwned(int[] groupsOwned) {
         this.groupsOwned = groupsOwned;
     }
+
+
 }
 

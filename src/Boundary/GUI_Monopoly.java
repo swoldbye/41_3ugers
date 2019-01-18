@@ -4,6 +4,7 @@ import Entities.PlayerArchetype;
 import Entities.PlayerList;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -168,6 +169,8 @@ public class GUI_Monopoly{
             build = true;
         } return build;
     }
+
+
     public int buildMessage(){
         int group = 0;
         String answer = gui.getUserSelection("Which group do you want to build on?", "Blue", "Orange", "Green", "Grey", "Red", "White", "Yellow", "Purple");
@@ -221,7 +224,6 @@ public class GUI_Monopoly{
         }
         return finalFieldIndex;
     }
-
 
 
     public int houseAmount(Field_Abstract[] fieldArr, int index, ArrayList<PlayerArchetype> playerArr, int playerID){
@@ -319,4 +321,14 @@ public class GUI_Monopoly{
     }
 
 
+    public void housePlacement(int houseAmount, int fieldIndex){
+        if(houseAmount == 5) {
+            if (fields[fieldIndex] instanceof GUI_Street) {
+                ((GUI_Street) fields[fieldIndex]).setHotel(true);
+            }
+        }
+        else if(fields[fieldIndex] instanceof GUI_Street){
+            ((GUI_Street)fields[fieldIndex]).setHouses(houseAmount);
+        }
+    }
 }

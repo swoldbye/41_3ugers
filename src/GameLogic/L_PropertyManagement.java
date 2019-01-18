@@ -18,15 +18,12 @@ public class L_PropertyManagement {
         return ownsGroup;
     }
 
-    public int wantToBuy(ArrayList<PlayerArchetype> playerArr,boolean ownsGroup, GUI_Monopoly guiMonopoly, int playerID, int[][] groupIndexes, Field_Abstract[] fieldArr){
+    public int wantToBuy(ArrayList<PlayerArchetype> playerArr, GUI_Monopoly guiMonopoly, int playerID, int[][] groupIndexes, Field_Abstract[] fieldArr){
         int buildField = -1;
         boolean buy = false;
         int group = -1;
 
-        //
-        if(ownsGroup == true){
-            buy = guiMonopoly.buildBooleanMessage();
-        }
+        buy = guiMonopoly.buildBooleanMessage();
         if(buy == true){
             group = guiMonopoly.buildMessage();
             if(playerArr.get(playerID).getGroupsOwned()[group] == 1){
@@ -35,14 +32,15 @@ public class L_PropertyManagement {
         } return buildField;
     }
 
-
-    public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount){
+    public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount, GUI_Monopoly guiMonopoly){
         //set the new amount of houses.
         fieldArr[buildField].setHouses(fieldArr[buildField].getHouses() + amount);
         //changes the players balance based on the house price and the amount of houses bought.
         playerArr.get(playerID).setBalance(playerArr.get(playerID).getBalance() - fieldArr[buildField].getHousePrice() * amount);
 
         //gui method to change what happens on the gui. Then done.
+        guiMonopoly.housePlacement(amount, buildField);
+        //method in "land on ownable" to incorperate the price of houses/hotel into the rent
 
     }
 }

@@ -44,8 +44,13 @@ public class GameTurn {
 
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
-                    Logic_propertymanagement.wantToBuy(ownsGroup, guiInstance, groupIndexes);
-
+                    if (ownsGroup == true) {
+                        int buildField = Logic_propertymanagement.wantToBuy(playerArr, guiInstance, i, groupIndexes, fieldArr);
+                        if(buildField > 0){
+                            int houseAmount = guiInstance.houseAmount(fieldArr, buildField, playerArr, i);
+                            Logic_propertymanagement.buildHouse(buildField, fieldArr, playerArr, i, houseAmount, guiInstance);
+                        }
+                    }
 
                     // 3) The player rolls the dice
                     guiInstance.rollButton(i); // Prompts the user to roll

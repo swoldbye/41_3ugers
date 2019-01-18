@@ -16,14 +16,14 @@ public class FieldList { //Information Expert Class
         groupIndexes[9] = new int[2];
 
         groupIndexes[0][0]=1; groupIndexes[0][1]=3;
-        groupIndexes[1][0]=5; groupIndexes[1][1]=15; groupIndexes[1][3]=25; groupIndexes[1][4]=35;
-        groupIndexes[2][0]=6; groupIndexes[2][1]=8; groupIndexes[2][3]=9;
-        groupIndexes[3][0]=11; groupIndexes[3][1]=13; groupIndexes[3][3]=14;
+        groupIndexes[1][0]=5; groupIndexes[1][1]=15; groupIndexes[1][2]=25; groupIndexes[1][3]=35;
+        groupIndexes[2][0]=6; groupIndexes[2][1]=8; groupIndexes[2][2]=9;
+        groupIndexes[3][0]=11; groupIndexes[3][1]=13; groupIndexes[3][2]=14;
         groupIndexes[4][0]=12; groupIndexes[4][1]=28;
-        groupIndexes[5][0]=16; groupIndexes[5][1]=18; groupIndexes[5][3]=19;
-        groupIndexes[6][0]=21; groupIndexes[6][1]=23; groupIndexes[6][3]=24;
-        groupIndexes[7][0]=26; groupIndexes[7][1]=27; groupIndexes[7][3]=29;
-        groupIndexes[8][0]=31; groupIndexes[8][1]=32; groupIndexes[8][3]=34;
+        groupIndexes[5][0]=16; groupIndexes[5][1]=18; groupIndexes[5][2]=19;
+        groupIndexes[6][0]=21; groupIndexes[6][1]=23; groupIndexes[6][2]=24;
+        groupIndexes[7][0]=26; groupIndexes[7][1]=27; groupIndexes[7][2]=29;
+        groupIndexes[8][0]=31; groupIndexes[8][1]=32; groupIndexes[8][2]=34;
         groupIndexes[9][0]=37; groupIndexes[9][1]=39;
         return groupIndexes;
     }

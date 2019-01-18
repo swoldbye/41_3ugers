@@ -44,15 +44,16 @@ public abstract class Field_Abstract {
 
     public abstract int getGroup();
 
-    public int getGroupSize(){return getGroupSize();}
+    public abstract int getGroupSize();
 
     public abstract int getHotels();
 
     public abstract int getHouses();
 
-    public abstract int setHouses(int houseAmount);
+    public abstract void setHouses(int houseAmount);
 
     public abstract int setHotels();
 
     public abstract int getHousePrice();
+
 }

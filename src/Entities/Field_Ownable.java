@@ -49,7 +49,29 @@ Field_Ownable extends Field_Abstract{
         return groupSize;
     }
 
+    public int getHotels() {
+        return 0;
+    }
+
+    public int getHouses() {
+        return 0;
+    }
+
+    public void setHouses(int houseAmount) {
+
+    }
+
+    public int setHotels() {
+        return 0;
+    }
+
+    public int getHousePrice() {
+        return 0;
+    }
+
     public void setGroupSize(int groupsize) {
         this.groupSize = groupSize;
     }
+
+
 }
