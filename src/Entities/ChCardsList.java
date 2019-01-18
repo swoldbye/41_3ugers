@@ -10,8 +10,12 @@ public class ChCardsList {
 
     public static ChCardsArchetype[] createChCardList() {
         // Now contains the relevant strings for fields
-        ChCardsArchetype[] cards = new ChCardsArchetype[41];
+        ChCardsArchetype[] cards = new ChCardsArchetype[38];
         int i = 0;
+
+
+
+
 
         cards[i++] = new ChCardsArchetype("Chance", "De har vundet i klasse lotteriet. Modtag kr. 500", 1, 500);
         cards[i++] = new ChCardsArchetype("Chance", "Deres præmieobligation er udtrukket. de modtager kr. 1000 af banken.", 1, 1000);
@@ -50,7 +54,7 @@ public class ChCardsList {
         cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren lejen. hvis selskabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk brikken frem til det nærmeste rederi og betal ejeren lejen. hvis selskabet ikke ejes af nogen, kan de købe det af banken.", 5, 1);
         cards[i++] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
-        cards[i] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
+        cards[i++] = new ChCardsArchetype("Chance", "I anledning af kongens fødselsdag benådes De herved for fængsel, Dette kort kan opbevares, indtil De får brug for det, eller de kan sælge det.", 6, 0);
 
         return cards;
     }}
