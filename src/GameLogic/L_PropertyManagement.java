@@ -6,14 +6,21 @@ import java.util.ArrayList;
 
 public class L_PropertyManagement {
 
+    public void ownsGroupIncrement(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr, int playerID) {
+        for (int i = 0; i <= 9; i++) {
+            if (playerArr.get(playerID).getGroupOwnedAmount()[i] == fieldArr[i].getGroupSize()) {
+                playerArr.get(playerID).setGroupsOwned(i, true);
+            }
+        }
+    }
+
     public boolean ownsGroup(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr, int playerID) {
         boolean ownsGroup = false;
         //if(playerArr.get(playerID).getOwnGroup()[fieldArr[actualPosition].getGroup()] == fieldArr[actualPosition].getGroupSize()){
         for (int i = 0; i <= 9; i++){
-             if (playerArr.get(playerID).getGroupOwnedAmount()[i] == fieldArr[i].getGroupSize()) {
-                playerArr.get(playerID).getGroupsOwned()[i] = 1;
+             if (playerArr.get(playerID).getGroupsOwned()[i] == 1) {
                 ownsGroup = true;
-            }
+            }else{ownsGroup = false;}
         }
         return ownsGroup;
     }

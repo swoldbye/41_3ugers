@@ -41,8 +41,9 @@ public class GameTurn {
                 if (getTurn == true) {
                     // Check the current position of the player before he rolls the dice
                     int oldPosition = playerArr.get(i).getPosition();
-
+                    Logic_propertymanagement.ownsGroupIncrement(playerArr, fieldArr, i);
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
+
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
                     if (ownsGroup == true) {
                         int buildField = Logic_propertymanagement.wantToBuy(playerArr, guiInstance, i, groupIndexes, fieldArr);

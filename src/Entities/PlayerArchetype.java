@@ -82,6 +82,7 @@ public class PlayerArchetype {
     public void setGroupOwnedAmount(int[] groupOwnedAmount) {
         this.groupOwnedAmount = groupOwnedAmount;
     }
+
     public void incrementOwnGroup(int groupNumber){
         groupOwnedAmount[groupNumber]++;
     }
@@ -90,10 +91,14 @@ public class PlayerArchetype {
         return groupsOwned;
     }
 
-    public void setGroupsOwned(int[] groupsOwned) {
-        this.groupsOwned = groupsOwned;
+    public void setGroupsOwned(int groupIndex, boolean set) {
+        if (set == true) {
+            groupsOwned[groupIndex] = 1;
+        }
+        else if(set == false){
+            groupsOwned[groupIndex] = 0;
+        }
     }
-
 
 }
 
