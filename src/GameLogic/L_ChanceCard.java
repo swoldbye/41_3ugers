@@ -5,7 +5,7 @@ public class L_ChanceCard {
 
     public int drawChCard() {
         Random cardRand = new Random();
-        int card = cardRand.nextInt(40);
+        int card = cardRand.nextInt(37);
 
         return card;
     }

@@ -26,10 +26,12 @@ public class L_CheckField {
         return;
     }
 
-    public int setNewPosition(ArrayList<PlayerArchetype> playerArr,int oldPosition, int i,int roll1, int roll2){
+    public int setNewPosition(ArrayList<PlayerArchetype> playerArr,int oldPosition, int i,int roll1, int roll2,GUI_Player[] gui_playerList){
         // Sets the new position before analyzing what field the player landed on
         playerArr.get(i).setPosition((oldPosition+roll1+roll2)%40);
         int newPosition = playerArr.get(i).getPosition();
+        message.movePlayer(i, oldPosition, newPosition, gui_playerList); // Moves the player in gui
+
         return newPosition;
     }
     // Check what field the player lands on and branches out
@@ -69,11 +71,11 @@ public class L_CheckField {
                 landsOnSoda(playerArr,i,actualPosition,fieldArr,gui_playerList);
                 // Player lands on ownable field.
                 break;
-            default:landsOnOwnable(playerArr,i,actualPosition,fieldArr,gui_playerList);
+            default:landsOnProperty(playerArr,i,actualPosition,fieldArr,gui_playerList);
         }
         // Second case : if the player lands on an empty ownable field
     }
-    public void landsOnOwnable(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList) {
+    public void landsOnProperty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList) {
         int currentBalance = playerArr.get(i).getBalance();
         // If player lands on a property that nobody owns
         if (fieldArr[actualPosition].getOwnership() == -1) {

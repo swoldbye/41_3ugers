@@ -41,10 +41,11 @@ public class GameTurn {
                 if (getTurn == true) {
                     // Check the current position of the player before he rolls the dice
                     int oldPosition = playerArr.get(i).getPosition();
+                    // check groupsOwnedAmounted[] and increment groupsOwned[] if you have all in the group
                     Logic_propertymanagement.ownsGroupIncrement(playerArr, fieldArr, i);
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
 
-
+                    // If the player owns all properties within one group
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
                     if (ownsGroup == true) {
                         int j = 0;
@@ -62,6 +63,7 @@ public class GameTurn {
                             }else{j++;}
                         }
                     }
+
                     // 3) The player rolls the dice
                     guiInstance.rollButton(i); // Prompts the user to roll
                     int roll1 = Dice.roll();
@@ -70,8 +72,7 @@ public class GameTurn {
 
                     // 4) Checks if the player crosses the start
                     Logic_checkfield.checkStart(playerArr, oldPosition, i, roll1, roll2, gui_playerList);
-                    int actualPosition = Logic_checkfield.setNewPosition(playerArr, oldPosition, i, roll1, roll2);
-                    guiInstance.movePlayer(i, oldPosition, actualPosition, gui_playerList); // Moves the player in gui
+                    int actualPosition = Logic_checkfield.setNewPosition(playerArr, oldPosition, i, roll1, roll2,gui_playerList);
                     Logic_checkfield.checkPosition(playerArr, i, actualPosition, fieldArr, gui_playerList);
                     if (playerArr.get(i).getBalance() < 0) {
 
