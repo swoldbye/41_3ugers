@@ -47,15 +47,21 @@ public class GameTurn {
 
                     boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
                     if (ownsGroup == true) {
-                        int buildField = Logic_propertymanagement.wantToBuy(playerArr, guiInstance, i, groupIndexes, fieldArr);
-                        if(buildField > 0){
-                            int houseAmount = guiInstance.houseAmount(fieldArr, buildField, playerArr, i);
-                            if(houseAmount > 0) {
-                                Logic_propertymanagement.buildHouse(buildField, fieldArr, playerArr, i, houseAmount, guiInstance, gui_playerList);
-                            }
+                        int j = 0;
+                        while (j == 0) {
+                            boolean buy = guiInstance.buildBooleanMessage(i);
+                            if (buy == true) {
+                                int buildField = Logic_propertymanagement.specifyGroup(playerArr, guiInstance, i, groupIndexes, fieldArr);
+
+                                if (buildField > 0) {
+                                    int houseAmount = guiInstance.houseAmount(fieldArr, buildField, playerArr, i);
+                                    if (houseAmount > 0) {
+                                        Logic_propertymanagement.buildHouse(buildField, fieldArr, playerArr, i, houseAmount, guiInstance, gui_playerList);
+                                    }
+                                }
+                            }else{j++;}
                         }
                     }
-
                     // 3) The player rolls the dice
                     guiInstance.rollButton(i); // Prompts the user to roll
                     int roll1 = Dice.roll();
@@ -75,6 +81,8 @@ public class GameTurn {
                         for (int j = 0; j < fieldArr.length; j++) {
                             if (fieldArr[j].getOwnership() == i) {
                                 fieldArr[j].setOwnership(-1);
+                                fieldArr[j].setHouses(0);
+                                guiInstance.deleteHouses(j);
                                 guiInstance.bankruptFieldOwnerShip(j);
 
 

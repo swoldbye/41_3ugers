@@ -344,4 +344,11 @@ public class GUI_Monopoly{
             gui.showMessage("Transaction Cancelled.");
         }return bought;
     }
+
+    public void deleteHouses(int index){
+        if(fields[index] instanceof GUI_Street){
+            ((GUI_Street) fields[index]).setHotel(false);
+            ((GUI_Street) fields[index]).setHouses(0);
+        }
+    }
 }

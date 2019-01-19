@@ -15,7 +15,7 @@ public class PlayerList {
 
     public ArrayList<PlayerArchetype> playerListInitializer(String[] playerNames, int amountOfPlayers){
         int[] ownGroupInitializer = {0,0,0,0,0,0,0,0,0,0};
-        int[] groupsOwnedInitializer = {1,1,1,1,1,1,1,1,1,1};
+        int[] groupsOwnedInitializer = {0,0,0,0,0,0,0,0,0,0};
         PlayerArchetype[] reservedPlayerList = new PlayerArchetype[6];
         int j = 0;
         int var2 = j + 1;

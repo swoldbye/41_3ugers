@@ -97,8 +97,10 @@ public class L_CheckField {
 
             if (fieldArr[actualPosition] instanceof Field_Ownable) {
                 if (playerArr.get(i).getGroupsOwned()[fieldArr[actualPosition].getGroup()] == 1) {
-                    rent = rent * 2;
+                    int houseAmount = fieldArr[actualPosition].getHouses();
+                    rent = (int) (rent * Math.pow(2, houseAmount));
                 }
+
                 // find owner with getOwnership
                 // display pay rent button in gui
                 message.GUI_payRent(owner, rent, gui_playerList, i);
