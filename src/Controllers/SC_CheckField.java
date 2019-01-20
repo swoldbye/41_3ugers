@@ -97,7 +97,7 @@ public class SC_CheckField {
                     int houseAmount = fieldArr[actualPosition].getHouses();
                     if(houseAmount == 0){
                         rent = rent * 2;
-                    }else if(rent > 0){
+                    }else if(houseAmount > 0){
                         rent = (int)(rent * Math.pow(2, houseAmount));
                     }
                 }
