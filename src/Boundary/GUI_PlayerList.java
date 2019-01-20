@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class GUI_PlayerList {
     GUI_PlayerList(){}
-    public GUI_Player[] GUI_playerCarIndex;
+
     public GUI_Player[] createPlayerList(int amountPlayers)
     {
         GUI_Player[] playerList = new GUI_Player[6];

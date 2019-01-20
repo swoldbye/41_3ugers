@@ -95,7 +95,11 @@ public class SC_CheckField {
             if (fieldArr[actualPosition] instanceof Field_Ownable) {
                 if (playerArr.get(i).getGroupsOwned()[fieldArr[actualPosition].getGroup()] == 1) {
                     int houseAmount = fieldArr[actualPosition].getHouses();
-                    rent = (int) (rent * Math.pow(2, houseAmount));
+                    if(houseAmount == 0){
+                        rent = rent * 2;
+                    }else if(rent > 0){
+                        rent = (int)(rent * Math.pow(2, houseAmount));
+                    }
                 }
 
                 // find owner with getOwnership

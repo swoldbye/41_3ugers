@@ -15,27 +15,27 @@ public class PlayerList {
 
     public ArrayList<PlayerArchetype> playerListInitializer(String[] playerNames, int amountOfPlayers){
         int[] ownGroupInitializer = {0,0,0,0,0,0,0,0,0,0};
-        int[] groupsOwnedInitializer = {0,0,0,0,0,0,0,0,0,0};
+        int[] groupsOwnedInitializer = {1,1,1,1,1,1,1,1,1,1};
         PlayerArchetype[] reservedPlayerList = new PlayerArchetype[6];
         int j = 0;
         int var2 = j + 1;
 
-        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 30000, 0, false,0, 0, false,ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[j] = gui_Player1;
 
-        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 30000, 0, false,0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[var2++] = gui_Player2;
 
-        PlayerArchetype gui_Player3 = new PlayerArchetype(playerNames[2], 30000, 0, false,0, 0 ,false, ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player3 = new PlayerArchetype(playerNames[2], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[var2++] = gui_Player3;
 
-        PlayerArchetype gui_Player4 = new PlayerArchetype(playerNames[3], 30000, 0, false, 0, 0 , false, ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player4 = new PlayerArchetype(playerNames[3], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[var2++] = gui_Player4;
 
-        PlayerArchetype gui_Player5 = new PlayerArchetype(playerNames[4], 30000, 0, false,0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player5 = new PlayerArchetype(playerNames[4], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[var2++] = gui_Player5;
 
-        PlayerArchetype gui_Player6 = new PlayerArchetype(playerNames[5], 30000, 0, false,0, 0 , false, ownGroupInitializer, groupsOwnedInitializer);
+        PlayerArchetype gui_Player6 = new PlayerArchetype(playerNames[5], 30000, 0, false, 0, 0, false, ownGroupInitializer, groupsOwnedInitializer);
         reservedPlayerList[var2++] = gui_Player6;
 
 

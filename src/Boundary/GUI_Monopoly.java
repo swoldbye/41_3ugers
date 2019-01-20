@@ -16,7 +16,7 @@ public class GUI_Monopoly{
     public static int numberOfPlayers;
 
     // This method initializes the gui fields
-    public  void boardSetup() {
+    public void boardSetup() {
         fields = GUI_FieldFactory.fieldInitializer();
         gui = new GUI(fields, Color.WHITE);
     }
@@ -116,7 +116,7 @@ public class GUI_Monopoly{
         fields[30].setCar(gui_playerList[playerID],false);
         fields[10].setCar(gui_playerList[playerID],true);
     }
-    public String jailMessage(int playerID, int playerStatus){
+    public String jailMessage(int playerStatus){
         String answer = null;
         switch(playerStatus){
             case 1:

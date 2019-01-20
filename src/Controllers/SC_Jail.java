@@ -16,13 +16,13 @@ public class SC_Jail {
             if (playerArr.get(playerId).getJailCounter() < 4) {
                 //player status 1.
                 if (playerArr.get(playerId).getBalance() >= 1000 && playerArr.get(playerId).getJailCard() > 0) {
-                    answer = guiInstance.jailMessage(playerId, 1);
+                    answer = guiInstance.jailMessage(playerId);
                 } else if (playerArr.get(playerId).getBalance() >= 1000 && playerArr.get(playerId).getJailCard() == 0) {
-                    answer = guiInstance.jailMessage(playerId, 2);
+                    answer = guiInstance.jailMessage(playerId);
                 } else if (playerArr.get(playerId).getBalance() < 1000 && playerArr.get(playerId).getJailCard() > 0) {
-                    answer = guiInstance.jailMessage(playerId, 3);
+                    answer = guiInstance.jailMessage(playerId);
                 } else {
-                    answer = guiInstance.jailMessage(playerId, 4);
+                    answer = guiInstance.jailMessage(playerId);
                 }
                 if (answer.equals("Ja")) {
                     int previousBalance = playerArr.get(playerId).getBalance();
