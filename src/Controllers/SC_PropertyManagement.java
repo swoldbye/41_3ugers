@@ -22,7 +22,10 @@ public class SC_PropertyManagement {
         boolean ownsGroup = false;
         //if(playerArr.get(playerID).getOwnGroup()[fieldArr[actualPosition].getGroup()] == fieldArr[actualPosition].getGroupSize()){
         for (int i = 0; i <= 9; i++){
-             if (playerArr.get(playerID).getGroupsOwned()[i] == 1) {
+            if(i == 1 || i == 4){
+                i++;
+            }
+            if (playerArr.get(playerID).getGroupsOwned()[i] == 1) {
                 ownsGroup = true;
             }
         }
