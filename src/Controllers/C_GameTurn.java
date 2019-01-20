@@ -1,10 +1,7 @@
 package Controllers;
 
 import Boundary.GUI_Monopoly;
-import Entities.Dice;
-import Entities.Field_Abstract;
-import Entities.PlayerArchetype;
-import Entities.PlayerList;
+import Entities.*;
 import gui_fields.GUI_Player;
 
 import java.util.ArrayList;
@@ -76,12 +73,16 @@ public class C_GameTurn {
                         playerArr.get(i).setBankrupt(true);
                         bankruptedPlayers++;
                         guiInstance.bankruptmessage(i);
+
                         for (int j = 0; j < fieldArr.length; j++) {
+                            if (fieldArr[j] instanceof Field_Ownable)
+                            {
                             if (fieldArr[j].getOwnership() == i) {
                                 fieldArr[j].setOwnership(-1);
                                 fieldArr[j].setHouses(0);
                                 guiInstance.deleteHouses(j);
                                 guiInstance.bankruptFieldOwnerShip(j);
+                            }
 
 
                             }
