@@ -10,12 +10,10 @@ import java.util.ArrayList;
 
 public class SC_PropertyManagement {
 
-    public void ownsGroupIncrement(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr, int playerID) {
+    public void ownsGroupIncrement(ArrayList<PlayerArchetype> playerArr, int playerID, int[][] groupIndexes) {
         for (int i = 0; i <= 9; i++) {
-            if (fieldArr[i] instanceof Field_Ownable) {
-                if (playerArr.get(playerID).getGroupOwnedAmount()[i] == fieldArr[i].getGroupSize()) {
-                    playerArr.get(playerID).setGroupsOwned(i, true);
-                }
+            if (playerArr.get(playerID).getGroupOwnedAmount()[i] == groupIndexes[i].length) {
+                playerArr.get(playerID).setGroupsOwned(i, true);
             }
         }
     }

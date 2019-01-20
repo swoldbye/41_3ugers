@@ -38,7 +38,7 @@ public class C_GameTurn {
                     // Check the current position of the player before he rolls the dice
                     int oldPosition = playerArr.get(i).getPosition();
                     // check groupsOwnedAmounted[] and increment groupsOwned[] if you have all in the group
-                    Logic_propertymanagement.ownsGroupIncrement(playerArr, fieldArr, i);
+                    Logic_propertymanagement.ownsGroupIncrement(playerArr, i, groupIndexes);
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
 
                     // If the player owns all properties within one group
