@@ -81,13 +81,13 @@ public class L_CheckField {
         if (fieldArr[actualPosition].getOwnership() == -1) {
             int price = fieldArr[actualPosition].getPrice();
             String answer = message.GUI_buyProperty(actualPosition, i, price, gui_playerList);
-            if (answer.equals("Yes")) {
+            if (answer.equals("Ja")) {
                 // player pays for property
                 playerArr.get(i).setBalance(currentBalance - price);
                 playerArr.get(i).incrementOwnGroup(fieldArr[actualPosition].getGroup());
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
-                System.out.println("Player " + (i + 1) + "'s balance is now: " + playerArr.get(i).getBalance());
+                System.out.println("Spiller " + (i + 1) + " saldo er nu " + playerArr.get(i).getBalance());
             }
         }
         // Else, pay rent to whomever owns the property
@@ -139,7 +139,7 @@ public class L_CheckField {
 
         if(fieldArr[actualPosition].getOwnership()==-1){
             String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
-            if (answer == "Yes") {
+            if (answer == "Ja") {
                 // player pays for property
                 playerArr.get(i).setBalance(playerBalance-price);
                 // ownership is set in fieldlist
