@@ -11,6 +11,7 @@ public class SC_CheckField {
     public static int roll;
     public static int playerBalance;
     public static int ownerBalance;
+    public static int sodaMultiplier;
     GUI_Monopoly message = new GUI_Monopoly();
     SC_ChCardController chController = new SC_ChCardController();
     // First checks if user crosses start
@@ -128,7 +129,7 @@ public class SC_CheckField {
         }
     }
     public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
-        int sodaRent = roll*100;
+        int sodaRent = roll*sodaMultiplier;
         int price = fieldArr[actualPosition].getPrice();
 
         if(fieldArr[actualPosition].getOwnership()==-1){
@@ -138,6 +139,13 @@ public class SC_CheckField {
                 playerArr.get(i).setBalance(playerBalance-price);
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
+
+                if(fieldArr[12].getOwnership()==fieldArr[28].getOwnership()){
+                    sodaMultiplier = 200;
+                }
+                else{
+                    sodaMultiplier= 100;
+                }
             }
         }
         else {

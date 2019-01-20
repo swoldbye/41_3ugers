@@ -154,7 +154,7 @@ public class GUI_Monopoly{
 
     public boolean buildBooleanMessage(int playerID){
         boolean build = false;
-        String answer = gui.getUserSelection("Player "+(playerID+1)+" skal spille. Vil du bygge?","Ja", "Nej");
+        String answer = gui.getUserSelection("Player "+(playerID+1)+" skal spille. Vil du bygge?","Nej", "Ja");
         if(answer.equals("Ja")){
             build = true;
         } return build;
