@@ -38,6 +38,9 @@ public class L_PropertyManagement {
             buildField = -1;
         } else if (playerArr.get(playerID).getGroupsOwned()[group] == 1) {
             buildField = guiMonopoly.chooseField(group, fieldArr, groupIndexes);
+        } else if (playerArr.get(playerID).getGroupsOwned()[group] == 0){
+            buildField = -1;
+            guiMonopoly.doesNotOwnGroup();
         }
         return buildField;
     }

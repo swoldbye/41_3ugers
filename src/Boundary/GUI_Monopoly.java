@@ -23,13 +23,13 @@ public class GUI_Monopoly{
 
     // This method creates n amount of players, depending on user input in the gui
     public int playerAmount() {
-        numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
+        numberOfPlayers = gui.getUserInteger("Hvor mange spillere? (mellem 3 og 6)");
         for (int i = 0; i < 1; i = 0) {
             if (numberOfPlayers >= 3 && numberOfPlayers <= 6) {
                 i = 1;
                 return numberOfPlayers;
             } else {
-                numberOfPlayers = gui.getUserInteger("How many players are you? (between 3 and 6)");
+                numberOfPlayers = gui.getUserInteger("Hvor mange spillere? (mellem 3 og 6)");
             }
         }
         return numberOfPlayers;
@@ -38,7 +38,7 @@ public class GUI_Monopoly{
     public String[] playerNames(int amountOfPlayers) {
         playerNames = new String[6];
         for (int i = 0; i < amountOfPlayers; i++) {
-            String name = gui.getUserString("Name of Player " + (i+1) + ": ");
+            String name = gui.getUserString("Navngiv Player " + (i+1) + ": ");
             playerNames[i] = name;
             }
         return playerNames;
@@ -56,19 +56,19 @@ public class GUI_Monopoly{
     }
 
     public void rollButton(int playerID){
-        String rollButton = gui.getUserButtonPressed("It is player " + (playerID+1)+"'s turn","Roll");
+        String rollButton = gui.getUserButtonPressed("Det er player " + (playerID+1)+"'s tur","Rul");
         return;
     }
 
     // This method sets the die in the gui depending on what the player rolls
     public void dieSetter(int roll1, int roll2,int playerID){
         gui.setDice(roll1,roll2);
-        gui.showMessage("Player "+(playerID+1)+" Rolled: "+roll1+" and "+roll2);
+        gui.showMessage("Player "+(playerID+1)+" Rullede: "+roll1+" og "+roll2);
         return;
     }
 
     public void winMessage(){
-        gui.showMessage("Congratulations! You have won the game");
+        gui.showMessage("Tilykke! Du har vundet spillet");
     }
 
     public void movePlayer(int playerID, int oldPosition, int newPosition, GUI_Player[] GUIPlayerList){
@@ -84,18 +84,18 @@ public class GUI_Monopoly{
 
     // Button that adds the choice to buy a property
     public String GUI_buyProperty (int actualPosition, int playerID, int price, GUI_Player[] gui_playerList){
-        String answer = gui.getUserSelection("Would you like to purchase this property?","Yes","No");
-        if(answer.equals("Yes")){
+        String answer = gui.getUserSelection("Vil du købe denne felt?","Ja","Nej");
+        if(answer.equals("Ja")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
-            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" is owned by: Player "+(playerID+1));
+            fields[actualPosition].setDescription(fields[actualPosition].getTitle()+" er ejet af: Player "+(playerID+1));
         }
         return answer;
     }
 
     // The balance of the player and owner of a given field will be updated in the gui in this method
     public String GUI_payRent(int owner,int rent,GUI_Player[] gui_playerList,int playerID){
-        String rentMessage = gui.getUserSelection("This field is owned by Player "+(owner+1)+". Pay "+rent,"Pay "+rent);
+        String rentMessage = gui.getUserSelection("Denne felt af ejet af Player "+(owner+1)+". Betal "+rent,"Betal "+rent);
         // Defining the balance of the player and owner
         int playerBalance = gui_playerList[playerID].getBalance();
         int ownerBalance = gui_playerList[owner].getBalance();
@@ -106,13 +106,13 @@ public class GUI_Monopoly{
     return rentMessage;
     }
     public String GUI_payTax(int balance,int playerID, int tax,GUI_Player[] gui_playerList){
-        String taxMessage = gui.getUserSelection("Player "+(playerID+1)+" landed on a tax field","Pay "+tax);
+        String taxMessage = gui.getUserSelection("Player "+(playerID+1)+" landede på et skattefelt","betal "+tax);
         gui_playerList[playerID].setBalance(balance-tax);
         return taxMessage;
 
     }
     public void goToJail(int playerID,GUI_Player[] gui_playerList){
-        gui.showMessage("You went to jail.");
+        gui.showMessage("Du kom i fængsel.");
         fields[30].setCar(gui_playerList[playerID],false);
         fields[10].setCar(gui_playerList[playerID],true);
     }
@@ -129,7 +129,7 @@ public class GUI_Monopoly{
                 answer = gui.getUserSelection("Du kan bruge dit kort for at komme ud af fængsel.", "Nej",  "Brug kort");
                 break;
             case 4:
-                gui.showMessage("You can't pay your way out of this one.");
+                gui.showMessage("Du har hverken penge eller en chance kort. Du skal rulle dobbelt for at komme ud af fængsel.");
                 answer = "Nej";
                 break;
         }
@@ -154,8 +154,8 @@ public class GUI_Monopoly{
 
     public boolean buildBooleanMessage(int playerID){
         boolean build = false;
-        String answer = gui.getUserSelection("It is Player "+(playerID+1)+"'s turn. Do you want to build?","Yes", "No");
-        if(answer.equals("Yes")){
+        String answer = gui.getUserSelection("Player "+(playerID+1)+" skal spille. Vil du bygge?","Ja", "Nej");
+        if(answer.equals("Ja")){
             build = true;
         } return build;
     }
@@ -163,24 +163,24 @@ public class GUI_Monopoly{
 
     public int buildMessage(){
         int group = 0;
-        String answer = gui.getUserSelection("Which group do you want to build on?", "Blue", "Orange", "Green", "Grey", "Red", "White", "Yellow", "Purple", "Cancel");
-        if(answer.equals("Blue")){
+        String answer = gui.getUserSelection("Hvilken gruppe vil du bygge på?", "Blå", "Orange", "Grøn", "Grå", "Rød", "Hvid", "Gul", "Lilla", "Annuller");
+        if(answer.equals("Blå")){
             group = 0;
         }else if(answer.equals("Orange")){
             group = 2;
-        }else if(answer.equals("Green")){
+        }else if(answer.equals("Grøn")){
             group = 3;
-        }else if(answer.equals("Grey")){
+        }else if(answer.equals("Grå")){
             group =5;
-        }else if(answer.equals("Red")){
+        }else if(answer.equals("Rød")){
             group =6;
-        }else if(answer.equals("White")){
+        }else if(answer.equals("Hvid")){
             group =7;
-        }else if(answer.equals("Yellow")){
+        }else if(answer.equals("Gul")){
             group =8;
-        }else if(answer.equals("Purple")) {
+        }else if(answer.equals("Lilla")) {
             group = 9;
-        }else if(answer.equals("Cancel")){
+        }else if(answer.equals("Annuller")){
             group = -1;
         }return group;
     }
@@ -194,26 +194,26 @@ public class GUI_Monopoly{
                 int index0 = groupIndexes[group][0];
                 int index1 = groupIndexes[group][1];
                 int index2 = groupIndexes[group][2];
-                answer = gui.getUserSelection("Which field do you want to build on?", fieldArr[index0].getFieldName(), fieldArr[index1].getFieldName(), fieldArr[index2].getFieldName(), "Cancel");
+                answer = gui.getUserSelection("Hvilken ejendom vil du bygge på?", fieldArr[index0].getFieldName(), fieldArr[index1].getFieldName(), fieldArr[index2].getFieldName(), "Annuller");
                 if (answer.equals(fieldArr[index0].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][0];
                 } else if (answer.equals(fieldArr[index1].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][1];
                 } else if (answer.equals(fieldArr[index2].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][2];
-                }else if (answer.equals("Cancel")){
+                }else if (answer.equals("Annuller")){
                     finalFieldIndex = -1;
                 }
                 break;
             case 2:
                 int index3 = groupIndexes[group][0];
                 int index4 = groupIndexes[group][1];
-                answer = gui.getUserSelection("Which field do you want to buiold on?", fieldArr[index3].getFieldName(), fieldArr[index4].getFieldName(), "Cancel");
+                answer = gui.getUserSelection("Hvilken ejendom vil du bygge på?", fieldArr[index3].getFieldName(), fieldArr[index4].getFieldName(), "Annuller");
                 if (answer.equals(fieldArr[index3].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][0];
                 } else if (answer.equals(fieldArr[index4].getFieldName())) {
                     finalFieldIndex = groupIndexes[group][1];
-                }else if (answer.equals("Cancel")){
+                }else if (answer.equals("Annuller")){
                     finalFieldIndex = -1;
                 }
                 break;
@@ -231,12 +231,12 @@ public class GUI_Monopoly{
         switch (fieldArr[index].getHouses()){
             case 0:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "4 Houses", "Hotel", "Cancel");
-                    if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("3 Houses")){value = 3;}
-                    else if (answer.equals("4 Houses")){value = 4;} else if(answer.equals("Hotel")){value = 5;} else if(answer.equals("Cancel")){value = -1;}
+                    answer = gui.getUserSelection("Hvad vil du bygge?", "1 Hus", "2 Huse", "3 Huse", "4 Huse", "Hotel", "Annuller");
+                    if(answer.equals("1 Hus")){value = 1;} else if (answer.equals("2 Huse")){value = 2;} else if(answer.equals("3 Huse")){value = 3;}
+                    else if (answer.equals("4 Huse")){value = 4;} else if(answer.equals("Hotel")){value = 5;} else if(answer.equals("Annuller")){value = -1;}
 
                     if(playerArr.get(playerID).getBalance() < cost){
-                        gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        gui.showMessage("Din saldo: "+playerArr.get(playerID).getBalance()+". Pris: "+cost+". Du har ikke nok penge.");
                         i++;
                     }
                     else{
@@ -248,12 +248,12 @@ public class GUI_Monopoly{
 
             case 1:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "3 Houses", "Hotel", "Cancel");
-                    if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("3 Houses")){value = 3;}
-                    else if(answer.equals("Hotel")){value = 4;} else if(answer.equals("Cancel")){value = -1;}
+                    answer = gui.getUserSelection("Hvad vil du bygge?", "1 Hus", "2 Huse", "3 Huse", "Hotel", "Annuller");
+                    if(answer.equals("1 Hus")){value = 1;} else if (answer.equals("2 Huse")){value = 2;} else if(answer.equals("3 Huse")){value = 3;}
+                    else if(answer.equals("Hotel")){value = 4;} else if(answer.equals("Annuller")){value = -1;}
 
                     if(playerArr.get(playerID).getBalance() < cost){
-                        gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        gui.showMessage("Din saldo: "+playerArr.get(playerID).getBalance()+". Pris: "+cost+". Du har ikke nok penge.");
                     }
                     else{
                         cost = value * fieldArr[index].getHousePrice();
@@ -263,12 +263,12 @@ public class GUI_Monopoly{
                 break;
             case 2:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "2 Houses", "Hotel", "Cancel");
-                    if(answer.equals("1 House")){value = 1;} else if (answer.equals("2 Houses")){value = 2;} else if(answer.equals("Hotel")){value = 3;}
-                    else if(answer.equals("Cancel")){value = -1;}
+                    answer = gui.getUserSelection("Hvad vil du bygge?", "1 Hus", "2 Huse", "Hotel", "Annuller");
+                    if(answer.equals("1 Hus")){value = 1;} else if (answer.equals("2 Huse")){value = 2;} else if(answer.equals("Hotel")){value = 3;}
+                    else if(answer.equals("Annuller")){value = -1;}
 
                     if(playerArr.get(playerID).getBalance() < cost){
-                        gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        gui.showMessage("Din saldo: "+playerArr.get(playerID).getBalance()+". Pris: "+cost+". Du har ikke nok penge.");
                     }
                     else{
                         cost = value * fieldArr[index].getHousePrice();
@@ -280,11 +280,11 @@ public class GUI_Monopoly{
 
             case 3:
                 while(i == 0){
-                    answer = gui.getUserSelection("How many houses would you like to build", "1 House", "Hotel", "Cancel");
-                    if(answer.equals("1 House")){value = 1;} else if(answer.equals("Hotel")){value = 2;}else if(answer.equals("Cancel")){value = -1;}
+                    answer = gui.getUserSelection("Hvad vil du bygge?", "1 Hus", "Hotel", "Annuller");
+                    if(answer.equals("1 Hus")){value = 1;} else if(answer.equals("Hotel")){value = 2;}else if(answer.equals("Annuller")){value = -1;}
 
                     if(playerArr.get(playerID).getBalance() < cost){
-                        gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        gui.showMessage("Din saldo: "+playerArr.get(playerID).getBalance()+". Pris: "+cost+". Du har ikke nok penge.");
                     }
                     else{
                         cost = value * fieldArr[index].getHousePrice();
@@ -295,11 +295,11 @@ public class GUI_Monopoly{
 
             case 4:
                 while(i == 0){
-                    answer = gui.getUserSelection("Would you like to build a hotel?", "Yes", "Cancel");
-                    if(answer.equals("Yes")){value = 1;} else if(answer.equals("Cancel")){value = 0;}else if(answer.equals("Cancel")){value = -1;}
+                    answer = gui.getUserSelection("Vil du bygge en hotel?", "Ja", "Annuller");
+                    if(answer.equals("Ja")){value = 1;} else if(answer.equals("Annuller")){value = -1;}
 
                     if(playerArr.get(playerID).getBalance() < cost){
-                        gui.showMessage("Your Balance: "+playerArr.get(playerID).getBalance()+". Cost: "+cost+". You don't have sufficient funds.");
+                        gui.showMessage("Din saldo: "+playerArr.get(playerID).getBalance()+". Pris: "+cost+". Du har ikke nok penge.");
                     }
                     else{
                         cost = value * fieldArr[index].getHousePrice();
@@ -308,7 +308,7 @@ public class GUI_Monopoly{
                 }
                 break;
             case 5:
-                gui.showMessage("You already have a hotel on this property.");
+                gui.showMessage("Du har allerede et hotel på denne ejendom.");
                 value = 0;
                 break;
         }return value;
@@ -318,9 +318,9 @@ public class GUI_Monopoly{
     public boolean housePlacement(int playerID,int houseIncrement ,int houseAmount, int fieldIndex,GUI_Player[] guiPlayerList, Field_Abstract[] fieldArr) {
         boolean bought = false;
         int cost = houseIncrement * fieldArr[fieldIndex].getHousePrice();
-        String answer = gui.getUserSelection("This transaction will cost you: " + cost + ". Do you want to proceed?", "Yes", "No");
+        String answer = gui.getUserSelection("Denne transaktion vil koste dig: " + cost + ". Vil du fortsætte?", "Ja", "Nej");
 
-        if (answer.equals("Yes")) {
+        if (answer.equals("Ja")) {
             guiPlayerList[playerID].setBalance(guiPlayerList[playerID].getBalance() - cost);
             if (houseAmount == 5) {
                 if (fields[fieldIndex] instanceof GUI_Street) {
@@ -331,7 +331,8 @@ public class GUI_Monopoly{
             }
             bought = true;
         }else{
-            gui.showMessage("Transaction Cancelled.");
+
+            gui.showMessage("Transaktion annuleret.");
         }return bought;
     }
 
@@ -340,5 +341,10 @@ public class GUI_Monopoly{
             ((GUI_Street) fields[index]).setHotel(false);
             ((GUI_Street) fields[index]).setHouses(0);
         }
+    }
+
+    public void doesNotOwnGroup()
+    {
+        gui.showMessage("Du ejer ikke denne gruppe.");
     }
 }
