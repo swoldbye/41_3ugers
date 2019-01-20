@@ -16,8 +16,6 @@ public class PlayerArchetype {
     private int[] groupsOwned;
 
     //Constructor
-
-
     public PlayerArchetype(String name, int balance, int position, boolean jailed, int jailCounter, int jailCard, boolean bankrupt, int[] groupOwnedAmount, int[] groupsOwned) {
         this.name = name;
         this.balance = balance;
@@ -83,8 +81,8 @@ public class PlayerArchetype {
         this.groupOwnedAmount = groupOwnedAmount;
     }
 
-    public void incrementOwnGroup(int groupNumber){
-        groupOwnedAmount[groupNumber]++;
+    public void incrementOwnedGroupAmount(int groupNumber){
+        this.groupOwnedAmount[groupNumber]++;
     }
 
     public int[] getGroupsOwned() {
@@ -93,10 +91,10 @@ public class PlayerArchetype {
 
     public void setGroupOwned(int groupIndex, boolean set) {
         if (set == true) {
-            groupsOwned[groupIndex] = 1;
+            this.groupsOwned[groupIndex] = 1;
         }
         else if(set == false){
-            groupsOwned[groupIndex] = 0;
+            this.groupsOwned[groupIndex] = 0;
         }
     }
 

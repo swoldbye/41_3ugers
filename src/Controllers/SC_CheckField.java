@@ -14,6 +14,7 @@ public class SC_CheckField {
     public static int sodaMultiplier;
     GUI_Monopoly message = new GUI_Monopoly();
     SC_ChCardController chController = new SC_ChCardController();
+
     // First checks if user crosses start
     public void checkStart(ArrayList<PlayerArchetype> playerArr, int oldPosition,int i, int roll1, int roll2,GUI_Player[] gui_playerList){
         roll=roll1+roll2;
@@ -33,6 +34,7 @@ public class SC_CheckField {
 
         return newPosition;
     }
+
     // Check what field the player lands on and branches out
     public void checkPosition(ArrayList<PlayerArchetype> playerArr, int i, int actualPosition, Field_Abstract[] fieldArr, GUI_Player[] gui_playerList){
         SC_ChanceCardEffect Logic_chancecard = new SC_ChanceCardEffect();
@@ -71,6 +73,7 @@ public class SC_CheckField {
         }
         // Second case : if the player lands on an empty ownable field
     }
+
     public void landsOnProperty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList) {
         int currentBalance = playerArr.get(i).getBalance();
         // If player lands on a property that nobody owns
@@ -80,7 +83,7 @@ public class SC_CheckField {
             if (answer.equals("Ja")) {
                 // player pays for property
                 playerArr.get(i).setBalance(currentBalance - price);
-                playerArr.get(i).incrementOwnGroup(fieldArr[actualPosition].getGroup());
+                playerArr.get(i).incrementOwnedGroupAmount(fieldArr[actualPosition].getGroup());
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
                 System.out.println("Spiller " + (i + 1) + " saldo er nu " + playerArr.get(i).getBalance());
@@ -115,6 +118,7 @@ public class SC_CheckField {
 
         }
     }
+
     public void landsOnTax(ArrayList<PlayerArchetype> playerArr,int playerBalance, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         // If player lands on tax field 1 or 2, reduce balance by either 4000 or 8000.
         if(actualPosition==4){
@@ -157,6 +161,7 @@ public class SC_CheckField {
             message.GUI_payRent(owner, sodaRent, gui_playerList, i);
         }
     }
+
     public void landsOnEmpty(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition){
 
     }
