@@ -23,6 +23,7 @@ public class SC_PropertyManagement {
         for (int i = 0; i <= 9; i++){
              if (playerArr.get(playerID).getGroupsOwned()[i] == 1) {
                 ownsGroup = true;
+                i = 10;
             }else{ownsGroup = false;}
         }
         return ownsGroup;
