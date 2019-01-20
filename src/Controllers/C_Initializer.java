@@ -3,8 +3,7 @@ package Controllers;
 import Boundary.GUI_Monopoly;
 import Entities.*;
 import gui_fields.GUI_Player;
-import GameLogic.*;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class C_Initializer {
@@ -32,8 +31,8 @@ public class C_Initializer {
         //cardList array creation
         ChCardsArchetype[] cardList = deck.createChCardList();
 
-        // Handing over responsibility to the GameTurn controller. The game has begun :D
-        GameTurn startGame = new GameTurn();
+        // Handing over responsibility to the C_GameTurn controller. The game has begun :D
+        C_GameTurn startGame = new C_GameTurn();
         // Note that the checkTurn method accepts the following parameters
         startGame.checkRound(c_playerArr, c_GUIPlayerArr,guiBoard,fieldArr, groupIndexes);
     }
