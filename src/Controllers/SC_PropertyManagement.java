@@ -48,7 +48,8 @@ public class SC_PropertyManagement {
 
     public void buildHouse (int buildField, Field_Abstract[] fieldArr, ArrayList<PlayerArchetype> playerArr, int playerID, int amount, GUI_Monopoly guiMonopoly, GUI_Player[] guiPlayerList){
         //gui method to change what happens on the gui. Then done.
-        boolean bought = guiMonopoly.housePlacement(playerID, amount, fieldArr[buildField].getHouses(), buildField, guiPlayerList, fieldArr);
+        int tempIncrease = fieldArr[buildField].getHouses() + amount;
+        boolean bought = guiMonopoly.housePlacement(playerID, amount, tempIncrease, buildField, guiPlayerList, fieldArr);
         if(bought == true){
             //set the new amount of houses.
             fieldArr[buildField].setHouses(fieldArr[buildField].getHouses() + amount);
