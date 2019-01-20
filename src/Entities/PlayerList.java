@@ -20,7 +20,7 @@ public class PlayerList {
         int j = 0;
         int var2 = j + 1;
 
-        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 5000, 0, false, 0, 0, false, new int[]{0,0,0,0,0,0,0,0,0,0}, new int[]{0,0,0,0,0,0,0,0,0,0});
+        PlayerArchetype gui_Player1 = new PlayerArchetype(playerNames[0], 30000, 0, false, 0, 0, false, new int[]{0,0,0,0,0,0,0,0,0,0}, new int[]{0,0,0,0,0,0,0,0,0,0});
         reservedPlayerList[j] = gui_Player1;
 
         PlayerArchetype gui_Player2 = new PlayerArchetype(playerNames[1], 30000, 0, false, 0, 0, false, new int[]{0,0,0,0,0,0,0,0,0,0}, new int[]{0,0,0,0,0,0,0,0,0,0});

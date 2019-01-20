@@ -84,10 +84,8 @@ public class C_GameTurn {
                                 guiInstance.bankruptFieldOwnerShip(j);
                             }
 
-
                             }
                         }
-
                     }
                 }
             }
