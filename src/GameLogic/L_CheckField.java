@@ -64,9 +64,6 @@ public class L_CheckField {
                 message.goToJail(i,gui_playerList);
                 playerArr.get(i).setJailed(true);
                 break;
-            case 5: case 15: case 25: case 35:
-                landsOnShipping(playerArr,i,actualPosition,fieldArr,gui_playerList);
-                break;
             case 12: case 28:
                 landsOnSoda(playerArr,i,actualPosition,fieldArr,gui_playerList);
                 // Player lands on ownable field.
@@ -127,11 +124,6 @@ public class L_CheckField {
             playerArr.get(i).setBalance(playerBalance-tax);
             message.GUI_payTax(playerBalance,i,tax,gui_playerList);
         }
-    }
-    public void landsOnShipping(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
-        // Set Shipping ownable logic
-       // Rent : 500, 1000, 2000, 4000
-
     }
     public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
         int sodaRent = roll*100;

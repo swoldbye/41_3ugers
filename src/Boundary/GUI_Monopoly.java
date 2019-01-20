@@ -79,12 +79,12 @@ public class GUI_Monopoly{
 
     public void passStart(int playerID,int newBalance, GUI_Player[] gui_playerList){
         gui_playerList[playerID].setBalance(newBalance);
-        gui.showMessage("Player "+(playerID+1)+" has passed start and collects 4000kr");
+        gui.showMessage("Player "+(playerID+1)+" har passeret start og modtager 4000kr");
     }
 
     // Button that adds the choice to buy a property
     public String GUI_buyProperty (int actualPosition, int playerID, int price, GUI_Player[] gui_playerList){
-        String answer = gui.getUserSelection("Vil du købe denne felt?","Ja","Nej");
+        String answer = gui.getUserSelection("Vil du købe deTTe felt?","Ja","Nej");
         if(answer.equals("Ja")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
@@ -95,7 +95,7 @@ public class GUI_Monopoly{
 
     // The balance of the player and owner of a given field will be updated in the gui in this method
     public String GUI_payRent(int owner,int rent,GUI_Player[] gui_playerList,int playerID){
-        String rentMessage = gui.getUserSelection("Denne felt af ejet af Player "+(owner+1)+". Betal "+rent,"Betal "+rent);
+        String rentMessage = gui.getUserSelection("Dette felt af ejet af Player "+(owner+1)+". Betal "+rent,"Betal "+rent);
         // Defining the balance of the player and owner
         int playerBalance = gui_playerList[playerID].getBalance();
         int ownerBalance = gui_playerList[owner].getBalance();
@@ -129,7 +129,7 @@ public class GUI_Monopoly{
                 answer = gui.getUserSelection("Du kan bruge dit kort for at komme ud af fængsel.", "Nej",  "Brug kort");
                 break;
             case 4:
-                gui.showMessage("Du har hverken penge eller en chance kort. Du skal rulle dobbelt for at komme ud af fængsel.");
+                gui.showMessage("Du har hverken penge eller et chance kort. Du skal rulle dobbelt for at komme ud af fængsel.");
                 answer = "Nej";
                 break;
         }
