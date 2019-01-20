@@ -13,14 +13,13 @@ public class SC_PropertyManagement {
     public void ownsGroupIncrement(ArrayList<PlayerArchetype> playerArr, int playerID, int[][] groupIndexes) {
         for (int i = 0; i <= 9; i++) {
             if (playerArr.get(playerID).getGroupOwnedAmount()[i] == groupIndexes[i].length) {
-                playerArr.get(playerID).setGroupsOwned(i, true);
+                playerArr.get(playerID).setGroupOwned(i, true);
             }
         }
     }
 
     public boolean ownsGroup(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr, int playerID) {
         boolean ownsGroup = false;
-        //if(playerArr.get(playerID).getOwnGroup()[fieldArr[actualPosition].getGroup()] == fieldArr[actualPosition].getGroupSize()){
         for (int i = 0; i <= 9; i++){
             if(i == 1 || i == 4){
                 i++;

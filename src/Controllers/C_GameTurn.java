@@ -35,6 +35,7 @@ public class C_GameTurn {
             if (playerArr.get(i).isBankrupt() == false) {
                 boolean getTurn = Logic_jail.inJail(i, playerArr, guiInstance);
                 if (getTurn == true) {
+                    boolean ownsGroup = false;
                     // Check the current position of the player before he rolls the dice
                     int oldPosition = playerArr.get(i).getPosition();
                     // check groupsOwnedAmounted[] and increment groupsOwned[] if you have all in the group
@@ -42,7 +43,7 @@ public class C_GameTurn {
                     // 2) If the player owns all properties within one group, ask if he wants to buy houses
 
                     // If the player owns all properties within one group
-                    boolean ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
+                    ownsGroup = Logic_propertymanagement.ownsGroup(playerArr, fieldArr, i);
                     if (ownsGroup == true) {
                         int j = 0;
                         while (j == 0) {

@@ -91,7 +91,7 @@ public class PlayerArchetype {
         return groupsOwned;
     }
 
-    public void setGroupsOwned(int groupIndex, boolean set) {
+    public void setGroupOwned(int groupIndex, boolean set) {
         if (set == true) {
             groupsOwned[groupIndex] = 1;
         }
