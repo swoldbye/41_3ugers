@@ -84,7 +84,7 @@ public class GUI_Monopoly{
 
     // Button that adds the choice to buy a property
     public String GUI_buyProperty (int actualPosition, int playerID, int price, GUI_Player[] gui_playerList){
-        String answer = gui.getUserSelection("Vil du købe deTTe felt?","Ja","Nej");
+        String answer = gui.getUserSelection("Vil du købe dette felt?","Ja","Nej");
         if(answer.equals("Ja")){
             int currentBalance = gui_playerList[playerID].getBalance();
             gui_playerList[playerID].setBalance(currentBalance-price);
