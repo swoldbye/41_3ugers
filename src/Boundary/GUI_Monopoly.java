@@ -347,4 +347,5 @@ public class GUI_Monopoly{
     {
         gui.showMessage("Du ejer ikke denne gruppe.");
     }
+
 }
