@@ -2,6 +2,7 @@ package Controllers;
 import Boundary.GUI_Monopoly;
 import Boundary.GUI_PlayerList;
 import Entities.Field_Abstract;
+import Entities.Field_Ownable;
 import Entities.PlayerArchetype;
 import gui_fields.GUI_Player;
 
@@ -11,8 +12,10 @@ public class SC_PropertyManagement {
 
     public void ownsGroupIncrement(ArrayList<PlayerArchetype> playerArr, Field_Abstract[] fieldArr, int playerID) {
         for (int i = 0; i <= 9; i++) {
-            if (playerArr.get(playerID).getGroupOwnedAmount()[i] == fieldArr[i].getGroupSize()) {
-                playerArr.get(playerID).setGroupsOwned(i, true);
+            if (fieldArr[i] instanceof Field_Ownable) {
+                if (playerArr.get(playerID).getGroupOwnedAmount()[i] == fieldArr[i].getGroupSize()) {
+                    playerArr.get(playerID).setGroupsOwned(i, true);
+                }
             }
         }
     }
@@ -23,8 +26,7 @@ public class SC_PropertyManagement {
         for (int i = 0; i <= 9; i++){
              if (playerArr.get(playerID).getGroupsOwned()[i] == 1) {
                 ownsGroup = true;
-                i = 10;
-            }else{ownsGroup = false;}
+            }
         }
         return ownsGroup;
     }
