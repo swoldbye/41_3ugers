@@ -77,12 +77,12 @@ public class C_GameTurn {
                         for (int j = 0; j < fieldArr.length; j++) {
                             if (fieldArr[j] instanceof Field_Ownable)
                             {
-                            if (fieldArr[j].getOwnership() == i) {
-                                fieldArr[j].setOwnership(-1);
-                                fieldArr[j].setHouses(0);
-                                guiInstance.deleteHouses(j);
-                                guiInstance.bankruptFieldOwnerShip(j);
-                            }
+                                if (fieldArr[j].getOwnership() == i) {
+                                    fieldArr[j].setOwnership(-1);
+                                    fieldArr[j].setHouses(0);
+                                    guiInstance.deleteHouses(j);
+                                    guiInstance.bankruptFieldOwnerShip(j);
+                                }
 
                             }
                         }
