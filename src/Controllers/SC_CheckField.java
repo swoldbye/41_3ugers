@@ -79,14 +79,16 @@ public class SC_CheckField {
         // If player lands on a property that nobody owns
         if (fieldArr[actualPosition].getOwnership() == -1) {
             int price = fieldArr[actualPosition].getPrice();
-            String answer = message.GUI_buyProperty(actualPosition, i, price, gui_playerList);
-            if (answer.equals("Ja")) {
-                // player pays for property
-                playerArr.get(i).setBalance(currentBalance - price);
-                playerArr.get(i).incrementOwnedGroupAmount(fieldArr[actualPosition].getGroup());
-                // ownership is set in fieldlist
-                fieldArr[actualPosition].setOwnership(i);
-                System.out.println("Spiller " + (i + 1) + " saldo er nu " + playerArr.get(i).getBalance());
+            if (currentBalance > price) {
+                String answer = message.GUI_buyProperty(actualPosition, i, price, gui_playerList);
+                if (answer.equals("Ja")) {
+                    // player pays for property
+                    playerArr.get(i).setBalance(currentBalance - price);
+                    playerArr.get(i).incrementOwnedGroupAmount(fieldArr[actualPosition].getGroup());
+                    // ownership is set in fieldlist
+                    fieldArr[actualPosition].setOwnership(i);
+                    System.out.println("Spiller " + (i + 1) + " saldo er nu " + playerArr.get(i).getBalance());
+                }
             }
         }
         // Else, pay rent to whomever owns the property
@@ -95,27 +97,34 @@ public class SC_CheckField {
             // find rent
             int rent = fieldArr[actualPosition].getRent();
             int owner = fieldArr[actualPosition].getOwnership();
-
-            if (fieldArr[actualPosition] instanceof Field_Ownable) {
-                if (playerArr.get(i).getGroupsOwned()[fieldArr[actualPosition].getGroup()] == 1) {
-                    int houseAmount = fieldArr[actualPosition].getHouses();
-                    if(houseAmount == 0){
-                        rent = rent * 2;
-                    }else if(houseAmount > 0){
-                        rent = (int)(rent * Math.pow(2, houseAmount));
+            if (fieldArr[actualPosition].getOwnership() != i) {
+                if (fieldArr[actualPosition] instanceof Field_Ownable) {
+                    if (playerArr.get(owner).getGroupsOwned()[fieldArr[actualPosition].getGroup()] == 1) {
+                        int houseAmount = fieldArr[actualPosition].getHouses();
+                        if (houseAmount == 0) {
+                            rent = rent * 2;
+                        } else if (houseAmount > 0) {
+                            rent = (int) (rent * 2 * Math.pow(2, houseAmount));
+                        }
                     }
+
+
+                    // player pays rent
+                    if (playerArr.get(i).getBalance() < rent) {
+                        message.GUI_payRent(owner, playerArr.get(i).getBalance(), gui_playerList, i);
+                        playerArr.get(owner).setBalance((ownerBalance + playerArr.get(i).getBalance()));
+                        playerArr.get(i).setBalance(0);
+                    } else {
+                        playerArr.get(i).setBalance(currentBalance - rent);
+                        int ownerBalance = playerArr.get(owner).getBalance();
+                        // pay owner
+                        playerArr.get(owner).setBalance(ownerBalance + rent);
+                        // display pay rent button in gui
+                        message.GUI_payRent(owner, rent, gui_playerList, i);
+                    }
+
                 }
-
-                // find owner with getOwnership
-                // display pay rent button in gui
-                message.GUI_payRent(owner, rent, gui_playerList, i);
-                // player pays rent
-                playerArr.get(i).setBalance(currentBalance - rent);
-                int ownerBalance = playerArr.get(owner).getBalance();
-                // pay owner
-                playerArr.get(owner).setBalance(ownerBalance + rent);
             }
-
         }
     }
 
@@ -132,33 +141,40 @@ public class SC_CheckField {
             message.GUI_payTax(playerBalance,i,tax,gui_playerList);
         }
     }
-    public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList){
-        int sodaRent = roll*sodaMultiplier;
+    public void landsOnSoda(ArrayList<PlayerArchetype> playerArr, int i,int actualPosition,Field_Abstract[] fieldArr,GUI_Player[] gui_playerList) {
+        int sodaRent = roll * sodaMultiplier;
         int price = fieldArr[actualPosition].getPrice();
 
-        if(fieldArr[actualPosition].getOwnership()==-1){
-            String answer = message.GUI_buyProperty(actualPosition,i,price,gui_playerList);
+        if (fieldArr[actualPosition].getOwnership() == -1) {
+            String answer = message.GUI_buyProperty(actualPosition, i, price, gui_playerList);
             if (answer == "Ja") {
                 // player pays for property
-                playerArr.get(i).setBalance(playerBalance-price);
+                playerArr.get(i).setBalance(playerBalance - price);
                 // ownership is set in fieldlist
                 fieldArr[actualPosition].setOwnership(i);
 
-                if(fieldArr[12].getOwnership()==fieldArr[28].getOwnership()){
+                if (fieldArr[12].getOwnership() == fieldArr[28].getOwnership()) {
                     sodaMultiplier = 200;
-                }
-                else{
-                    sodaMultiplier= 100;
+                } else {
+                    sodaMultiplier = 100;
                 }
             }
-        }
-        else {
-            ownerBalance = playerArr.get(fieldArr[actualPosition].getOwnership()).getBalance();
-            int owner = fieldArr[actualPosition].getOwnership();
-            playerArr.get(i).setBalance(playerBalance - sodaRent);
-            playerArr.get(owner).setBalance(ownerBalance + sodaRent);
-            // display pay rent button in gui
-            message.GUI_payRent(owner, sodaRent, gui_playerList, i);
+        } else {
+            if (fieldArr[actualPosition].getOwnership() != i) {
+                ownerBalance = playerArr.get(fieldArr[actualPosition].getOwnership()).getBalance();
+                int owner = fieldArr[actualPosition].getOwnership();
+
+                if (playerArr.get(i).getBalance() < sodaRent) {
+                    message.GUI_payRent(owner, playerArr.get(i).getBalance(), gui_playerList, i);
+                    playerArr.get(owner).setBalance((ownerBalance + playerArr.get(i).getBalance()));
+                    playerArr.get(i).setBalance(0);
+                } else {
+                    playerArr.get(i).setBalance(playerBalance - sodaRent);
+                    playerArr.get(owner).setBalance(ownerBalance + sodaRent);
+                    // display pay rent button in gui
+                    message.GUI_payRent(owner, sodaRent, gui_playerList, i);
+                }
+            }
         }
     }
 

@@ -3,10 +3,22 @@ package Controllers;
 import java.util.Random;
 public class SC_ChanceCardEffect {
 
-    public int drawChCard() {
-        Random cardRand = new Random();
-        int card = cardRand.nextInt(37);
+    int demoTikker = 0;
 
+    public int drawChCard() {
+        //Random cardRand = new Random();
+        //int card = cardRand.nextInt(37);
+        int card = 0;
+        switch(demoTikker){
+            case 0:
+                card = 37;
+                demoTikker++;
+                break;
+            case 1:
+                card = 25;
+                demoTikker++;
+                break;
+        }
         return card;
     }
 

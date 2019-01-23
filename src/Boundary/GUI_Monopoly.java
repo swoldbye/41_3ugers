@@ -77,6 +77,11 @@ public class GUI_Monopoly{
         return;
     }
 
+    public void destroyPlayer(int playerID, int oldPosition, GUI_Player[] GUIPlayerList){
+        fields[oldPosition].setCar(GUIPlayerList[playerID],false);
+        return;
+    }
+
     public void passStart(int playerID,int newBalance, GUI_Player[] gui_playerList){
         gui_playerList[playerID].setBalance(newBalance);
         gui.showMessage("Player "+(playerID+1)+" har passeret start og modtager 4000kr");
@@ -116,20 +121,20 @@ public class GUI_Monopoly{
         fields[30].setCar(gui_playerList[playerID],false);
         fields[10].setCar(gui_playerList[playerID],true);
     }
-    public String jailMessage(int playerStatus){
+    public String jailMessage(int playerStatus, int playerID){
         String answer = null;
         switch(playerStatus){
             case 1:
-                answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja", "Brug kort");
+                answer = gui.getUserSelection("Det er Player "+(playerID+1)+"'s tur. Vil du betale 1000kr for at komme ud eller bruge kort?", "Nej", "Ja", "Brug kort");
                 break;
             case 2:
-                answer = gui.getUserSelection("Vil du betale 1000kr for at komme ud?", "Nej", "Ja");
+                answer = gui.getUserSelection("Det er Player "+(playerID+1)+"'s tur. Vil du betale 1000kr for at komme ud?", "Nej", "Ja");
                 break;
             case 3:
-                answer = gui.getUserSelection("Du kan bruge dit kort for at komme ud af fængsel.", "Nej",  "Brug kort");
+                answer = gui.getUserSelection("Det er Player "+(playerID+1)+"'s tur. Vil du bruge dit kort for at komme ud af fængsel?", "Nej",  "Brug kort");
                 break;
             case 4:
-                gui.showMessage("Du har hverken penge eller et chance kort. Du skal rulle dobbelt for at komme ud af fængsel.");
+                gui.showMessage("Du har hverken penge eller et kort. Du skal rulle dobbelt for at komme ud af fængsel.");
                 answer = "Nej";
                 break;
         }
@@ -346,6 +351,11 @@ public class GUI_Monopoly{
     public void doesNotOwnGroup()
     {
         gui.showMessage("Du ejer ikke denne gruppe.");
+    }
+
+    public void pullMoney(int playerID, int amount, GUI_Player[] guiPlayerList){
+        int previous = guiPlayerList[playerID].getBalance();
+        guiPlayerList[playerID].setBalance(previous - amount);
     }
 
 }

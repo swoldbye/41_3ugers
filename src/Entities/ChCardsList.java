@@ -42,7 +42,7 @@ public class ChCardsList {
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter tilbage.", 2, -3);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter frem.", 2, 3);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk tre felter tilbage", 2, -3);
-        cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til Vimmelskaftet. Hvis De passere \"START\", indkassér da kr. 4000.", 3, 32);
+        cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til Gl kongevej. Hvis De passere \"START\", indkassér da kr. 4000.", 3, 14);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til Strandvejen. Hvis De passere \"START\", indkassér da kr. 4000", 3, 19);
         cards[i++] = new ChCardsArchetype("Chance", "Ryk frem til Frederiksberg Allé. Hvis De passere \"START\", indkassér da kr. 4000", 3, 11);
         cards[i++] = new ChCardsArchetype("Chance", "Tag med Mols-linen. Flyt brikken frem, og hvis De passere \"START\", indkassér da kr. 4000", 3, 15);
